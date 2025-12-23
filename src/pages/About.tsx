@@ -1,7 +1,7 @@
 import Navbar from '../components/Navbar';
 import { motion } from 'framer-motion';
 import { Coffee, Trophy, Briefcase, Mail, Linkedin } from 'lucide-react';
-// CORREÇÃO: Voltando para o nome original do arquivo que está na pasta
+// CORREÇÃO: Importando com o nome exato do arquivo que você tem hoje
 import imgProfile from "../assets/5f6ebe676a5141fd55f82268d568797104511a79.png"; 
 
 export default function About() {
@@ -12,7 +12,6 @@ export default function About() {
       <main className="flex-1 w-full max-w-5xl mx-auto px-6 py-12 md:py-20">
         <div className="flex flex-col md:flex-row gap-12 items-center md:items-start">
           
-          {/* Foto de Perfil */}
           <motion.div 
             className="w-full max-w-[280px] md:w-1/3 flex-shrink-0"
             initial={{ opacity: 0, scale: 0.9 }}
@@ -28,7 +27,6 @@ export default function About() {
             </div>
           </motion.div>
 
-          {/* Conteúdo de Texto */}
           <div className="flex-1 flex flex-col gap-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -43,7 +41,6 @@ export default function About() {
               </p>
             </motion.div>
 
-            {/* Stats */}
             <div className="grid grid-cols-3 gap-4 py-6 border-y border-border">
               {[
                 { icon: Briefcase, value: '3+', label: 'Anos exp.' },
@@ -58,7 +55,6 @@ export default function About() {
               ))}
             </div>
 
-            {/* Texto */}
             <div className="font-mono text-sm md:text-base flex flex-col gap-6 text-justify md:text-left text-foreground">
               <p>
                 Sou <strong>publicitária de formação</strong> e migrei para o design de produto digital. 
@@ -69,7 +65,6 @@ export default function About() {
               </p>
             </div>
 
-            {/* Botões */}
             <div className="flex flex-col sm:flex-row gap-4 mt-4">
               <a href="mailto:contato@liviamiranda.com" className="flex items-center justify-center gap-2 border-2 border-black px-6 py-3 font-mono font-bold text-foreground hover:bg-black hover:text-white transition-all">
                 <Mail size={18} /> Enviar Email
