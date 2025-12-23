@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from '../components/navbar';
+import navbar from '../components/navbar';
 import { motion } from 'framer-motion';
 import { Coffee, Trophy, Briefcase, EnvelopeSimple, LinkedinLogo } from '@phosphor-icons/react';
 
@@ -9,8 +9,7 @@ import imgProfile from "../assets/eu.png";
 export default function About() {
   return (
     <div className="bg-background min-h-screen flex flex-col font-sans text-foreground">
-      <Navbar />
-
+      <navbar />
       <main className="flex-1 w-full max-w-5xl mx-auto px-6 py-12 md:py-20">
         <div className="flex flex-col md:flex-row gap-12 items-center md:items-start">
           

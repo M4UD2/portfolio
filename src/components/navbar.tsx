@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { EnvelopeIcon, LinkedinLogoIcon, ReadCvLogoIcon } from '@phosphor-icons/react';
 
-export default function Navbar() {
+export default function navbar() {
   return (
     <nav className="relative w-full py-6 px-4 sm:px-6 flex justify-between items-center max-w-[1200px] mx-auto bg-background text-foreground font-sans">
       <Link 
