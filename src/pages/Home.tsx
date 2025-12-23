@@ -4,7 +4,7 @@ import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
-// CORREÇÃO: Importando o placeholder com o nome original
+// CORREÇÃO: Usando o nome do arquivo placeholder que você indicou
 import imgPlaceholder from "../assets/06e35dd2293fe8b729c00f550c200d1a62c1fbf5.png";
 
 function ProjectCard({ 
@@ -110,7 +110,7 @@ export default function Home() {
             link="/projeto/yrden"
             year="2024"
             company="Yrden"
-            imageUrl={imgPlaceholder} // Usando o placeholder local
+            imageUrl={imgPlaceholder}
             imageAlt="Yrden Onboarding Project"
           />
           
@@ -120,7 +120,7 @@ export default function Home() {
             link="https://www.figma.com/design/1oBmsrGt3Bp95wCtUwVcaD"
             year="2024"
             company="Axiom"
-            imageUrl={imgPlaceholder} // Usando o placeholder local
+            imageUrl={imgPlaceholder}
             imageAlt="Axiom Data Visualization Project"
             reversed={true}
           />
