@@ -14,9 +14,9 @@ export default function NavItem({ to, label, isActive = false, onClick, children
     <Link
       to={to}
       onClick={onClick}
-      // Adicionado font-normal para garantir um peso de fonte mais leve no estado padrão
-      className={`relative text-[13px] tracking-normal font-normal transition-all duration-500 hover:text-foreground hover:font-extrabold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 ${
-        isActive ? 'opacity-100' : 'opacity-60'
+      aria-current={isActive ? 'page' : undefined}
+      className={`relative text-[14px] leading-[1.7] tracking-normal font-normal transition-colors duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 ${
+        isActive ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'
       }`}
     >
       {label}

@@ -19,17 +19,17 @@ export default function Footer() {
           {/* Bloco 1: Bio (Ocupa 2 colunas no desktop para equilíbrio) */}
           <div className="flex flex-col gap-3 md:col-span-2 max-w-xs">
             <Logo /> {/* Substituído o h3 pelo componente Logo */}
-            <p className="text-sm text-muted-foreground leading-[1.7]">
+            <p className="text-[14px] leading-[1.7] text-muted-foreground">
               Product Designer Jr. na Bwtech. Transformando complexidade técnica em experiências intuitivas.
             </p>
-            <p className="text-[10px] uppercase tracking-widest text-muted-foreground mt-2">
+            <p className="text-[12px] leading-[1.7] uppercase tracking-widest text-muted-foreground mt-2">
               © {currentYear} • Belo Horizonte, MG
             </p>
           </div>
 
           {/* Bloco 2: Navegação (Empilhado) */}
           <div className="flex flex-col gap-4">
-            <p className="text-[10px] uppercase tracking-widest text-muted-foreground/60">Navegação</p>
+            <p className="text-[12px] leading-[1.7] uppercase tracking-widest text-muted-foreground/60">Navegação</p>
             <nav className="flex flex-col gap-3">
               <NavLink to="/" label="Início" />
               <NavLink to="/sobre-mim" label="Sobre mim" />
@@ -38,7 +38,7 @@ export default function Footer() {
 
           {/* Bloco 3: Contatos e Botão Topo (Empilhados) */}
           <div className="flex flex-col gap-4">
-            <p className="text-[10px] uppercase tracking-widest text-muted-foreground/60">Contato</p>
+            <p className="text-[12px] leading-[1.7] uppercase tracking-widest text-muted-foreground/60">Contato</p>
             <div className="flex flex-col gap-3 mb-8">
               <SocialLink href="mailto:livia146miranda@gmail.com" label="Email" isExternal={false} />
               <SocialLink href="https://www.linkedin.com/in/liviamirandadeoliveira/" label="LinkedIn" />
@@ -48,7 +48,7 @@ export default function Footer() {
             <motion.button
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               aria-label="Voltar ao topo da página"
-              className="group flex items-center gap-3 text-[10px] uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors w-fit"
+              className="group flex items-center gap-3 text-[12px] leading-[1.7] uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors w-fit"
               whileHover={{ y: -2 }}
             >
               Voltar ao topo

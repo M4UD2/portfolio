@@ -14,6 +14,7 @@
 * **Dynamic Sizing:** Uso de `clamp()` para fluidez.
     * **H1:** `text-[clamp(2rem,4vw,3rem)]` (Leading tight).
     * **Body:** `text-[1rem]` (16px) com `leading-[1.7]` para máxima legibilidade.
+    * **Tooltips/Legendas:** `text-[12px]` com `leading-[1.7]` para legibilidade e consistência.
 * **Acessibilidade:** Fontes nunca menores que 12px (legendas) e 16px (corpo).
 
 ## Colors & Aesthetic
@@ -50,3 +51,11 @@
 ### 5. Animations
 * **Transitions:** Padrão **0.8s** com `easeOut`.
 * **Micro-interações:** Hover com deslocamento sutil (`y: -2`) ou setas com opacidade progressiva.
+
+### 6. Tooltip
+* **Tipografia:** `text-[12px]` com `leading-[1.7]` (legendas), sem valores inferiores a 12px.
+* **Cores:** `bg-primary` com `text-primary-foreground`; seta com `bg-primary`/`fill-primary`.
+* **Espaçamento:** `px-3` `py-1.5` (12px x 6px). `sideOffset: 0` por padrão.
+* **Acessibilidade:** `role="tooltip"`, `aria-live="polite"`. Foco visível para o trigger conforme padrão global.
+* **Animações:** Entrada/saída com `animate-in fade-in-0 zoom-in-95` e variantes direcionais (`slide-in-from-...`). Z-index `z-50` e `rounded-md`.
+* **Boas práticas:** Conteúdo curto e objetivo. Evitar links dentro do tooltip; usar para contexto complementar.

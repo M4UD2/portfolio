@@ -9,11 +9,11 @@ interface StatItemProps {
 export default function StatItem({ icon: Icon, value, label }: StatItemProps) {
   return (
     <div className="flex flex-col items-center gap-2 text-center">
-      <span className="text-foreground">
+      <span className="text-foreground" aria-hidden="true">
         <Icon size={24} weight="bold" />
       </span>
-      <p className="font-bold text-xl">{value}</p>
-      <p className="text-[10px] opacity-60 uppercase tracking-widest">{label}</p>
+      <p className="font-bold text-xl leading-[1.7]">{value}</p>
+      <p className="text-[12px] leading-[1.7] uppercase tracking-widest text-muted-foreground">{label}</p>
     </div>
   );
 }

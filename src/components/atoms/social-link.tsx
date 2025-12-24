@@ -14,7 +14,7 @@ export default function SocialLink({ href, label, isExternal = true }: SocialLin
       target={isExternal ? "_blank" : "_self"}
       rel={isExternal ? "noreferrer" : undefined}
       aria-label={`${label}${isExternal ? " (abre em nova aba)" : ""}`}
-      className="text-sm hover:underline flex items-center gap-3 group transition-all w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400"
+      className="text-[14px] leading-[1.7] text-muted-foreground hover:text-foreground hover:underline flex items-center gap-3 group transition-colors w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400"
     >
       {label}
       <span

@@ -36,7 +36,7 @@ export default function Home() {
           <h1 className="text-balance">
             Oi, eu sou a Lívia!<br /><span className="whitespace-nowrap">Bem-vindo(a) ao meu portfólio ;)</span>
           </h1>
-          <p className="text-lg text-muted-foreground mx-auto max-w-[600px] text-balance">
+          <p className="text-[16px] leading-[1.7] text-muted-foreground mx-auto max-w-[600px] text-balance">
             Sou Product Designer Jr. na Bwtech, em Belo Horizonte, onde crio soluções para ajudar empresas de telecom a otimizar suas redes
           </p>
         </motion.div>
@@ -47,7 +47,7 @@ export default function Home() {
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 1, ease: "easeOut" }}
         >
-          <p className="text-sm opacity-60 font-sans">Conheça o meu trabalho</p>
+          <p className="text-[12px] leading-[1.7] text-muted-foreground font-sans">Conheça o meu trabalho</p>
           <motion.div
             animate={{ y: [0, 6, 0] }}
             transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
@@ -66,6 +66,7 @@ export default function Home() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
+          className="text-center md:text-left"
         >
           Projetos
         </motion.h2>

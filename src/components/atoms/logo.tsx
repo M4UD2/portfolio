@@ -10,7 +10,7 @@ export default function Logo() {
       aria-label="Lívia Miranda - Voltar para a página inicial"
     >
       <motion.span
-        className="text-base font-bold tracking-tight hover:opacity-60 transition-opacity duration-500"
+        className="text-base leading-[1.7] font-bold tracking-tight text-foreground hover:opacity-60 transition-opacity duration-500"
         whileHover={{ scale: 1.01 }}
         transition={{ duration: 0.4, ease: "easeOut" }}
       >

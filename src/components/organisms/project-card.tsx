@@ -50,20 +50,19 @@ export default function ProjectCard({
 
         {/* Seção de Conteúdo - Gap-3 para componentes internos */}
         <div className={`w-full flex flex-col gap-3 items-start ${reversed ? 'lg:order-1' : 'lg:order-2'}`}>
-          {/* h3 recebe tipografia automática via globals.css */}
-          <h3>{title}</h3>
+          {/* Tipografia explícita para consistência */}
+          <h3 className="text-foreground">{title}</h3>
 
-          {/* p recebe tipografia automática via globals.css */}
-          <p>{description}</p>
+          <p className="text-[16px] leading-[1.7] text-muted-foreground">{description}</p>
 
           {isExternal ? (
             <motion.a
-              href={link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 border border-border px-6 py-4 mt-2 rounded-full hover:bg-foreground hover:text-background transition-all duration-500 font-sans" // Botão arredondado (pill shape)
-              whileHover={{ x: 4 }} // Movimento horizontal de 4px no hover
-              transition={{ duration: 0.4, ease: "easeOut" }}
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 border border-border px-6 py-4 mt-2 rounded-full hover:bg-foreground hover:text-background transition-all duration-500 font-sans text-[14px] leading-[1.7]" // Botão arredondado (pill shape)
+            whileHover={{ x: 4 }} // Movimento horizontal de 4px no hover
+            transition={{ duration: 0.4, ease: "easeOut" }}
             >
               Confira
               <ArrowRightIcon size={16} weight="bold" />
@@ -71,9 +70,9 @@ export default function ProjectCard({
           ) : (
             <Link to={link}>
               <motion.div 
-                className="inline-flex items-center gap-3 border border-border px-6 py-4 mt-2 rounded-full hover:bg-foreground hover:text-background transition-all duration-500 font-sans"
-                whileHover={{ x: 4 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
+              className="inline-flex items-center gap-3 border border-border px-6 py-4 mt-2 rounded-full hover:bg-foreground hover:text-background transition-all duration-500 font-sans text-[14px] leading-[1.7]"
+              whileHover={{ x: 4 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
               >
                 Confira
                 <ArrowRightIcon size={16} weight="bold" />
