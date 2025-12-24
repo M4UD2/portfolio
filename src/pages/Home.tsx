@@ -24,19 +24,19 @@ export default function Home() {
   ];
 
   return (
-    <main className="flex-1 w-full max-w-[1040px] mx-auto px-6 lg:px-0">
+    <main className="flex-1 w-full max-w-[1040px] mx-auto px-6 md:px-6 lg:px-0 overflow-x-hidden">
       {/* Seção Hero */}
-      <section className="min-h-[70vh] flex flex-col justify-center items-center text-center gap-10 md:gap-12 py-12 md:py-20">
+      <section className="min-h-[70vh] w-full flex flex-col justify-center items-center text-center gap-10 md:gap-12 py-12 md:py-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="flex flex-col gap-6 max-w-[800px]"
+          className="flex flex-col gap-6 w-full max-w-[800px] px-0"
         >
-          <h1 className="text-balance">
-            Oi, eu sou a Lívia!<br /><span className="whitespace-nowrap">Bem-vindo(a) ao meu portfólio ;)</span>
+          <h1 className="text-balance break-words">
+            Oi, eu sou a Lívia!<br /><span className="whitespace-normal">Bem-vindo(a) ao meu portfólio ;)</span>
           </h1>
-          <p className="text-[16px] leading-[1.7] text-muted-foreground mx-auto max-w-[600px] text-balance">
+          <p className="text-[16px] leading-[1.7] text-muted-foreground mx-auto max-w-[600px] w-full text-balance break-words">
             Sou Product Designer Jr. na Bwtech, em Belo Horizonte, onde crio soluções para ajudar empresas de telecom a otimizar suas redes
           </p>
         </motion.div>
@@ -60,7 +60,7 @@ export default function Home() {
       <div className="w-full border-t border-border mb-12 md:mb-20" />
 
       {/* Seção de Projetos */}
-      <section id="projetos" className="flex flex-col gap-16 md:gap-20 pb-20">
+      <section id="projetos" className="flex flex-col gap-16 md:gap-20 pb-20 w-full">
         <motion.h2
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

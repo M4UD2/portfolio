@@ -31,7 +31,7 @@ export default function ProjectCard({
       transition={{ duration: 0.8, ease: "easeOut" }} // Transição sutil conforme diretriz
     >
       {/* Gap seguindo o sistema de 4px (gap-6 ou gap-8) */}
-      <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center`}>
+      <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full`}>
         
         {/* Seção de Imagem */}
         <div className={`w-full ${reversed ? 'lg:order-2' : 'lg:order-1'}`}>
@@ -51,9 +51,9 @@ export default function ProjectCard({
         {/* Seção de Conteúdo - Gap-3 para componentes internos */}
         <div className={`w-full flex flex-col gap-3 items-start ${reversed ? 'lg:order-1' : 'lg:order-2'}`}>
           {/* Tipografia explícita para consistência */}
-          <h3 className="text-foreground">{title}</h3>
+          <h3 className="text-foreground break-words hyphens-auto text-balance">{title}</h3>
 
-          <p className="text-[16px] leading-[1.7] text-muted-foreground">{description}</p>
+          <p className="text-[16px] leading-[1.7] text-muted-foreground break-words hyphens-auto text-balance">{description}</p>
 
           {isExternal ? (
             <motion.a
