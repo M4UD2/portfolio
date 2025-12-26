@@ -35,8 +35,8 @@ export default function Home() {
         >
           <h1 className="text-[clamp(2rem,4vw,3rem)] leading-tight flex flex-col items-center">
             <span className="block">Oi, eu sou a Lívia!</span>
-            {/* Removido whitespace-nowrap para garantir que o texto não ultrapasse a margem no mobile */}
-            <span className="block text-balance">
+            {/* Removido whitespace-nowrap e text-balance para quebrar apenas no limite da margem */}
+            <span className="block">
               Bem-vindo(a) ao meu portfólio ;)
             </span>
           </h1>
