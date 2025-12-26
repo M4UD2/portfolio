@@ -8,7 +8,7 @@ export default function Home() {
     {
       title: '[Yrden] De 60 minutos de espera a um onboarding produtivo',
       description: 'Um case sobre como transformei uma limitação técnica em uma jornada de boas-vindas de valor',
-      link: '#',
+      link: '/projects/yrden',
       imageUrl: 'https://images.unsplash.com/photo-1618761714954-0b8cd0026356?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
       imageAlt: 'Yrden Case - Interface de onboarding',
       reversed: false,
@@ -55,20 +55,19 @@ export default function Home() {
           </h1>
 
           <p className="text-[1rem] leading-[1.7] text-muted-foreground mx-auto max-w-[700px] w-full text-center flex flex-col items-center">
-            <span className="block">Sou Product Designer em Belo Horizonte, focada em</span>
-            <span className="block">construir produtos digitais intuitivos e estratégicos</span>
+            <span className="block sm:hidden">Sou Product Designer em Belo Horizonte,</span>
+            <span className="block sm:hidden"> focada em construir produtos digitais intuitivos e estratégicos</span>
+            <span className="hidden sm:block">Sou Product Designer em Belo Horizonte, focada em</span>
+            <span className="hidden sm:block">construir produtos digitais intuitivos e estratégicos</span>
           </p>
         </motion.div>
 
         {/* Scroll Indicator: Clicável, ícone 14px e feedback de scale */}
         <motion.button
           onClick={() => {
-            const projectsSection = document.getElementById('projetos');
-            if (projectsSection) {
-              const projectsTitle = projectsSection.querySelector('h2');
-              if (projectsTitle) {
-                projectsTitle.scrollIntoView({ behavior: 'smooth' });
-              }
+            const projectsTitle = document.getElementById('projetos-title');
+            if (projectsTitle) {
+              projectsTitle.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
           }}
           className="group flex flex-col items-center gap-2 text-muted-foreground hover:text-foreground transition-colors cursor-pointer focus-ring rounded-sm"
@@ -94,6 +93,7 @@ export default function Home() {
       {/* Seção de Projetos */}
       <section id="projetos" className="flex flex-col gap-16 md:gap-20 pb-20 w-full">
         <motion.h2
+          id="projetos-title"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}

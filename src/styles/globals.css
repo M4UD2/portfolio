@@ -10,7 +10,7 @@
 
     /* Muted: Ajustado para Contraste Acessível (min 4.5:1) */
     --muted: 210 5% 92%;              /* Para fundos sutis */
-    --muted-foreground: 210 10% 42%;   /* Para textos secundários/labels */
+    --muted-foreground: 210 10% 30%;   /* Para textos secundários/labels */
 
     /* Borda: 10% de opacidade para refinamento visual */
     --border: 210 11% 15% / 0.24; 
@@ -24,7 +24,7 @@
     --background: 210 11% 15%;
     --foreground: 210 17% 98%;
     --muted: 210 10% 25%;
-    --muted-foreground: 210 10% 70%;
+    --muted-foreground: 210 10% 60%;
     --border: 210 17% 98% / 0.24;
   }
 

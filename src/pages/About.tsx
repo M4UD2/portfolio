@@ -72,7 +72,7 @@ export default function About() {
 
         {/* Bio - Alinhada à esquerda e Justificada */}
         <motion.div 
-          className="flex flex-col gap-6 text-base leading-[1.7] text-foreground text-left text-justify max-w-[70ch] w-full"
+          className="flex flex-col gap-6 text-base leading-[1.7] text-muted-foreground text-left text-justify max-w-[70ch] w-full"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}

@@ -18,7 +18,7 @@ export default function Footer() {
           {/* Coluna 1: Identidade */}
           <div className="flex flex-col gap-2">
             <Logo />
-            <p className="text-[12px] leading-[1.7] uppercase tracking-widest text-muted-foreground mt-1">
+            <p className="text-[12px] leading-[1.7] uppercase tracking-widest text-muted-foreground">
               © {currentYear} • BH, MG
             </p>
           </div>
