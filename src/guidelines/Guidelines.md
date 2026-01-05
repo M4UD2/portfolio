@@ -99,6 +99,51 @@ Verificações com a paleta atual:
   - Estados hover que não comprometem contraste
 - O arquivo foi atualizado para refletir os tokens e as regras de acessibilidade em vigor no código.
 
+## Tooltips
+- Espaçamento padrão: `mb-1/mt-1` (4px) entre tooltip e elemento
+- Implementação no componente `tooltip-simple.tsx`
+
+---
+
+# UX Writing & Microtipografia (Padrão Definido)
+
+## 1. Capitalização e Formatação
+- **Padrão:** Sentence case (Apenas a primeira letra maiúscula).
+  - *Correto:* "Sobre mim", "Entrar em contato", "Ver projetos".
+  - *Incorreto:* "Sobre Mim", "Entrar em Contato", "VER PROJETOS".
+- **Exceções:** Nomes próprios e siglas (UX, UI, API, Yrden, Axiom).
+- **Pontuação em Títulos/Botões:** Nunca usar ponto final.
+- **Pontuação em Listas:** Sem ponto e vírgula (;) ou ponto final (.) ao fim de itens que não são frases completas.
+
+## 2. Botões e CTAs (Call to Action)
+- **Estrutura:** Verbo no Imperativo + Objeto (máximo 3 palavras).
+- **Padrão:** Ser direto e conciso.
+  - *Definição:* Usar **"Ver projetos"** em vez de "Conheça os meus projetos".
+  - *Definição:* Usar **"Voltar"** ou **"Voltar ao início"** em vez de navegações longas.
+
+## 3. Microtipografia (Regras de Ouro)
+- **Aspas:**
+  - **Interface (Textos):** Obrigatório uso de aspas curvas (“ ”). *Ex: O conceito de “menos é mais” foi aplicado.*
+  - **Código:** Aspas retas (' ' ou " ").
+- **Hífens e Travessões:**
+  - **Hífen (-):** Apenas para palavras compostas ou intervalos numéricos simples (ex: "boas-vindas", "2023-2024").
+  - **Travessão (—):** Para separar orações ou destacar o subtítulo de um projeto. *Ex: "[Yrden] — De 60 minutos de espera..."*
+
+## 4. Controle de Viúvas e Órfãs (Zero Tolerância)
+- **Regra:** Nenhuma palavra deve ficar sozinha na última linha de um bloco de texto ou título.
+- **Títulos (H1, H2, H3):** Obrigatório uso da classe `text-wrap: balance` (ou `text-balance` no Tailwind).
+- **Textos Corridos e Labels:** Usar `&nbsp;` (Non-breaking space) entre as duas últimas palavras ou para "colar" preposições curtas (de, da, em, com) à palavra seguinte.
+  - *Código:* `Design&nbsp;System` (Nunca deixe "System" cair sozinho).
+
+## 5. Voz e Tom
+- **Pessoa:** 1ª pessoa do singular (Eu).
+- **Voz:** Ativa. (Você fez a ação).
+  - *Definição:* "Desenvolvi a interface" (Nunca "A interface foi desenvolvida").
+- **Terminologia:**
+  - Usar **"Design System"** (Inglês, Capitalizado).
+  - Usar **"Product Designer"** (Inglês, Capitalizado).
+  - Usar **"Front-end"** (Hífen, minúscula após hífen).
+
 ## Ícones - Padrão de Cores
 - Todos os ícones da interface devem usar `text-foreground` para manter consistência
 - Ícones em navbar, páginas e componentes: sempre `text-foreground` (preto no modo claro)

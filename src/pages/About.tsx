@@ -33,7 +33,7 @@ export default function About() {
 
         {/* Title - Centered com Ícone Phosphor */}
         <FadeInView delay={0.05}>
-          <h1 className="text-[clamp(1.5rem,3vw,2rem)] leading-[1.2] -tracking-[0.02em] text-center flex items-center justify-center gap-3">
+          <h1 className="text-[clamp(1.5rem,3vw,2rem)] leading-[1.2] -tracking-[0.02em] text-center flex items-center justify-center gap-3 text-balance">
             Oi, eu sou a Lívia! 
             <HandWavingIcon size={24} weight="bold" className="text-foreground" aria-hidden="true" />
           </h1>
@@ -69,11 +69,12 @@ export default function About() {
             <p>
               Sou <strong>publicitária de formação</strong> e migrei para o
               design de produto digital. Hoje combino minha visão estética com
-              dados, cursando um <strong>MBA em Inteligência Artificial</strong>.
+              dados, cursando um <strong>MBA em Inteligência&nbsp;Artificial</strong>.
             </p>
             <p>
               No tempo livre, sou gamer dedicada 🎮, leitora e fotógrafa
-              amadora. Acredito que a tecnologia deve servir às pessoas, garantindo que cada interface tenha um propósito claro.
+              amadora. Acredito que a tecnologia deve servir às pessoas,
+              garantindo que cada interface tenha um propósito&nbsp;claro.
             </p>
           </div>
         </FadeInView>

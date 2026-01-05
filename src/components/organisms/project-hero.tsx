@@ -15,18 +15,17 @@ interface ProjectHeroProps {
 export default function ProjectHero({ title, subtitle, date, role, tools }: ProjectHeroProps) {
   return (
     <motion.section
-      className="max-w-[1040px] mx-auto px-6 md:px-10 py-12 md:py-20"
+      className="max-w-[1040px] mx-auto px-6 md:px-10 pt-0 pb-2 md:pb-4"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
       <div className="flex flex-col gap-6 md:gap-8">
         {/* Title */}
-        <h1>{title}</h1>
+        <h1 dangerouslySetInnerHTML={{ __html: title.replace(/—/g, '—&nbsp;').replace(/De /g, 'De&nbsp;').replace(/a /g, 'a&nbsp;') }} />
         
         {/* Subtitle */}
-        <p className="text-[1rem] leading-[1.7] text-muted-foreground max-w-[70ch]">
-          {subtitle}
+        <p className="text-[1rem] leading-[1.7] text-muted-foreground max-w-[70ch] whitespace-normal" dangerouslySetInnerHTML={{ __html: subtitle.replace(/de valor/g, 'de&nbsp;valor') }}>
         </p>
 
         {/* Meta Info */}

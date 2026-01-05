@@ -19,7 +19,7 @@ export default function Testimonial({ quote, author, role, delay = 0 }: Testimon
     >
       <div className="border-l-4 border-foreground pl-8 py-8">
         <p className="text-[clamp(1.125rem,2vw,1.5rem)] font-bold leading-[1.4] text-muted-foreground italic mb-8 max-w-[70ch]">
-          "{quote}"
+          “{quote}”
         </p>
         <div className="flex flex-col gap-1.5">
           <p className="text-[1rem] leading-[1.7] font-bold">{author}</p>

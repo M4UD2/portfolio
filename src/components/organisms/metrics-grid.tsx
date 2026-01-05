@@ -23,7 +23,7 @@ export default function MetricsGrid({ metrics, results, delay = 0 }: MetricsGrid
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay, ease: "easeOut" }}
     >
-      <h2 className="text-[clamp(1.5rem,3vw,2rem)] font-bold leading-[1.2] -tracking-[0.02em]">Resultados</h2>
+      <h2 className="text-[clamp(1.5rem,3vw,2rem)] font-bold leading-[1.2] -tracking-[0.02em] text-balance">Resultados</h2>
       
       {/* Metrics Cards */}
       {metrics && metrics.length > 0 && (

@@ -16,7 +16,7 @@ export default function TableOfContents({ delay = 0 }: TableOfContentsProps) {
       >
         <div className="border-l-2 border-border pl-6 flex flex-col gap-4">
           <p className="text-[12px] leading-[1.7] uppercase tracking-widest text-muted-foreground mb-2">
-            Neste Projeto
+            Neste projeto
           </p>
           <a
             href="#visao-geral"

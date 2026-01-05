@@ -34,7 +34,7 @@ export default function ProjectCard({ title, description, link, imageUrl, imageA
         </div>
 
         <div className={`w-full flex flex-col gap-3 items-start ${reversed ? 'lg:order-1' : 'lg:order-2'}`}>
-          <h3 className={`hyphens-none leading-tight ${
+          <h3 className={`hyphens-none leading-tight text-balance ${
             isComingSoon ? 'text-muted-foreground' : 'text-foreground'
           }`}>{title}</h3>
           <p className="text-[1rem] leading-[1.7] text-muted-foreground w-full">{description}</p>
@@ -43,7 +43,7 @@ export default function ProjectCard({ title, description, link, imageUrl, imageA
               Em breve
             </div>
           ) : (
-            <Button href={link} isExternal={isExternal} icon={ArrowRightIcon}>Confira</Button>
+            <Button href={link} isExternal={isExternal} icon={ArrowRightIcon}>Ver projeto</Button>
           )}
         </div>
       </div>

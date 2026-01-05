@@ -18,7 +18,7 @@ export default function TechStack({ technologies, delay = 0 }: TechStackProps) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay, ease: "easeOut" }}
     >
-      <h3 className="text-[clamp(1.125rem,2vw,1.5rem)] font-bold leading-[1.4] max-w-[35ch]">Tecnologias Utilizadas</h3>
+      <h3 className="text-[clamp(1.125rem,2vw,1.5rem)] font-bold leading-[1.4] max-w-[35ch] text-balance">Tecnologias utilizadas</h3>
       <div className="flex flex-wrap gap-3">
         {technologies.map((tech, index) => (
           <TechBadge key={index} tech={tech} index={index} />
