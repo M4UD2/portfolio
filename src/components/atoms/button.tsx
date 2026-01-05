@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
@@ -11,8 +11,11 @@ interface ButtonProps {
 
 const Button = forwardRef<HTMLAnchorElement, ButtonProps>(
   ({ href, children, icon: Icon, isExternal }, ref) => {
-    // rounded-sm (2px) para ser "levemente arredondado"
-    const baseClass = "inline-flex items-center gap-3 border border-border px-5 py-2.5 mt-2 rounded-sm hover:bg-foreground hover:text-background transition-all duration-300 font-sans text-[14px] leading-[1.7]";
+    if (!href || !children) {
+      return null;
+    }
+
+    const baseClass = "inline-flex items-center gap-3 border border-border px-5 py-2.5 mt-2 rounded-sm hover:bg-foreground hover:text-background transition-all duration-300 font-sans text-[14px] leading-[1.7] focus-ring";
 
     const content = (
       <>
@@ -34,7 +37,7 @@ const Button = forwardRef<HTMLAnchorElement, ButtonProps>(
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className={`${baseClass} focus-ring rounded-sm`}
+          className={baseClass}
           {...motionProps}
         >
           {content}
@@ -43,7 +46,7 @@ const Button = forwardRef<HTMLAnchorElement, ButtonProps>(
     }
 
     return (
-      <Link to={href} className="no-underline focus-ring rounded-sm">
+      <Link to={href} className="no-underline">
         <motion.div
           className={baseClass}
           {...motionProps}

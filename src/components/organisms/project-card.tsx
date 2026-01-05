@@ -4,7 +4,16 @@ import { Link } from 'react-router-dom';
 import { ArrowRightIcon } from '@phosphor-icons/react';
 import Button from '../atoms/button';
 
-export default function ProjectCard({ title, description, link, imageUrl, imageAlt, reversed = false }: any) {
+interface ProjectCardProps {
+  title: string;
+  description: string;
+  link: string;
+  imageUrl: string;
+  imageAlt: string;
+  reversed?: boolean;
+}
+
+export default function ProjectCard({ title, description, link, imageUrl, imageAlt, reversed = false }: ProjectCardProps) {
   const isExternal = link.startsWith('http');
   const isComingSoon = link === '#';
 

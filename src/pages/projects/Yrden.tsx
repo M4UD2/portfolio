@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import ProjectDetail from '../../components/organisms/project-detail';
 
 export default function Yrden() {
@@ -14,9 +14,13 @@ export default function Yrden() {
       role="Product Designer (End-to-end)"
       tools={["Figma", "Miro", "Hotjar", "Analytics"]}
       imageUrl="https://images.unsplash.com/photo-1618761714954-0b8cd0026356?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
-      description={`Yrden é uma plataforma de BI Headless (preparação e integração de dados) fictícia para empresas SaaS (B2B). 
-Como Product Designer, liderei a estratégia de produto e descoberta para a jornada do novo usuário, definindo problemas de usuário e negócio, bem como as métricas de sucesso (KPIs). 
-O desafio: uma limitação técnica de 60 minutos de sincronização causava uma péssima primeira impressão, impactando a Taxa de Ativação de novas contas e aumentando o Time to Value (TTV) do produto`}
+      description={
+        `Yrden é uma plataforma de BI Headless (preparação e integração de dados) fictícia para empresas SaaS (B2B). 
+        Como Product Designer, liderei a estratégia de produto e descoberta para a jornada do novo usuário, 
+        definindo problemas de usuário e negócio, bem como as métricas de sucesso (KPIs). 
+        O desafio: uma limitação técnica de 60 minutos de sincronização causava uma péssima primeira impressão, 
+        impactando a Taxa de Ativação de novas contas e aumentando o Time to Value (TTV) do produto`
+      }
       challenge={`Uma limitação técnica exigia ~60 minutos para sincronizar todos os dados da empresa, resultando em uma tela cheia de ações bloqueadas e causando frustração. 
 Em um produto B2B, o abandono na primeira sessão é crítico, impactando diretamente: Risco de Adoção e Churn (cancelamento) - uma primeira experiência frustrante pode levar ao abandono imediato; 
 Quebra da Promessa de Valor - nosso objetivo era provar o valor do Yrden nos primeiros minutos, mas o tempo de espera quebrava essa promessa. 

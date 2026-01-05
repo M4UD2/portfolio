@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeftIcon } from '@phosphor-icons/react';
@@ -11,7 +10,8 @@ interface BackButtonProps {
 }
 
 export default function BackButton({ to = "/", label = "Voltar", fromProject }: BackButtonProps) {
-  const finalTo = fromProject ? `${to}?from=${fromProject}` : to;
+  const safeTo = to || "/";
+  const finalTo = fromProject ? `${safeTo}?from=${encodeURIComponent(fromProject)}` : safeTo;
 
   return (
     <Tooltip content={label}>

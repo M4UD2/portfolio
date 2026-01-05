@@ -4,9 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        // Fonte Sans-serif limpa para leitura (Guideline)
         sans: ["Inter", "system-ui", "sans-serif"], 
-        // Fonte Mono para detalhes técnicos ou labels (Opcional)
         mono: ["'Space Mono'", "monospace"],
       },
       colors: {

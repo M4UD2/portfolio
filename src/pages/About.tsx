@@ -10,7 +10,6 @@ import {
 } from '@phosphor-icons/react';
 import StatItem from '../components/atoms/stat-item';
 import FadeInView from '../components/atoms/fade-in-view';
-import eu from '../assets/eu.png';
 
 export default function About() {
   useEffect(() => {

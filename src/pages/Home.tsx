@@ -1,36 +1,47 @@
-import React, { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDownIcon } from '@phosphor-icons/react';
 import ProjectCard from '../components/organisms/project-card';
 import FadeInView from '../components/atoms/fade-in-view';
 
+// Constantes para valores de layout
+const NAVBAR_HEIGHT = 64;
+const EXTRA_SPACING = 32;
+const SCROLL_DELAY = 100;
+
 export default function Home() {
+  const projectsSectionRef = useRef<HTMLElement>(null);
+
+  // Função utilitária para calcular posição de scroll
+  const calculateScrollPosition = (element: HTMLElement): number => {
+    return element.offsetTop - NAVBAR_HEIGHT - EXTRA_SPACING;
+  };
+
+  // Função para fazer scroll suave
+  const scrollToElement = (element: HTMLElement) => {
+    const position = calculateScrollPosition(element);
+    window.scrollTo({ top: position, behavior: 'smooth' });
+  };
+
   useEffect(() => {
-    // Verifica se veio de um projeto específico
     const urlParams = new URLSearchParams(window.location.search);
     const fromProject = urlParams.get('from');
     
     if (fromProject) {
-      // Aguarda um pouco para garantir que a página carregou
       setTimeout(() => {
-        const projectCards = document.querySelectorAll('[data-project]');
-        const targetCard = Array.from(projectCards).find(card => 
-          card.getAttribute('data-project') === fromProject
-        );
-        
+        const targetCard = document.querySelector(`[data-project="${fromProject}"]`) as HTMLElement;
         if (targetCard) {
-          const navbarHeight = 64;
-          const extraSpacing = 32;
-          const elementPosition = (targetCard as HTMLElement).offsetTop - navbarHeight - extraSpacing;
-          window.scrollTo({ top: elementPosition, behavior: 'smooth' });
+          scrollToElement(targetCard);
         }
-      }, 100);
+      }, SCROLL_DELAY);
     } else {
       window.scrollTo(0, 0);
     }
   }, []);
+
   const projects = [
     {
+      id: 'yrden',
       title: 'Yrden — De 60 minutos de espera a um onboarding produtivo',
       description: 'Um case sobre como transformei uma limitação técnica em uma jornada de boas-vindas de valor',
       link: '/projects/yrden',
@@ -39,6 +50,7 @@ export default function Home() {
       reversed: false,
     },
     {
+      id: 'axiom',
       title: 'Axiom — Implementei múltiplas visualizações',
       description: 'Redesenhei a interface de análise de dados permitindo que usuários alternem entre diferentes visões',
       link: '#',
@@ -47,6 +59,7 @@ export default function Home() {
       reversed: true,
     },
     {
+      id: 'nexus',
       title: 'Nexus — Criei um Design System escalável',
       description: 'Desenvolvi um Design System completo para produtos B2B com foco em consistência e eficiência',
       link: '#',
@@ -55,6 +68,7 @@ export default function Home() {
       reversed: false,
     },
     {
+      id: 'pulse',
       title: 'Pulse — Criei dashboard de métricas em tempo real',
       description: 'Projetei interface intuitiva para visualização de dados complexos com foco na experiência do usuário analista',
       link: '#',
@@ -90,12 +104,8 @@ export default function Home() {
         {/* Scroll Indicator: Clicável, ícone 14px e feedback de scale */}
         <motion.button
           onClick={() => {
-            const projectsSection = document.getElementById('projetos');
-            if (projectsSection) {
-              const navbarHeight = 64; // h-16 = 64px
-              const extraSpacing = 32; // espaçamento extra
-              const elementPosition = projectsSection.offsetTop - navbarHeight - extraSpacing;
-              window.scrollTo({ top: elementPosition, behavior: 'smooth' });
+            if (projectsSectionRef.current) {
+              scrollToElement(projectsSectionRef.current);
             }
           }}
           className="group flex items-center gap-2 text-[12px] leading-[1.7] uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors w-fit focus-ring rounded-sm"
@@ -114,7 +124,7 @@ export default function Home() {
       <div className="w-full border-t border-border mb-12 md:mb-20" />
 
       {/* Seção de Projetos */}
-      <section id="projetos" className="flex flex-col gap-16 md:gap-20 pb-20 w-full">
+      <section ref={projectsSectionRef} id="projetos" className="flex flex-col gap-16 md:gap-20 pb-20 w-full">
         <FadeInView>
           <h2
             id="projetos-title"
@@ -125,21 +135,13 @@ export default function Home() {
         </FadeInView>
 
         <div className="flex flex-col gap-20">
-          {projects.map((project, index) => {
-            // Extrai identificador do projeto baseado no título
-            let projectId = 'axiom';
-            if (project.title.toLowerCase().includes('yrden')) projectId = 'yrden';
-            else if (project.title.toLowerCase().includes('nexus')) projectId = 'nexus';
-            else if (project.title.toLowerCase().includes('pulse')) projectId = 'pulse';
-            
-            return (
-              <FadeInView key={index} delay={index * 0.05}>
-                <div data-project={projectId}>
-                  <ProjectCard {...project} />
-                </div>
-              </FadeInView>
-            );
-          })}
+          {projects.map((project, index) => (
+            <FadeInView key={project.id} delay={index * 0.05}>
+              <div data-project={project.id}>
+                <ProjectCard {...project} />
+              </div>
+            </FadeInView>
+          ))}
         </div>
       </section>
     </main>
