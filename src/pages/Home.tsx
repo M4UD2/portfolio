@@ -1,9 +1,34 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDownIcon } from '@phosphor-icons/react';
 import ProjectCard from '../components/organisms/project-card';
+import FadeInView from '../components/atoms/fade-in-view';
 
 export default function Home() {
+  useEffect(() => {
+    // Verifica se veio de um projeto específico
+    const urlParams = new URLSearchParams(window.location.search);
+    const fromProject = urlParams.get('from');
+    
+    if (fromProject) {
+      // Aguarda um pouco para garantir que a página carregou
+      setTimeout(() => {
+        const projectCards = document.querySelectorAll('[data-project]');
+        const targetCard = Array.from(projectCards).find(card => 
+          card.getAttribute('data-project') === fromProject
+        );
+        
+        if (targetCard) {
+          const navbarHeight = 64;
+          const extraSpacing = 32;
+          const elementPosition = (targetCard as HTMLElement).offsetTop - navbarHeight - extraSpacing;
+          window.scrollTo({ top: elementPosition, behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, []);
   const projects = [
     {
       title: '[Yrden] De 60 minutos de espera a um onboarding produtivo',
@@ -42,7 +67,7 @@ export default function Home() {
   return (
     <main className="flex-1 w-full max-w-[1040px] mx-auto px-6 overflow-x-hidden">
       {/* Seção Hero */}
-      <section className="min-h-[70vh] w-full flex flex-col justify-center items-center text-center gap-10 md:gap-12 py-12 md:py-20">
+      <section className="min-h-[85vh] w-full flex flex-col justify-center items-center text-center gap-10 md:gap-12 py-12 md:py-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -67,18 +92,16 @@ export default function Home() {
           onClick={() => {
             const projectsTitle = document.getElementById('projetos-title');
             if (projectsTitle) {
-              projectsTitle.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              const navbarHeight = 64; // h-16 = 64px
+              const extraSpacing = 32; // espaçamento extra
+              const elementPosition = projectsTitle.offsetTop - navbarHeight - extraSpacing;
+              window.scrollTo({ top: elementPosition, behavior: 'smooth' });
             }
           }}
-          className="group flex flex-col items-center gap-2 text-muted-foreground hover:text-foreground transition-colors cursor-pointer focus-ring rounded-sm"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          className="group flex items-center gap-2 text-[12px] leading-[1.7] uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors w-fit focus-ring rounded-sm"
           whileHover={{ y: -2 }}
-          transition={{ delay: 1, duration: 0.8, ease: "easeOut" }}
         >
-          <p className="text-[14px] leading-[1.7] font-sans">
-            Conheça os meus projetos
-          </p>
+          <span>Conheça os meus projetos</span>
           <span className="group-hover:animate-bounce" aria-hidden="true">
             <ArrowDownIcon 
               size={16}
@@ -92,21 +115,31 @@ export default function Home() {
 
       {/* Seção de Projetos */}
       <section id="projetos" className="flex flex-col gap-16 md:gap-20 pb-20 w-full">
-        <motion.h2
-          id="projetos-title"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-center"
-        >
-          Projetos
-        </motion.h2>
+        <FadeInView>
+          <h2
+            id="projetos-title"
+            className="text-center"
+          >
+            Projetos
+          </h2>
+        </FadeInView>
 
         <div className="flex flex-col gap-20">
-          {projects.map((project, index) => (
-            <ProjectCard key={index} {...project} />
-          ))}
+          {projects.map((project, index) => {
+            // Extrai identificador do projeto baseado no título
+            let projectId = 'axiom';
+            if (project.title.toLowerCase().includes('yrden')) projectId = 'yrden';
+            else if (project.title.toLowerCase().includes('nexus')) projectId = 'nexus';
+            else if (project.title.toLowerCase().includes('pulse')) projectId = 'pulse';
+            
+            return (
+              <FadeInView key={index} delay={index * 0.05}>
+                <div data-project={projectId}>
+                  <ProjectCard {...project} />
+                </div>
+              </FadeInView>
+            );
+          })}
         </div>
       </section>
     </main>

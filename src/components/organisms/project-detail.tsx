@@ -9,6 +9,7 @@ import ProjectGallery from '../organisms/project-gallery';
 import Testimonial from '../molecules/testimonial';
 import MetricsGrid from '../organisms/metrics-grid';
 import ProjectNavigation from '../organisms/project-navigation';
+import FadeInView from '../atoms/fade-in-view';
 
 interface Metric {
   value: string;
@@ -21,7 +22,8 @@ interface ProjectDetailProps {
   title: string;
   subtitle: string;
   date: string;
-  tags: string[];
+  role: string;
+  tools: string[];
   link?: string;
   imageUrl: string;
   
@@ -59,13 +61,15 @@ interface ProjectDetailProps {
   customContent?: React.ReactNode;
   customSections?: React.ReactNode[];
   hideTableOfContents?: boolean;
+  projectId?: string;
 }
 
 export default function ProjectDetail({
   title,
   subtitle,
   date,
-  tags,
+  role,
+  tools,
   link,
   imageUrl,
   description,
@@ -82,7 +86,8 @@ export default function ProjectDetail({
   customImage,
   customContent,
   customSections,
-  hideTableOfContents = false
+  hideTableOfContents = false,
+  projectId
 }: ProjectDetailProps) {
   
   // Renderiza conteúdo customizado ou padrão
@@ -160,14 +165,15 @@ export default function ProjectDetail({
   };
 
   return (
-    <ProjectLayout>
+    <ProjectLayout projectId={projectId}>
       {/* Hero customizável */}
       {customHero || (
         <ProjectHero
           title={title}
           subtitle={subtitle}
           date={date}
-          tags={tags}
+          role={role}
+          tools={tools}
           link={link}
         />
       )}
@@ -182,22 +188,26 @@ export default function ProjectDetail({
       )}
 
       {/* Conteúdo principal */}
-      <div className="max-w-[1040px] mx-auto px-6 md:px-10 py-8 md:py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
-          {/* Table of Contents opcional */}
-          {!hideTableOfContents && <TableOfContents delay={0.3} />}
-          
-          {/* Conteúdo */}
-          {renderContent()}
+      <FadeInView delay={0.1}>
+        <div className="max-w-[1040px] mx-auto px-6 md:px-10 py-8 md:py-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+            {/* Table of Contents opcional */}
+            {!hideTableOfContents && <TableOfContents delay={0.3} />}
+            
+            {/* Conteúdo */}
+            {renderContent()}
+          </div>
         </div>
-      </div>
+      </FadeInView>
 
       {/* Navegação entre projetos */}
       {(previousProject || nextProject) && (
-        <ProjectNavigation
-          previousProject={previousProject}
-          nextProject={nextProject}
-        />
+        <FadeInView delay={0.15}>
+          <ProjectNavigation
+            previousProject={previousProject}
+            nextProject={nextProject}
+          />
+        </FadeInView>
       )}
     </ProjectLayout>
   );

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <style>
+    .favicon-text { 
+      fill: #0f172a; 
+      font-family: Inter, system-ui, sans-serif; 
+      font-weight: 700; 
+      font-size: 12px; 
+    }
+    @media (prefers-color-scheme: dark) {
+      .favicon-text { fill: #f8fafc; }
+    }
+  </style>
+  <text x="16" y="22" text-anchor="middle" class="favicon-text">LM</text>
+</svg>

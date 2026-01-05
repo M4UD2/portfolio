@@ -1,16 +1,18 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { CalendarIcon, TagIcon } from '@phosphor-icons/react';
+import { CalendarIcon, UserIcon, WrenchIcon } from '@phosphor-icons/react';
+import Tooltip from '../atoms/tooltip-simple';
 
 interface ProjectHeroProps {
   title: string;
   subtitle: string;
   date: string;
-  tags: string[];
+  role: string;
+  tools: string[];
   link?: string;
 }
 
-export default function ProjectHero({ title, subtitle, date, tags }: ProjectHeroProps) {
+export default function ProjectHero({ title, subtitle, date, role, tools }: ProjectHeroProps) {
   return (
     <motion.section
       className="max-w-[1040px] mx-auto px-6 md:px-10 py-12 md:py-20"
@@ -19,22 +21,6 @@ export default function ProjectHero({ title, subtitle, date, tags }: ProjectHero
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
       <div className="flex flex-col gap-6 md:gap-8">
-        {/* Meta Info */}
-        <div className="flex flex-wrap items-center gap-6 text-[12px] leading-[1.7] uppercase tracking-widest text-muted-foreground">
-          <div className="flex items-center gap-2">
-            <CalendarIcon size={16} weight="bold" className="text-foreground" />
-            <span>{date}</span>
-          </div>
-          <div className="flex items-center gap-3">
-            {tags.map((tag, index) => (
-              <div key={index} className="flex items-center gap-1.5">
-                <TagIcon size={14} weight="bold" className="text-foreground" />
-                <span>{tag}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
         {/* Title */}
         <h1>{title}</h1>
         
@@ -42,6 +28,30 @@ export default function ProjectHero({ title, subtitle, date, tags }: ProjectHero
         <p className="text-[1rem] leading-[1.7] text-muted-foreground max-w-[70ch]">
           {subtitle}
         </p>
+
+        {/* Meta Info */}
+        <div className="flex flex-wrap items-center gap-6 text-[0.875rem] leading-[1.7] text-muted-foreground">
+          <Tooltip content="Data do projeto">
+            <div className="flex items-center gap-1.5">
+              <CalendarIcon size={14} weight="bold" className="text-foreground" />
+              <span>{date}</span>
+            </div>
+          </Tooltip>
+          
+          <Tooltip content="Meu papel no projeto">
+            <div className="flex items-center gap-1.5">
+              <UserIcon size={14} weight="bold" className="text-foreground" />
+              <span>{role}</span>
+            </div>
+          </Tooltip>
+          
+          <Tooltip content="Ferramentas utilizadas">
+            <div className="flex items-center gap-1.5">
+              <WrenchIcon size={14} weight="bold" className="text-foreground" />
+              <span>{tools.join(', ')}</span>
+            </div>
+          </Tooltip>
+        </div>
       </div>
     </motion.section>
   );

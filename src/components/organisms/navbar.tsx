@@ -10,8 +10,7 @@ import {
 } from '@phosphor-icons/react';
 import NavItem from '../atoms/nav-item';
 import Logo from '../atoms/logo';
-// 1. Importar os componentes de Tooltip
-import { Tooltip, TooltipContent, TooltipTrigger } from '../atoms/tooltip';
+import Tooltip from '../atoms/tooltip-simple';
 
 export default function Navbar() {
   const location = useLocation();
@@ -45,55 +44,40 @@ export default function Navbar() {
           <div className="flex items-center gap-4 md:gap-6">
             <div className="hidden md:flex items-center gap-4 md:gap-6">
               {/* Email */}
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <a 
-                    href="mailto:livia146miranda@gmail.com" 
-                    aria-label='Enviar email para Lívia' 
-                    className="text-foreground hover:opacity-60 transition-opacity duration-500 focus-ring rounded-sm"
-                  >
-                    <EnvelopeSimpleIcon size={20} weight="bold" aria-hidden="true" />
-                  </a>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>Enviar email</p>
-                </TooltipContent>
+              <Tooltip content="Enviar email">
+                <a 
+                  href="mailto:livia146miranda@gmail.com" 
+                  aria-label='Enviar email para Lívia' 
+                  className="text-foreground hover:opacity-60 transition-opacity duration-500 focus-ring rounded-sm"
+                >
+                  <EnvelopeSimpleIcon size={20} weight="bold" aria-hidden="true" />
+                </a>
               </Tooltip>
 
               {/* LinkedIn */}
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <a 
-                    href="https://www.linkedin.com/in/liviamirandadeoliveira/" 
-                    aria-label='LinkedIn (abre em nova aba)' 
-                    target="_blank" 
-                    rel="noreferrer" 
-                    className="text-foreground hover:opacity-60 transition-opacity duration-500 focus-ring rounded-sm"
-                  >
-                    <LinkedinLogoIcon size={20} weight="bold" aria-hidden="true" />
-                  </a>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>LinkedIn</p>
-                </TooltipContent>
+              <Tooltip content="LinkedIn">
+                <a 
+                  href="https://www.linkedin.com/in/liviamirandadeoliveira/" 
+                  aria-label='LinkedIn (abre em nova aba)' 
+                  target="_blank" 
+                  rel="noreferrer" 
+                  className="text-foreground hover:opacity-60 transition-opacity duration-500 focus-ring rounded-sm"
+                >
+                  <LinkedinLogoIcon size={20} weight="bold" aria-hidden="true" />
+                </a>
               </Tooltip>
 
               {/* Currículo */}
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <a 
-                    href="https://drive.google.com/file/d/10QUVd-f9ORjKOVvJE-wWdbR3pSSobbyc/view?usp=drive_link" 
-                    aria-label='Currículo de Lívia (abre em nova aba)' 
-                    target="_blank" 
-                    rel="noreferrer" 
-                    className="text-foreground hover:opacity-60 transition-opacity duration-500 focus-ring rounded-sm"
-                  >
-                    <ReadCvLogoIcon size={20} weight="bold" aria-hidden="true" />
-                  </a>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>CV</p>
-                </TooltipContent>
+              <Tooltip content="CV">
+                <a 
+                  href="https://drive.google.com/file/d/10QUVd-f9ORjKOVvJE-wWdbR3pSSobbyc/view?usp=drive_link" 
+                  aria-label='Currículo de Lívia (abre em nova aba)' 
+                  target="_blank" 
+                  rel="noreferrer" 
+                  className="text-foreground hover:opacity-60 transition-opacity duration-500 focus-ring rounded-sm"
+                >
+                  <ReadCvLogoIcon size={20} weight="bold" aria-hidden="true" />
+                </a>
               </Tooltip>
             </div>
 
