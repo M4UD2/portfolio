@@ -110,11 +110,6 @@ export default function About() {
                 }`}>
                   <HandWavingIcon size={20} weight="bold" />
                 </div>
-                {isMobile && (
-                  <div className="absolute top-2 right-2 bg-background/80 border border-border p-1.5 rounded-full z-20 text-muted-foreground">
-                    <ArrowsClockwiseIcon size={14} weight="bold" />
-                  </div>
-                )}
               </div>
               
               <div className="space-y-6 max-w-[70ch] mx-auto">
