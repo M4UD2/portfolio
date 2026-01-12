@@ -15,7 +15,7 @@ export default function Testimonial({ quote, author, role, delay = 0 }: Testimon
   return (
     <motion.div
       id="depoimento"
-      className="scroll-mt-24"
+      className="scroll-mt-32 md:scroll-mt-24"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay, ease: "easeOut" }}

@@ -1,0 +1,5 @@
+<svg width="80" height="32" viewBox="0 0 80 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M4 12 L12 8 L20 12 L12 16 Z" fill="currentColor" opacity="0.2"/>
+  <path d="M8 14 L12 12 L16 14 L12 16 Z" fill="currentColor"/>
+  <text x="28" y="21" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="currentColor">Nexus</text>
+</svg>

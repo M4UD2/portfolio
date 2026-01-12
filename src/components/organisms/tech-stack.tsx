@@ -12,7 +12,7 @@ export default function TechStack({ technologies, delay = 0 }: TechStackProps) {
   return (
     <motion.div
       id="tecnologias"
-      className="flex flex-col gap-5 scroll-mt-24"
+      className="flex flex-col gap-5 scroll-mt-32 md:scroll-mt-24"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay, ease: "easeOut" }}

@@ -1,0 +1,6 @@
+<svg width="80" height="32" viewBox="0 0 80 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M4 20 L8 12 L12 18 L16 10 L20 16" stroke="currentColor" stroke-width="2" fill="none" opacity="0.3"/>
+  <circle cx="8" cy="12" r="2" fill="currentColor"/>
+  <circle cx="16" cy="10" r="2" fill="currentColor"/>
+  <text x="28" y="21" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="currentColor">Pulse</text>
+</svg>

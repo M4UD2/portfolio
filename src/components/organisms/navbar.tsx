@@ -24,8 +24,8 @@ export default function Navbar() {
     { path: '/sobre-mim', label: 'Sobre mim' },
   ];
 
-  const linkClassName = "text-foreground hover:opacity-60 transition-opacity duration-500 focus-ring rounded-sm";
-  const mobileLinkClassName = "p-2 rounded-sm text-foreground hover:opacity-60 transition-opacity duration-500 focus-ring";
+  const linkClassName = "text-foreground hover:opacity-60 transition-opacity duration-300 focus-ring rounded-sm";
+  const mobileLinkClassName = "p-2 rounded-sm text-foreground hover:opacity-60 transition-opacity duration-300 focus-ring";
   
   const socialLinks = {
     email: "mailto:livia146miranda@gmail.com",
@@ -36,7 +36,7 @@ export default function Navbar() {
   return (
     <nav className={`${isProjectPage ? 'relative' : 'sticky top-0'} z-50 bg-background border-b border-border`}>
       <div className="w-full max-w-[1040px] mx-auto px-6 md:px-10">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-12 md:h-14">
 
           <Logo />
 
@@ -96,7 +96,7 @@ export default function Navbar() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2 hover:opacity-60 transition-opacity duration-300 ml-2 focus-ring rounded-sm"
+              className="md:hidden p-2 hover:opacity-60 transition-opacity duration-300 ml-2 focus-ring rounded-sm min-h-[44px] min-w-[44px] flex items-center justify-center"
               aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
             >
               {isMenuOpen ? <XIcon size={24} weight="bold" aria-hidden="true" /> : <ListIcon size={24} weight="bold" aria-hidden="true" />}

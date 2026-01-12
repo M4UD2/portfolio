@@ -78,7 +78,7 @@ Verificações com a paleta atual:
 - `border-border` para contornos e divisórias
 
 ## Navbar e Footer
-- Navbar: altura fixa `h-16`. Itens com `text-muted-foreground` e hover para `text-foreground`. Foco com `.focus-ring`.
+- Navbar: altura responsiva `h-12` (mobile) e `h-14` (desktop). Itens com `text-foreground` e hover `hover:opacity-60`. Foco com `.focus-ring`. Botão mobile com alvo de toque mínimo 44px.
 - Footer compacto: `mt-10` e `py-8/10`; colunas em grid responsivo. Labels (Navegação, Contato, Ações) com `text-muted-foreground` sem opacidade para garantir AA. Links com `.focus-ring`.
 
 ## Estados Ativos de Navegação
@@ -109,6 +109,7 @@ Verificações com a paleta atual:
 
 ## Microinterações
 - Transições moderadas, preferir opacidade/escala. Evitar grandes deslocamentos
+- **Estados Hover em Navegação:** Usar `hover:opacity-60` para feedback visual suave em elementos de navegação (Navbar, NavItem, SocialLink)
 - Imagens/Thumbs (`ProjectGallery`): hover `scale: 1.02`
 
 ## Boas práticas adicionais

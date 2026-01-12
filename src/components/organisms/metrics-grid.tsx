@@ -17,7 +17,7 @@ export default function MetricsGrid({ metrics, results, delay = 0 }: MetricsGrid
   return (
     <motion.div
       id="resultados"
-      className="flex flex-col gap-8 scroll-mt-24"
+      className="flex flex-col gap-8 scroll-mt-32 md:scroll-mt-24"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay, ease: "easeOut" }}

@@ -5,7 +5,7 @@ import ScrollToTop from '../atoms/scroll-to-top';
 import ProjectStickyHeader from '../organisms/project-sticky-header';
 
 interface ProjectLayoutProps {
-  children: React.ReactNode;
+o  children: React.ReactNode;
   projectId?: string | null;
   title?: string;
   prototypeLink?: string;
@@ -26,12 +26,9 @@ export default function ProjectLayout({ children, projectId, title, prototypeLin
         </div>
         
         {/* Sticky Header */}
-        {title && (
-          <ProjectStickyHeader 
-            title={title}
-            prototypeLink={prototypeLink}
-          />
-        )}
+        <ProjectStickyHeader
+          prototypeLink={prototypeLink}
+        />
 
         {/* Back Button */}
         <div className="max-w-[1040px] mx-auto px-6 md:px-10 pt-8 md:pt-12 pb-4 md:pb-8">
