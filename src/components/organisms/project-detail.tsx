@@ -1,7 +1,6 @@
 import ProjectLayout from '../templates/project-layout';
 import ProjectHero from '../organisms/project-hero';
 import ProjectImage from '../molecules/project-image';
-import TableOfContents from '../organisms/table-of-contents';
 import ContentSection from '../molecules/content-section';
 import TechStack from '../organisms/tech-stack';
 import ProjectGallery from '../organisms/project-gallery';
@@ -94,7 +93,7 @@ export default function ProjectDetail({
 }: ProjectDetailProps) {
   
   const containerClassName = "max-w-[1040px] mx-auto px-6 md:px-10 py-8 md:py-12";
-  const gridClassName = "grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12";
+  const gridClassName = "grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16";
   
   // Animation delays
   const delays = {
@@ -113,7 +112,7 @@ export default function ProjectDetail({
     
     if (customSections) {
       return (
-        <div className="lg:col-span-9 flex flex-col gap-12">
+        <div className="flex flex-col gap-12">
           {customSections}
         </div>
       );
@@ -121,7 +120,7 @@ export default function ProjectDetail({
     
     // Conteúdo padrão
     return (
-      <div className="lg:col-span-9 flex flex-col gap-12">
+      <div className="flex flex-col gap-12">
         <ContentSection
           id="visao-geral"
           title="Visão Geral"
@@ -213,10 +212,7 @@ export default function ProjectDetail({
       {/* Conteúdo principal */}
       <FadeInView delay={0.1}>
         <div className={containerClassName}>
-          <div className={gridClassName}>
-            {/* Table of Contents opcional */}
-            {!hideTableOfContents && <TableOfContents delay={0.3} />}
-            
+          <div className="flex flex-col gap-12">
             {/* Conteúdo */}
             {renderContent()}
           </div>

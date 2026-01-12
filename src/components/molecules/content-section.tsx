@@ -12,7 +12,7 @@ export default function ContentSection({ id, title, content, delay = 0 }: Conten
   return (
     <motion.div
       id={id}
-      className="flex flex-col gap-4 scroll-mt-24"
+      className="flex flex-col gap-4 scroll-mt-24 max-w-3xl mx-auto"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay, ease: "easeOut" }}

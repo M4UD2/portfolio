@@ -21,7 +21,9 @@ export default function ProjectLayout({ children, projectId, title, prototypeLin
   try {
     return (
       <div className="min-h-screen bg-background">
-        <Navbar />
+        <div className="relative">
+          <Navbar />
+        </div>
         
         {/* Sticky Header */}
         {title && (

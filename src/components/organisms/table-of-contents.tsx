@@ -39,7 +39,7 @@ export default function TableOfContents({ delay = 0 }: TableOfContentsProps) {
   }, []);
 
   return (
-    <div className="hidden lg:block lg:col-span-3">
+    <div className="hidden lg:block lg:col-span-2">
       <motion.nav
         className="sticky top-40"
         initial={{ opacity: 0, y: 20 }}
@@ -56,7 +56,7 @@ export default function TableOfContents({ delay = 0 }: TableOfContentsProps) {
               <a
                 key={id}
                 href={`#${id}`}
-                className={`text-[1rem] leading-[1.7] transition-colors duration-300 focus-ring rounded-sm ${
+                className={`text-sm leading-[1.7] transition-colors duration-300 focus-ring rounded-sm ${
                   isActive ? 'text-foreground font-semibold' : 'text-muted-foreground hover:text-foreground'
                 }`}
               >

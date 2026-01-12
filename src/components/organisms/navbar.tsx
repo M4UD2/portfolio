@@ -15,6 +15,9 @@ import Tooltip from '../atoms/tooltip-simple';
 export default function Navbar() {
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
+  // Verifica se está em uma página de projeto
+  const isProjectPage = location.pathname.startsWith('/projects/');
 
   const navItems = [
     { path: '/', label: 'Início' },
@@ -31,7 +34,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-background border-b border-border">
+    <nav className={`${isProjectPage ? 'relative' : 'sticky top-0'} z-50 bg-background border-b border-border`}>
       <div className="w-full max-w-[1040px] mx-auto px-6 md:px-10">
         <div className="flex items-center justify-between h-16">
 

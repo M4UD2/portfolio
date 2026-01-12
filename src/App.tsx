@@ -4,7 +4,12 @@ import Navbar from './components/organisms/navbar';
 import Footer from './components/organisms/footer';
 import Home from './pages/Home';
 import About from './pages/About';
-import Yrden from './pages/projects/Yrden';
+
+// Projetos Yrden
+import { OnboardingProdutivo, EditorSQL } from './pages/projects/yrden';
+
+// Projetos Axii
+import { GenAIChat, GerenciadorDadosGenAI } from './pages/projects/axii';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -38,9 +43,24 @@ const App = () => {
             </Layout>
           } 
         />
+        {/* Projetos Yrden */}
         <Route 
-          path="/projects/yrden" 
-          element={<Yrden />} 
+          path="/projects/yrden/onboarding-produtivo" 
+          element={<OnboardingProdutivo />} 
+        />
+        <Route 
+          path="/projects/yrden/editor-sql" 
+          element={<EditorSQL />} 
+        />
+        
+        {/* Projetos Axii */}
+        <Route 
+          path="/projects/axii/genai-chat" 
+          element={<GenAIChat />} 
+        />
+        <Route 
+          path="/projects/axii/gerenciador-dados-genai" 
+          element={<GerenciadorDadosGenAI />} 
         />
       </Routes>
     </Router>

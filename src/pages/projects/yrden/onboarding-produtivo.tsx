@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import ProjectDetail from '../../components/organisms/project-detail';
+import ProjectDetail from '../../../components/organisms/project-detail';
 
 export default function Yrden() {
   useEffect(() => {
@@ -42,8 +42,8 @@ export default function Yrden() {
         { value: "2 sem", label: "Tempo de desenvolvimento", icon: "zap" }
       ]}
       nextProject={{
-        title: "Axiom — Implementei múltiplas visualizações",
-        url: "/projects/axiom"
+        title: "Yrden — Editor SQL",
+        url: "/projects/yrden/editor-sql"
       }}
       projectId="yrden"
     />
