@@ -3,21 +3,12 @@ import { motion } from 'framer-motion';
 import { ArrowLeftIcon, ArrowSquareOutIcon, LinkIcon } from '@phosphor-icons/react';
 import { useNavigate } from 'react-router-dom';
 
-interface ProjectStickyHeaderProps {
+interface StickyHeaderProps {
   prototypeLink?: string;
+  sections?: { id: string; label: string }[];
 }
 
-const SECTIONS = [
-  { id: 'visao-geral', label: 'Visão Geral' },
-  { id: 'desafio', label: 'Desafio' },
-  { id: 'solucao', label: 'Solução' },
-  { id: 'tecnologias', label: 'Tecnologias' },
-  { id: 'galeria', label: 'Galeria' },
-  { id: 'depoimento', label: 'Depoimento' },
-  { id: 'resultados', label: 'Resultados' }
-];
-
-export default function ProjectStickyHeader({ prototypeLink }: ProjectStickyHeaderProps) {
+export default function ProjectStickyHeader({ prototypeLink, sections }: StickyHeaderProps) {
   const [isVisible, setIsVisible] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
@@ -62,9 +53,7 @@ export default function ProjectStickyHeader({ prototypeLink }: ProjectStickyHead
   // Detectar seções disponíveis
   useEffect(() => {
     const checkAvailableSections = () => {
-      const available = SECTIONS
-        .map(({ id }) => id)
-        .filter(id => document.getElementById(id));
+      const available = sections ? sections.map(({ id }) => id) : [];
       setAvailableSections(available);
     };
 
@@ -79,7 +68,7 @@ export default function ProjectStickyHeader({ prototypeLink }: ProjectStickyHead
     });
 
     return () => contentObserver.disconnect();
-  }, []);
+  }, [sections]);
 
   // Intersection Observer para navegação
   useEffect(() => {
@@ -89,15 +78,10 @@ export default function ProjectStickyHeader({ prototypeLink }: ProjectStickyHead
       (entries) => {
         // Encontrar a seção mais próxima do topo da viewport
         let closestSection = '';
-        let closestDistance = Infinity;
-
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const rect = entry.boundingClientRect;
-            const distance = Math.abs(rect.top);
-
-            if (distance < closestDistance) {
-              closestDistance = distance;
+            if (closestSection === '') {
               closestSection = entry.target.id;
             }
           }
@@ -183,7 +167,7 @@ export default function ProjectStickyHeader({ prototypeLink }: ProjectStickyHead
         <nav className={`flex items-center flex-1 justify-center ${
           isMobile ? 'overflow-x-auto scrollbar-hide px-2 gap-1' : 'gap-2'
         }`}>
-          {SECTIONS.filter(({ id }) => availableSections.includes(id)).map(({ id, label }) => {
+          {sections && sections.filter(({ id }) => availableSections.includes(id)).map(({ id, label }) => {
             const isActive = activeSection === id;
 
             return (
@@ -197,7 +181,7 @@ export default function ProjectStickyHeader({ prototypeLink }: ProjectStickyHead
                 {label}
               </a>
             );
-          })}
+          }) || []} {/* Use an empty array if sections is undefined */}
         </nav>
 
         {/* Right: Prototype Link */}

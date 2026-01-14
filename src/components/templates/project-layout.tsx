@@ -4,30 +4,41 @@ import BackButton from '../atoms/back-button';
 import ScrollToTop from '../atoms/scroll-to-top';
 import ProjectStickyHeader from '../organisms/project-sticky-header';
 
+// Import StickyHeaderProps from project-sticky-header.tsx
+import { StickyHeaderProps } from '../organisms/project-sticky-header';
+
 interface ProjectLayoutProps {
-o  children: React.ReactNode;
+  children: React.ReactNode;
   projectId?: string | null;
-  title?: string;
+  title?: string; // Remove or comment out if not needed
   prototypeLink?: string;
+  customSections?: StickyHeaderProps['sections'];
 }
 
-export default function ProjectLayout({ children, projectId, title, prototypeLink }: ProjectLayoutProps) {
+export default function ProjectLayout({ 
+  children, 
+  projectId, 
+  title, // Remove or comment out if not needed
+  prototypeLink, 
+  customSections 
+}: ProjectLayoutProps) {
   if (!children) {
     return null;
   }
-  
+
   const validProjectId = projectId && typeof projectId === 'string' && projectId.trim() ? projectId.trim() : undefined;
-  
+
   try {
     return (
       <div className="min-h-screen bg-background">
         <div className="relative">
           <Navbar />
         </div>
-        
+
         {/* Sticky Header */}
         <ProjectStickyHeader
           prototypeLink={prototypeLink}
+          sections={customSections} // Pass custom sections to the header
         />
 
         {/* Back Button */}

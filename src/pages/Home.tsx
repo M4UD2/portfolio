@@ -119,7 +119,7 @@ export default function Home() {
           className="group flex items-center gap-2 text-[12px] leading-[1.7] uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors w-fit focus-ring rounded-sm"
           whileHover={{ y: -2 }}
         >
-          <span>Ver projetos</span>
+          <span>Conheça os meus projetos</span>
           <span className="group-hover:animate-bounce" aria-hidden="true">
             <ArrowDownIcon 
               size={16}
