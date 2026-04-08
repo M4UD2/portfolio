@@ -6,7 +6,7 @@ import {
   BeerBottleIcon,
   GameControllerIcon,
   CatIcon,
-  SpotifyLogo
+  MusicNoteIcon,
 } from '@phosphor-icons/react';
 import FadeInView from '../components/atoms/fade-in-view';
 import SocialLink from '../components/atoms/social-link';
@@ -48,31 +48,27 @@ export default function About() {
       id: "roles",
       icon: BeerBottleIcon,
       label: "Em rolês com os amigos",
-      detail: "O respiro essencial longe das telas",
-      hoverImage: "/barzinho.jpg"
+      detail: "O respiro essencial longe das telas"
     },
     {
       id: "games",
       icon: GameControllerIcon,
       label: "Jogando alguma coisa",
-      detail: "E só parando quando está 100%",
-      hoverImage: "/games.jpg"
+      detail: "E só parando quando está 100%"
     },
     {
       id: "gata",
       icon: CatIcon,
       label: "Sendo mãe da Abigail",
-      detail: "A companhia oficial no home office",
-      hoverImage: "/gata.jpg"
+      detail: "A companhia oficial no home office"
     },
     {
       id: "spotify",
-      icon: SpotifyLogo,
+      icon: MusicNoteIcon,
       label: "Escutando uma boa música",
       detail: currentSong.explicit
         ? "🤫 No fone agora... (Censurado pelo RH)"
-        : `No fone agora: ${currentSong.name} - ${currentSong.artist}`,
-      hoverImage: null
+        : `No fone agora: ${currentSong.name} - ${currentSong.artist}`
     }
   ];
 
@@ -133,6 +129,7 @@ export default function About() {
 <p>
   Minha trajetória começou no design gráfico e no marketing, mas quando surgiu a chance de aplicar tudo isso através de interfaces, não tive dúvida: era aqui que eu queria estar. Ser <strong>Product Designer</strong> é usar criatividade e entendimento de pessoas e de tecnologias pra remover fricção, facilitar a vida de quem está do outro lado da tela e movimentar o negócio. Por isso vou além das telas: reviso processos, questiono fluxos e uso <strong>IA e dados</strong> pra tomar decisões mais certeiras, não só mais bonitas.
 </p>
+<p>Por isso hoje estou:</p>
                 </div>
               </div>
             </div>
@@ -183,44 +180,15 @@ export default function About() {
                 {hobbies.map((hobby) => (
                   <div
                     key={hobby.id}
-                    className={`group relative flex flex-col items-center justify-center p-6 rounded-sm border border-border/30 transition-all duration-300 md:hover:scale-105 cursor-default h-[180px] overflow-hidden hover:border-border hover:bg-muted/50 ${
-                      hobby.id === 'spotify' ? 'hover:border-[#1DB954]/40' : ''
-                    }`}
+                    className="group relative flex flex-col items-center justify-center p-6 rounded-sm border border-border/30 transition-all duration-300 md:hover:scale-105 cursor-default h-[180px] overflow-hidden hover:border-border hover:bg-muted/50"
                   >
-                    {/* Fundo Hover */}
-                    <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                      {hobby.hoverImage ? (
-                        <>
-                          <img
-                            src={hobby.hoverImage}
-                            alt={hobby.label}
-                            className="w-full h-full object-cover opacity-40"
-                          />
-                          <div className="absolute inset-0 bg-background/70 backdrop-blur-[2px]"></div>
-                        </>
-                      ) : hobby.id === 'spotify' ? (
-                        <div className="w-full h-full bg-[#1DB954]/10 backdrop-blur-[2px]"></div>
-                      ) : null}
-                    </div>
-
-                    {/* Base Content — sobe no hover */}
-                    <div className="relative z-10 flex flex-col items-center gap-3 w-full transition-transform duration-300 group-hover:-translate-y-5">
-                      <div className={`p-3 bg-background/90 backdrop-blur-sm rounded-sm text-foreground shadow-sm border border-border/30 transition-colors ${
-                        hobby.id === 'spotify' ? 'group-hover:text-[#1DB954] group-hover:border-[#1DB954]/30' : ''
-                      }`}>
-                        <hobby.icon size={24} weight={hobby.id === 'spotify' ? 'fill' : 'bold'} />
+                    {/* Base Content */}
+                    <div className="relative z-10 flex flex-col items-center gap-3 w-full">
+                      <div className="p-3 bg-background/90 backdrop-blur-sm rounded-sm text-foreground shadow-sm border border-border/30">
+                        <hobby.icon size={24} weight="bold" />
                       </div>
                       <span className="text-[14px] leading-[1.4] text-foreground font-medium text-center w-full">
                         {hobby.label}
-                      </span>
-                    </div>
-
-                    {/* Texto Detalhe — aparece abaixo do conteúdo */}
-                    <div className="absolute bottom-5 left-0 right-0 px-5 text-center z-10 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 delay-75">
-                      <span className={`text-[12px] leading-[1.5] font-medium block ${
-                        hobby.id === 'spotify' && !currentSong.explicit ? 'text-foreground' : 'text-muted-foreground'
-                      }`}>
-                        {hobby.detail}
                       </span>
                     </div>
                   </div>
