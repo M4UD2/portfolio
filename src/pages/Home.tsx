@@ -42,47 +42,23 @@ export default function Home() {
   const projects = [
     {
       id: 'yrden-onboarding',
-      productName: 'Yrden',
-      productLogo: '/logos/yrden-logo.svg',
       title: 'De 60 minutos de espera a um onboarding produtivo',
       description: 'Um case sobre como transformei uma limitação técnica em uma jornada de boas-vindas de valor',
-      link: '/projects/yrden/onboarding-produtivo',
+      link: '#',
       imageUrl: 'https://images.unsplash.com/photo-1618761714954-0b8cd0026356?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
       imageAlt: 'Yrden - Interface de onboarding produtivo',
       reversed: false,
+      tags: ['UX Research', 'Product Design', 'Onboarding'],
     },
     {
       id: 'yrden-editor',
-      productName: 'Yrden',
-      productLogo: '/logos/yrden-logo.svg',
       title: 'Editor SQL',
       description: 'Interface intuitiva para consultas e análise de dados democratizando o acesso ao SQL',
       link: '#',
       imageUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
       imageAlt: 'Yrden - Editor SQL intuitivo',
       reversed: true,
-    },
-    {
-      id: 'axii-genai',
-      productName: 'Axii',
-      productLogo: '/logos/axiom-logo.svg',
-      title: 'GenAI em chat',
-      description: 'Interface conversacional para análise de dados com IA generativa em linguagem natural',
-      link: '#',
-      imageUrl: 'https://images.unsplash.com/photo-1759661966728-4a02e3c6ed91?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
-      imageAlt: 'Axii - GenAI Chat Interface',
-      reversed: false,
-    },
-    {
-      id: 'axii-gerenciador',
-      productName: 'Axii',
-      productLogo: '/logos/axiom-logo.svg',
-      title: 'Gerenciador de base de dados para GenAI',
-      description: 'Sistema de gestão de dados otimizado para modelos de IA generativa',
-      link: '#',
-      imageUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
-      imageAlt: 'Axii - Gerenciador de dados para GenAI',
-      reversed: true,
+      tags: ['Product Design', 'Data', 'SQL'],
     },
   ];
 
@@ -103,9 +79,9 @@ export default function Home() {
 
           <p className="text-[1rem] leading-[1.7] text-muted-foreground mx-auto max-w-[700px] w-full text-center flex flex-col items-center">
             <span className="block sm:hidden">Sou Product Designer em Belo Horizonte,</span>
-            <span className="block sm:hidden"> focada em construir produtos digitais intuitivos e estratégicos</span>
-            <span className="hidden sm:block">Sou Product Designer em Belo Horizonte, focada em</span>
-            <span className="hidden sm:block">construir produtos digitais intuitivos e estratégicos</span>
+            <span className="block sm:hidden">onde criatividade, dados e entendimento de usuários andam juntos.</span>
+            <span className="hidden sm:block">Sou Product Designer em Belo Horizonte, onde criatividade,</span>
+            <span className="hidden sm:block">dados e entendimento de usuários andam juntos.</span>
           </p>
         </motion.div>
 

@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRightIcon } from '@phosphor-icons/react';
+import { ArrowRightIcon, TagIcon } from '@phosphor-icons/react';
 import Button from '../atoms/button';
 
 interface ProjectCardProps {
@@ -10,11 +10,10 @@ interface ProjectCardProps {
   imageUrl: string;
   imageAlt: string;
   reversed?: boolean;
-  productName?: string;
-  productLogo?: string;
+  tags?: string[];
 }
 
-export default function ProjectCard({ title, description, link, imageUrl, imageAlt, reversed = false, productName, productLogo }: ProjectCardProps) {
+export default function ProjectCard({ title, description, link, imageUrl, imageAlt, reversed = false, tags }: ProjectCardProps) {
   const isExternal = link.startsWith('http');
   const isComingSoon = link === '#';
 
@@ -51,27 +50,22 @@ export default function ProjectCard({ title, description, link, imageUrl, imageA
         </div>
 
         <div className={`w-full flex flex-col gap-3 items-start ${reversed ? 'lg:order-1' : 'lg:order-2'}`}>
-          {(productName || productLogo) && (
-            <div className="flex items-center gap-3">
-              {productLogo ? (
-                <img 
-                  src={productLogo} 
-                  alt={`${productName} logo`}
-                  className="h-7 w-auto object-contain"
-                />
-              ) : (
-                <div className="text-[12px] leading-[1.7] uppercase tracking-widest font-bold text-muted-foreground">
-                  {productName}
-                </div>
-              )}
-            </div>
-          )}
           <h3 className={`hyphens-none leading-tight text-balance ${
             isComingSoon ? 'text-muted-foreground' : 'text-foreground'
           }`}>{title}</h3>
           <p className="text-[1rem] leading-[1.7] text-muted-foreground w-full">{description}</p>
+          {tags && tags.length > 0 && (
+            <div className="flex flex-wrap gap-3">
+              {tags.map((tag) => (
+                <span key={tag} className="flex items-center gap-1.5 font-mono text-[13px] text-muted-foreground">
+                  <TagIcon size={11} weight="bold" />
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
           {isComingSoon ? (
-            <div className="inline-flex items-center gap-3 border border-border px-5 py-2.5 mt-2 rounded-sm text-[14px] leading-[1.7] text-muted-foreground cursor-not-allowed opacity-60">
+            <div className="inline-flex items-center gap-3 border border-border px-5 py-2.5 mt-2 rounded-sm text-[14px] leading-[1.7] text-muted-foreground cursor-not-allowed">
               Em breve
             </div>
           ) : (
