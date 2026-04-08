@@ -44,33 +44,33 @@ export default function About() {
   };
 
   const hobbies = [
-    { 
+    {
       id: "roles",
-      icon: BeerBottleIcon, 
+      icon: BeerBottleIcon,
       label: "Em rolês com os amigos",
       detail: "O respiro essencial longe das telas",
       hoverImage: "/barzinho.jpg"
     },
-    { 
+    {
       id: "games",
-      icon: GameControllerIcon, 
+      icon: GameControllerIcon,
       label: "Jogando alguma coisa",
       detail: "E só parando quando está 100%",
       hoverImage: "/games.jpg"
     },
-    { 
+    {
       id: "gata",
-      icon: CatIcon, 
+      icon: CatIcon,
       label: "Sendo mãe da Abigail",
       detail: "A companhia oficial no home office",
       hoverImage: "/gata.jpg"
     },
-    { 
+    {
       id: "spotify",
       icon: SpotifyLogo,
-      label: "Escutando alguma música",
-      detail: currentSong.explicit 
-        ? "🤫 No fone agora... (Censurado pelo RH)" 
+      label: "Escutando uma boa música",
+      detail: currentSong.explicit
+        ? "🤫 No fone agora... (Censurado pelo RH)"
         : `No fone agora: ${currentSong.name} - ${currentSong.artist}`,
       hoverImage: null
     }
@@ -81,7 +81,7 @@ export default function About() {
       <div className="py-8 md:py-12">
         
         {/* HERO E STORYTELLING */}
-        <section className="mb-20">
+        <section className="mb-10">
           <FadeInView>
             <div className="flex flex-col items-center text-center">
               <div 
@@ -122,16 +122,17 @@ export default function About() {
                 </div>
               </div>
               
-              <div className="space-y-6 max-w-[70ch] mx-auto">
-                <h1 className="text-balance">Oi, eu sou a Lívia!</h1>
+              <div className="w-full max-w-[800px] mx-auto">
+                <h1 className="text-balance text-center mb-6">Oi, eu sou a Lívia!</h1>
                 
-                <div className="space-y-4 text-[1rem] leading-[1.7] text-muted-foreground text-left md:text-center">
-                  <p>
-                    Vim da <strong className="text-foreground">Publicidade</strong>, onde aprendi a entender pessoas. Hoje, como UX/UI Designer, uso essa base para construir produtos digitais lógicos, funcionais e estratégicos.
-                  </p>
-                  <p>
-                    Acredito que o design ganha força quando anda junto com os dados. Por isso, faço MBA em <strong className="text-foreground">Inteligência Artificial e Data Science</strong>, explorando como a automação e as métricas podem moldar o futuro das interfaces.
-                  </p>
+                <div className="space-y-4 text-[1rem] leading-[1.7] text-muted-foreground text-left max-w-[65ch] mx-auto">
+                <p>
+  Eu sempre fui aquela pessoa que mistura nerdice, criatividade e uma curiosidade genuína de entender e comunicar com pessoas. Foi essa combinação que me levou a cursar <strong>Publicidade e Propaganda</strong>, onde aprendi que dá para ser criativo com estratégia e que entender o comportamento humano é o que faz com que as soluções sejam capazes de ter impacto.
+</p>
+
+<p>
+  Minha trajetória começou no design gráfico e no marketing, mas quando surgiu a chance de aplicar tudo isso através de interfaces, não tive dúvida: era aqui que eu queria estar. Ser <strong>Product Designer</strong> é usar criatividade e entendimento de pessoas e de tecnologias pra remover fricção, facilitar a vida de quem está do outro lado da tela e movimentar o negócio. Por isso vou além das telas: reviso processos, questiono fluxos e uso <strong>IA e dados</strong> pra tomar decisões mais certeiras, não só mais bonitas.
+</p>
                 </div>
               </div>
             </div>
@@ -139,55 +140,48 @@ export default function About() {
         </section>
 
         {/* STATUS ATUAL */}
-        <section className="mb-6">
+        <section className="mb-4">
           <FadeInView delay={0.2}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[800px] mx-auto">
-              <div className="flex items-center gap-4 p-6 rounded-sm bg-muted/30 border border-border/30 min-h-[44px]">
-                <div className="p-3 bg-muted rounded-sm text-foreground">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-4 max-w-[800px] mx-auto">
+              <div className="flex items-center gap-4 p-6 rounded-sm border border-border/30 hover:border-border hover:bg-muted/50 transition-all duration-300 min-h-[44px]">
+                <div className="p-3 bg-background/90 backdrop-blur-sm rounded-sm text-foreground shadow-sm border border-border/30">
                   <BriefcaseIcon size={24} weight="bold" />
                 </div>
                 <div>
-                  <p className="text-[12px] leading-[1.7] uppercase tracking-widest text-muted-foreground mb-1">
-                    Trabalhando como
-                  </p>
+                  <p className="text-[12px] leading-[1.7] uppercase tracking-widest text-muted-foreground mb-1">Atuando como</p>
                   <p className="text-[1rem] leading-[1.7] font-medium text-foreground">UX/UI Designer II na Bwtech</p>
-                  <p className="text-[14px] leading-[1.7] text-muted-foreground">Projetando soluções B2B e melhorando processos internos.</p>
                 </div>
               </div>
 
-              <div className="flex items-center gap-4 p-6 rounded-sm bg-muted/30 border border-border/30 min-h-[44px]">
-                <div className="p-3 bg-muted rounded-sm text-foreground">
+              <div className="flex items-center gap-4 p-6 rounded-sm border border-border/30 hover:border-border hover:bg-muted/50 transition-all duration-300 min-h-[44px]">
+                <div className="p-3 bg-background/90 backdrop-blur-sm rounded-sm text-foreground shadow-sm border border-border/30">
                   <GraduationCapIcon size={24} weight="bold" />
                 </div>
                 <div>
-                  <p className="text-[12px] leading-[1.7] uppercase tracking-widest text-muted-foreground mb-1">
-                    Estudando
-                  </p>
-                  <p className="text-[1rem] leading-[1.7] font-medium text-foreground">MBA em IA & Data Science na PUC RS</p>
-                  <p className="text-[14px] leading-[1.7] text-muted-foreground">Entendendo como aliar métricas, automação e IA com design.</p>
+                  <p className="text-[12px] leading-[1.7] uppercase tracking-widest text-muted-foreground mb-1">Especializando em</p>
+                  <p className="text-[1rem] leading-[1.7] font-medium text-foreground">AI, DS e Big Data na PUC RS</p>
                 </div>
               </div>
             </div>
           </FadeInView>
         </section>
 
-        {/* CONECTOR VISUAL (Timeline bridge) */}
+        {/* CONECTOR VISUAL */}
         <FadeInView delay={0.3}>
-          <div className="flex flex-col items-center justify-center h-24 relative max-w-[800px] mx-auto mb-6">
-            <div className="w-px h-full bg-border/40"></div>
-            <div className="absolute top-1/2 -translate-y-1/2 bg-background px-4 py-1.5 border border-border/30 rounded-full text-[11px] font-medium uppercase tracking-widest text-muted-foreground z-10 shadow-sm">
-              E quando o Figma fecha
-            </div>
+          <div className="w-full max-w-[800px] mx-auto mb-10 mt-10">
+            <p className="text-[1rem] leading-[1.7] text-muted-foreground text-left max-w-[65ch] mx-auto">
+            Mas não só de pixels e processos eu sou resumida. Quando o trabalho pausa, fora das telas (nem sempre fora) você me encontra:
+            </p>
           </div>
         </FadeInView>
 
         {/* GRID DE INTERESSES PADRONIZADO */}
-        <section className="mb-20">
+        <section className="mb-10">
           <FadeInView delay={0.4}>
             <div className="max-w-[800px] mx-auto">
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-4">
                 {hobbies.map((hobby) => (
-                  <div 
+                  <div
                     key={hobby.id}
                     className={`group relative flex flex-col items-center justify-center p-6 rounded-sm border border-border/30 transition-all duration-300 md:hover:scale-105 cursor-default h-[180px] overflow-hidden hover:border-border hover:bg-muted/50 ${
                       hobby.id === 'spotify' ? 'hover:border-[#1DB954]/40' : ''
@@ -197,9 +191,9 @@ export default function About() {
                     <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                       {hobby.hoverImage ? (
                         <>
-                          <img 
-                            src={hobby.hoverImage} 
-                            alt={hobby.label} 
+                          <img
+                            src={hobby.hoverImage}
+                            alt={hobby.label}
                             className="w-full h-full object-cover opacity-40"
                           />
                           <div className="absolute inset-0 bg-background/70 backdrop-blur-[2px]"></div>
@@ -241,7 +235,7 @@ export default function About() {
           <FadeInView delay={0.5}>
             <div className="text-center space-y-8">
               <div className="space-y-3">
-                <h2 className="text-balance">Quer saber mais?</h2>
+                <h2 className="text-balance">Vamos conversar?</h2>
                 <p className="text-[1rem] leading-[1.7] text-muted-foreground max-w-[60ch] mx-auto">
                   Dê uma olhada no meu currículo para ver minha trajetória completa, ou me chame para conversar sobre design, IA e gatos no teclado:
                 </p>
