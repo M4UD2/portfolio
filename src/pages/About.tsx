@@ -231,13 +231,13 @@ export default function About() {
         </section>
 
         {/* CTA */}
-        <section className="border-t border-border pt-12">
+        <section className="border-t border-border pt-10">
           <FadeInView delay={0.5}>
             <div className="text-center space-y-8">
               <div className="space-y-3">
-                <h2 className="text-balance">Vamos conversar?</h2>
+                <h2 className="text-balance">Quer saber mais sobre mim?</h2>
                 <p className="text-[1rem] leading-[1.7] text-muted-foreground max-w-[60ch] mx-auto">
-                  Dê uma olhada no meu currículo para ver minha trajetória completa, ou me chame para conversar sobre design, IA e gatos no teclado:
+                No meu currículo você encontra mais da minha trajetória, e se quiser trocar uma ideia sobre design, IA ou gatos no teclado, é só me chamar:
                 </p>
               </div>
               
