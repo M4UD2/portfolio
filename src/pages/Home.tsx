@@ -79,9 +79,10 @@ export default function Home() {
 
           <p className="text-[1rem] leading-[1.7] text-muted-foreground mx-auto max-w-[700px] w-full text-center flex flex-col items-center">
             <span className="block sm:hidden">Sou Product Designer em Belo Horizonte,</span>
-            <span className="block sm:hidden">onde criatividade, dados e entendimento de usuários andam juntos.</span>
-            <span className="hidden sm:block">Sou Product Designer em Belo Horizonte, onde criatividade,</span>
-            <span className="hidden sm:block">dados e entendimento de usuários andam juntos.</span>
+            <span className="block sm:hidden">unindo criatividade, dados e visão de usuário</span>
+            <span className="block sm:hidden">pra construir produtos que fazem sentido.</span>
+            <span className="hidden sm:block">Sou Product Designer em Belo Horizonte, unindo criatividade,</span>
+            <span className="hidden sm:block">dados e visão de usuário pra construir produtos que fazem sentido.</span>
           </p>
         </motion.div>
 
