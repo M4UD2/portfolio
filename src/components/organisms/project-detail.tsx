@@ -92,6 +92,16 @@ export default function ProjectDetail({
   productLogo
 }: ProjectDetailProps) {
   
+  const defaultSections = [
+    { id: 'visao-geral', label: 'Visão Geral' },
+    ...(challenge ? [{ id: 'desafio', label: 'O Desafio' }] : []),
+    ...(solution ? [{ id: 'solucao', label: 'A Solução' }] : []),
+    ...(technologies ? [{ id: 'tecnologias', label: 'Tecnologias' }] : []),
+    ...(galleryImages ? [{ id: 'galeria', label: 'Galeria' }] : []),
+    ...(testimonial ? [{ id: 'depoimento', label: 'Depoimento' }] : []),
+    ...((metrics || results) ? [{ id: 'resultados', label: 'Resultados' }] : []),
+  ];
+
   const containerClassName = "max-w-[1040px] mx-auto px-6 md:px-10 py-8 md:py-12";
   const gridClassName = "grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16";
   
@@ -185,6 +195,7 @@ export default function ProjectDetail({
       projectId={projectId}
       title={title}
       prototypeLink={link}
+      customSections={defaultSections}
     >
       {/* Hero customizável */}
       {customHero || (

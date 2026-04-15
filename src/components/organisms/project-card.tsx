@@ -11,9 +11,11 @@ interface ProjectCardProps {
   imageAlt: string;
   reversed?: boolean;
   tags?: string[];
+  productLogo?: string;
+  productName?: string;
 }
 
-export default function ProjectCard({ title, description, link, imageUrl, imageAlt, reversed = false, tags }: ProjectCardProps) {
+export default function ProjectCard({ title, description, link, imageUrl, imageAlt, reversed = false, tags, productLogo, productName }: ProjectCardProps) {
   const isExternal = link.startsWith('http');
   const isComingSoon = link === '#';
 
@@ -50,6 +52,9 @@ export default function ProjectCard({ title, description, link, imageUrl, imageA
         </div>
 
         <div className={`w-full flex flex-col gap-3 items-start ${reversed ? 'lg:order-1' : 'lg:order-2'}`}>
+          {productLogo && (
+            <img src={productLogo} alt={productName ?? ''} className="h-6 w-auto opacity-80" />
+          )}
           <h3 className={`hyphens-none leading-tight text-balance ${
             isComingSoon ? 'text-muted-foreground' : 'text-foreground'
           }`}>{title}</h3>

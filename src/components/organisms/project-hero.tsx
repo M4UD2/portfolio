@@ -21,34 +21,34 @@ export default function ProjectHero({ title, subtitle, date, role, tools, produc
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8">
-        {/* Product Name/Logo */}
-        {(productName || productLogo) && (
-          <div className="flex items-center gap-3 md:col-span-12">
-            {productLogo ? (
-              <img 
-                src={productLogo} 
-                alt={`${productName} logo`}
-                className="h-8 w-auto object-contain"
-              />
-            ) : (
-              <div className="text-[12px] leading-[1.7] uppercase tracking-widest font-bold text-muted-foreground">
-                {productName}
-              </div>
-            )}
-          </div>
-        )}
-        
-        {/* Title */}
-        <h1 className="md:col-span-8">{title}</h1>
+      <div className="flex flex-col gap-6">
+        {/* Product Logo + Title */}
+        <div className="flex flex-col gap-2">
+          {(productName || productLogo) && (
+            <div className="flex items-center gap-3">
+              {productLogo ? (
+                <img 
+                  src={productLogo} 
+                  alt={`${productName} logo`}
+                  className="h-8 w-auto object-contain"
+                />
+              ) : (
+                <div className="text-[12px] leading-[1.7] uppercase tracking-widest font-bold text-muted-foreground">
+                  {productName}
+                </div>
+              )}
+            </div>
+          )}
+          <h1>{title}</h1>
+        </div>
         
         {/* Subtitle */}
-        <p className="text-[1rem] leading-[1.7] text-muted-foreground md:col-span-8">
+        <p className="text-[1rem] leading-[1.7] text-muted-foreground">
           {subtitle}
         </p>
 
         {/* Meta Info */}
-        <div className="flex flex-wrap items-center gap-6 text-[0.875rem] leading-[1.7] text-muted-foreground md:col-span-12">
+        <div className="flex flex-wrap items-center gap-6 text-[0.875rem] leading-[1.7] text-muted-foreground">
           <Tooltip content="Data do projeto">
             <div className="flex items-center gap-1.5 cursor-default">
               <CalendarIcon size={14} weight="bold" className="text-foreground" />

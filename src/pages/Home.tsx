@@ -41,24 +41,16 @@ export default function Home() {
 
   const projects = [
     {
-      id: 'yrden-onboarding',
-      title: 'De 60 minutos de espera a um onboarding produtivo',
-      description: 'Um case sobre como transformei uma limitação técnica em uma jornada de boas-vindas de valor',
-      link: '#',
-      imageUrl: 'https://images.unsplash.com/photo-1618761714954-0b8cd0026356?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
-      imageAlt: 'Yrden - Interface de onboarding produtivo',
+      id: 'ia-troubleshooting',
+      title: 'Integração de IA Generativa para troubleshooting de redes',
+      description: 'Como colaborei em uma interface conversacional para extrair insights de volumes massivos de dados, reduzindo o tempo de resolução de troubleshooting em 70%',
+      link: '/projects/netchart/ia-troubleshooting',
+      imageUrl: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+      imageAlt: 'IA Generativa para Troubleshooting de Redes',
       reversed: false,
-      tags: ['UX Research', 'Product Design', 'Onboarding'],
-    },
-    {
-      id: 'yrden-editor',
-      title: 'Editor SQL',
-      description: 'Interface intuitiva para consultas e análise de dados democratizando o acesso ao SQL',
-      link: '#',
-      imageUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
-      imageAlt: 'Yrden - Editor SQL intuitivo',
-      reversed: true,
-      tags: ['Product Design', 'Data', 'SQL'],
+      tags: ['IA', 'B2B SaaS', 'Telecom'],
+      productLogo: '/logos/netchart-logo.svg',
+      productName: 'Netchart',
     },
   ];
 

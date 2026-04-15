@@ -38,7 +38,7 @@ export default function ProjectLayout({
         {/* Sticky Header */}
         <ProjectStickyHeader
           prototypeLink={prototypeLink}
-          sections={customSections} // Pass custom sections to the header
+          sections={customSections}
         />
 
         {/* Back Button */}

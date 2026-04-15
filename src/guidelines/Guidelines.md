@@ -112,6 +112,40 @@ Verificações com a paleta atual:
 - **Estados Hover em Navegação:** Usar `hover:opacity-60` para feedback visual suave em elementos de navegação (Navbar, NavItem, SocialLink)
 - Imagens/Thumbs (`ProjectGallery`): hover `scale: 1.02`
 
+## Animações — Padrão Global
+
+### Entrada (fade + slide) — obrigatório em todos os componentes animados
+```tsx
+initial={{ opacity: 0, y: 20 }}
+animate={{ opacity: 1, y: 0 }}   // ou whileInView para FadeInView
+transition={{ duration: 0.6, delay, ease: 'easeOut' }}
+```
+
+### Stagger entre itens de lista/grid
+Delay incremental de `0.1s` por item:
+```tsx
+transition={{ duration: 0.6, delay: delay + index * 0.1, ease: 'easeOut' }}
+```
+
+### Hover em cards de projeto (MetricCard, QuoteGrid, TechBadge)
+```tsx
+className="hover:border-foreground transition-colors duration-500"
+```
+
+### Hover em cards da About
+```tsx
+className="hover:border-border hover:bg-muted/50 transition-all duration-300 md:hover:scale-105"
+```
+
+### Elementos internos que mudam no hover
+Usar `group` no container e `group-hover:` no elemento filho:
+```tsx
+// container
+className="group border border-border ..."
+// elemento filho (ex: aspa no QuoteGrid)
+className="text-muted-foreground/40 group-hover:text-foreground transition-colors duration-500"
+```
+
 ## Boas práticas adicionais
 - Evitar reduzir opacidade de texto/ícones a ponto de violar contraste; como regra, preferir `hover:opacity-80` quando necessário
 - Garantir que texto sobre `bg-muted` use `text-foreground` ou `text-muted-foreground` com contraste validado

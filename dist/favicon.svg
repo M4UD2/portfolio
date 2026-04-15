@@ -4,11 +4,11 @@
       fill: #0f172a; 
       font-family: Inter, system-ui, sans-serif; 
       font-weight: 700; 
-      font-size: 12px; 
+      font-size: 20px; 
     }
     @media (prefers-color-scheme: dark) {
       .favicon-text { fill: #f8fafc; }
     }
   </style>
-  <text x="16" y="22" text-anchor="middle" class="favicon-text">LM</text>
+  <text x="16" y="23" text-anchor="middle" class="favicon-text">LM</text>
 </svg>

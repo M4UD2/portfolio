@@ -42,10 +42,10 @@
     @apply font-bold;
     hyphens: none;
     -webkit-hyphens: none;
-    word-break: keep-all;
+    word-break: normal;
   }
   
-  h1 { @apply text-[clamp(2rem,4vw,3rem)] leading-[1.1] -tracking-[0.03em]; }
+  h1 { @apply text-[clamp(2rem,4vw,3rem)] leading-[1.1] -tracking-[0.03em]; text-wrap: pretty; }
   h2 { @apply text-[clamp(1.5rem,3vw,2rem)] leading-[1.2] -tracking-[0.02em]; }
   h3 { @apply text-[clamp(1.125rem,2vw,1.5rem)] leading-[1.4]; }
   

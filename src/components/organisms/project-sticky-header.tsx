@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeftIcon, ArrowSquareOutIcon, LinkIcon } from '@phosphor-icons/react';
-import { useNavigate } from 'react-router-dom';
+import { ArrowSquareOutIcon, LinkIcon } from '@phosphor-icons/react';
 
-interface StickyHeaderProps {
+export interface StickyHeaderProps {
   prototypeLink?: string;
   sections?: { id: string; label: string }[];
 }
@@ -14,7 +13,6 @@ export default function ProjectStickyHeader({ prototypeLink, sections }: StickyH
   const [isMobile, setIsMobile] = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const [availableSections, setAvailableSections] = useState<string[]>([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -76,72 +74,25 @@ export default function ProjectStickyHeader({ prototypeLink, sections }: StickyH
 
     const observer = new IntersectionObserver(
       (entries) => {
-        // Encontrar a seção mais próxima do topo da viewport
-        let closestSection = '';
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const rect = entry.boundingClientRect;
-            if (closestSection === '') {
-              closestSection = entry.target.id;
-            }
+            setActiveSection(entry.target.id);
           }
         });
-
-        if (closestSection && closestSection !== activeSection) {
-          setActiveSection(closestSection);
-
-          // Auto-scroll navigation to show active section on mobile
-          if (isMobile) {
-            setTimeout(() => {
-              const activeElement = document.querySelector(`a[href="#${closestSection}"]`) as HTMLElement;
-              if (activeElement) {
-                const navContainer = activeElement.closest('nav') as HTMLElement;
-                if (navContainer) {
-                  const containerRect = navContainer.getBoundingClientRect();
-                  const elementRect = activeElement.getBoundingClientRect();
-
-                  // Verificar se o elemento já está visível
-                  const elementLeft = elementRect.left - containerRect.left;
-                  const elementRight = elementRect.right - containerRect.left;
-                  const isVisible = elementLeft >= 0 && elementRight <= containerRect.width;
-
-                  if (!isVisible) {
-                    const scrollLeft = navContainer.scrollLeft;
-                    let targetScrollLeft;
-
-                    // Se for a primeira seção, ir para o início
-                    if (availableSections.indexOf(closestSection) === 0) {
-                      targetScrollLeft = 0;
-                    } else {
-                      // Para outras seções, centralizar
-                      targetScrollLeft = scrollLeft + elementRect.left - containerRect.left - (containerRect.width / 2) + (elementRect.width / 2);
-                    }
-
-                    navContainer.scrollTo({
-                      left: Math.max(0, targetScrollLeft),
-                      behavior: 'smooth'
-                    });
-                  }
-                }
-              }
-            }, 100);
-          }
-        }
       },
       {
-        threshold: 0.1,
-        rootMargin: '-10% 0px -80% 0px'
+        threshold: 0,
+        rootMargin: '0px 0px -70% 0px'
       }
     );
 
-    // Observar apenas seções disponíveis
     availableSections.forEach((id) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     });
 
     return () => observer.disconnect();
-  }, [availableSections, isMobile, activeSection]);
+  }, [availableSections]);
 
   return (
     <motion.header
@@ -152,25 +103,28 @@ export default function ProjectStickyHeader({ prototypeLink, sections }: StickyH
       animate={{ y: isVisible ? 0 : -60 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
     >
-      <div className="max-w-[1040px] mx-auto px-6 md:px-10 h-full flex items-center justify-between">
-        {/* Left: Back Button */}
-        <button
-          onClick={() => navigate('/')}
-          className="inline-flex items-center gap-2 text-[14px] leading-[1.7] text-muted-foreground hover:text-foreground transition-colors focus-ring rounded-sm min-h-[44px] px-1 md:px-0 flex-shrink-0"
-          aria-label="Voltar para início"
-        >
-          <ArrowLeftIcon size={14} weight="bold" />
-          {!isMobile && 'Voltar'}
-        </button>
-
-        {/* Center: Navigation - Clean Horizontal Scroll for Mobile */}
-        <nav className={`flex items-center flex-1 justify-center ${
-          isMobile ? 'overflow-x-auto scrollbar-hide px-2 gap-1' : 'gap-2'
+      <div className="h-full flex items-center justify-between">
+        {/* Navigation */}
+        <nav className={`flex items-center flex-1 ${
+          isMobile
+            ? 'overflow-x-auto scrollbar-hide gap-1 px-6'
+            : 'justify-center gap-2 max-w-[1040px] mx-auto px-10 w-full'
         }`}>
           {sections && sections.filter(({ id }) => availableSections.includes(id)).map(({ id, label }) => {
             const isActive = activeSection === id;
+            const isFirst = sections.findIndex(s => availableSections.includes(s.id)) === sections.findIndex(s => s.id === id);
 
-            return (
+            return isFirst ? (
+              <button
+                key={id}
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                className={`text-[11px] uppercase tracking-[0.15em] transition-colors duration-300 focus-ring rounded-sm py-2 whitespace-nowrap flex-shrink-0 ${
+                  isActive ? 'text-foreground font-semibold' : 'text-muted-foreground hover:text-foreground'
+                } ${isMobile ? 'px-2' : 'px-3'}`}
+              >
+                {label}
+              </button>
+            ) : (
               <a
                 key={id}
                 href={`#${id}`}
@@ -181,7 +135,7 @@ export default function ProjectStickyHeader({ prototypeLink, sections }: StickyH
                 {label}
               </a>
             );
-          }) || []} {/* Use an empty array if sections is undefined */}
+          }) || []}
         </nav>
 
         {/* Right: Prototype Link */}
@@ -190,7 +144,7 @@ export default function ProjectStickyHeader({ prototypeLink, sections }: StickyH
             href={prototypeLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-[14px] leading-[1.7] text-muted-foreground hover:text-foreground transition-colors focus-ring rounded-sm min-h-[44px] flex-shrink-0 px-2 md:px-0"
+            className="inline-flex items-center gap-2 text-[14px] leading-[1.7] text-muted-foreground hover:text-foreground transition-colors focus-ring rounded-sm min-h-[44px] flex-shrink-0 px-6 md:px-0"
             aria-label="Ver protótipo (abre em nova aba)"
           >
             {isMobile ? (
