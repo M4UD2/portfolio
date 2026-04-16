@@ -6,7 +6,6 @@ import ProjectNavigation from '../../../components/organisms/project-navigation'
 import FadeInView from '../../../components/atoms/fade-in-view';
 import QuoteGrid from '../../../components/molecules/quote-grid';
 import GoalResultCard from '../../../components/molecules/goal-result-card';
-import UserFlowDiagram from '../../../components/molecules/user-flow-diagram';
 
 const sections = [
   { id: 'cenario', label: 'Cenário' },
@@ -128,61 +127,36 @@ export default function IATroubleshooting() {
             </Section>
 
             <Section id="solucao" title="Solução">
-              <p>
-                Diante da complexidade técnica, tomamos a decisão estratégica de{' '}
-                <strong>não fragmentar a experiência</strong>. A solução foi desenhada em torno de um ponto de
-                contato unificado:
-              </p>
-              <UserFlowDiagram
-                start="Login"
-                paths={[
-                  [
-                    { label: "Parameters Compare", type: "action", preview: {
-                      gif: "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExbzZhMzFtcWozemp4NHpxMzFxcWozemp4NHpxMzFxcWozemp4NHpx/giphy.gif",
-                      description: "Tela de comparação de parâmetros de rede com múltiplas colunas de dados."
-                    }},
-                    { label: "Ativa Gatilho de IA", type: "action", highlight: true, preview: {
-                      gif: "https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif",
-                      description: "Botão de acionamento da IA aparece contextualmente na interface."
-                    }},
-                    { label: "Auto-context injection", type: "system", preview: {
-                      gif: "https://media.giphy.com/media/xT9IgzoKnwFNmISR8I/giphy.gif",
-                      description: "O sistema injeta automaticamente o contexto da tela atual no prompt."
-                    }},
-                    { label: "Processamento", type: "system" },
-                    { label: "Diagnóstico Contextualizado", type: "result", preview: {
-                      gif: "https://media.giphy.com/media/l0HlNQ03J5JxX6lva/giphy.gif",
-                      description: "IA retorna diagnóstico com referências técnicas e sugestão de ação."
-                    }},
-                  ],
-                  [
-                    { label: "Abre Chat Global", type: "action" },
-                    { label: "Envia Prompt", type: "action", preview: {
-                      gif: "https://media.giphy.com/media/3oz8xIsloV7zOmt81G/giphy.gif",
-                      description: "Interface de chat conversacional com histórico de mensagens."
-                    }},
-                    { label: "IA gera resposta via RAG", type: "system", preview: {
-                      gif: "https://media.giphy.com/media/xT9IgzoKnwFNmISR8I/giphy.gif",
-                      description: "Modelo busca nos manuais técnicos do cliente para fundamentar a resposta."
-                    }},
-                  ],
-                ]}
-                convergence="Usuário interage com a IA (Refinamento / Feedback RLHF)"
-              />
-              <Placeholder label="[ Imagem — interface do Chat Global ]" />
 
-              
-              <BulletList items={[
-                <><strong>Chat Global de IA:</strong> Uma interface conversacional centralizada e acessível de
-                  qualquer ponto da plataforma. Funciona como um "parceiro sênior", pronto para responder dúvidas
-                  sobre toda a infraestrutura do projeto do cliente e sobre o próprio produto NetChart.</>,
-                <><strong>Gatilhos de Análise Contextual:</strong> Em vez de construir múltiplas interfaces de IA,
-                  adicionamos <strong>gatilhos inteligentes</strong> nas ferramentas do sistema. Na funcionalidade
-                  de comparação de desvio de parâmetros, o usuário aciona a IA com um clique — o Chat Global se
-                  abre carregando o contexto daquela tela e analisa o impacto técnico respondendo "por que isso
-                  importa" e como resolver.</>,
-              ]} />
-              <Placeholder label="[ Imagem — interface do Chat Global ]" />
+              <p>
+              A análise de desvio de parâmetros era apenas uma das primeiras possibilidades para a IA gerar valor no ecossistema do NetChart.
+              Diante da complexidade técnica, tomamos a decisão estratégica de <strong>não fragmentar a experiência</strong>. A solução foi desenhada
+              em torno de um ponto de contato unificado.
+              </p>
+              <Placeholder label="[ Imagem — User flow ]" />
+
+<div className="flex flex-col gap-8 mt-2">
+  <div className="flex flex-col gap-2">
+    <h3 className="text-[clamp(1.125rem,2vw,1.5rem)] font-bold leading-[1.4] text-balance text-foreground">
+      Chat Global de IA
+    </h3>
+    <p>
+      Uma interface conversacional centralizada e acessível de qualquer ponto da plataforma. Funciona como um "parceiro sênior", pronto para responder dúvidas sobre toda a infraestrutura do projeto do cliente e sobre o próprio produto NetChart.
+    </p>
+    <Placeholder label="[ Imagem — Gif mostrando o Chat Global sendo ativado ]" />
+  </div>
+
+  <div className="flex flex-col gap-2">
+    <h3 className="text-[clamp(1.125rem,2vw,1.5rem)] font-bold leading-[1.4] text-balance text-foreground">
+      Gatilhos de Análise Contextual
+    </h3>
+    <p>
+      Em vez de construir múltiplas interfaces de IA, adicionamos <strong>gatilhos inteligentes</strong> nas ferramentas do sistema. Na funcionalidade de comparação de desvio de parâmetros, o usuário aciona a IA com um clique — o Chat Global se abre carregando o contexto daquela tela e analisa o impacto técnico respondendo "por que isso importa" e como resolver.
+    </p>
+  </div>
+</div>
+
+<Placeholder label="[ Imagem — interface do Chat Global ]" />
             </Section>
 
             <Section id="decisoes" title="Decisões de design">

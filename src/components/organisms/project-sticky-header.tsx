@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowSquareOutIcon, LinkIcon } from '@phosphor-icons/react';
 
@@ -13,6 +13,9 @@ export default function ProjectStickyHeader({ prototypeLink, sections }: StickyH
   const [isMobile, setIsMobile] = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const [availableSections, setAvailableSections] = useState<string[]>([]);
+  
+  // Referência para o container de navegação
+  const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -94,6 +97,26 @@ export default function ProjectStickyHeader({ prototypeLink, sections }: StickyH
     return () => observer.disconnect();
   }, [availableSections]);
 
+  // Efeito para scroll horizontal automático no mobile
+  useEffect(() => {
+    if (isMobile && activeSection && navRef.current) {
+      const activeItem = document.getElementById(`nav-item-${activeSection}`);
+      
+      if (activeItem) {
+        const nav = navRef.current;
+        const navWidth = nav.offsetWidth;
+        const itemOffset = activeItem.offsetLeft;
+        const itemWidth = activeItem.offsetWidth;
+
+        // Centraliza o item ativo na tela
+        nav.scrollTo({
+          left: itemOffset - (navWidth / 2) + (itemWidth / 2),
+          behavior: 'smooth'
+        });
+      }
+    }
+  }, [activeSection, isMobile]);
+
   return (
     <motion.header
       className={`fixed top-0 left-0 right-0 z-50 bg-background border-b border-border ${
@@ -105,11 +128,14 @@ export default function ProjectStickyHeader({ prototypeLink, sections }: StickyH
     >
       <div className="h-full flex items-center justify-between">
         {/* Navigation */}
-        <nav className={`flex items-center flex-1 ${
-          isMobile
-            ? 'overflow-x-auto scrollbar-hide gap-1 px-6'
-            : 'justify-center gap-2 max-w-[1040px] mx-auto px-10 w-full'
-        }`}>
+        <nav 
+          ref={navRef}
+          className={`flex items-center flex-1 relative ${
+            isMobile
+              ? 'overflow-x-auto scrollbar-hide gap-1 px-6'
+              : 'justify-center gap-2 max-w-[1040px] mx-auto px-10 w-full'
+          }`}
+        >
           {sections && sections.filter(({ id }) => availableSections.includes(id)).map(({ id, label }) => {
             const isActive = activeSection === id;
             const isFirst = sections.findIndex(s => availableSections.includes(s.id)) === sections.findIndex(s => s.id === id);
@@ -117,6 +143,7 @@ export default function ProjectStickyHeader({ prototypeLink, sections }: StickyH
             return isFirst ? (
               <button
                 key={id}
+                id={`nav-item-${id}`}
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 className={`text-[11px] uppercase tracking-[0.15em] transition-colors duration-300 focus-ring rounded-sm py-2 whitespace-nowrap flex-shrink-0 ${
                   isActive ? 'text-foreground font-semibold' : 'text-muted-foreground hover:text-foreground'
@@ -127,6 +154,7 @@ export default function ProjectStickyHeader({ prototypeLink, sections }: StickyH
             ) : (
               <a
                 key={id}
+                id={`nav-item-${id}`}
                 href={`#${id}`}
                 className={`text-[11px] uppercase tracking-[0.15em] transition-colors duration-300 focus-ring rounded-sm py-2 whitespace-nowrap flex-shrink-0 ${
                   isActive ? 'text-foreground font-semibold' : 'text-muted-foreground hover:text-foreground'
