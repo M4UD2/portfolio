@@ -6,14 +6,15 @@ import ProjectNavigation from '../../../components/organisms/project-navigation'
 import FadeInView from '../../../components/atoms/fade-in-view';
 import QuoteGrid from '../../../components/molecules/quote-grid';
 import GoalResultCard from '../../../components/molecules/goal-result-card';
+import SocialLink from '../../../components/atoms/social-link';
 
 const sections = [
   { id: 'cenario', label: 'Cenário' },
   { id: 'descoberta', label: 'Descoberta' },
-  { id: 'oportunidade', label: 'Oportunidade' },
   { id: 'solucao', label: 'Solução' },
-  { id: 'decisoes', label: 'Decisões de Design' },
+  { id: 'decisoes', label: 'Decisões de design' },
   { id: 'impacto', label: 'Impacto' },
+  { id: 'roadmap', label: 'Próximos passos' },
 ];
 
 function Section({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
@@ -58,14 +59,14 @@ export default function IATroubleshooting() {
       customSections={sections}
     >
       <ProjectHero
-        title="Integração de IA Generativa para Troubleshooting de Redes"
-        subtitle="Colaborei no processo completo (via Design Sprint) no design de uma interface conversacional baseada em IA Generativa para transformar volumes massivos de dados em insights, reduzindo o tempo de troubleshooting em 70%."
-        date="2025"
-        role="Product Designer (End-to-end)"
-        tools={["Adobe XD", "Conceptboard"]}
-        productName="Netchart"
-        productLogo="/logos/netchart-logo.svg"
-      />
+  title="Integração de IA Generativa para Troubleshooting de Redes"
+  subtitle={<>Neste case, apresento como <strong>colaborei</strong> no design de uma interface de <strong>IA Generativa</strong> via <strong>Design Sprint</strong>. A solução transforma dados massivos em insights estratégicos, reduzindo o tempo de troubleshooting em <strong>70%</strong>.</>}
+  date="2025"
+  role="Product Designer (End-to-end)"
+  tools={["Adobe XD", "Conceptboard"]}
+  productName="Netchart"
+  productLogo="/logos/netchart-logo.svg"
+/>
 
       <ProjectImage
         src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
@@ -79,121 +80,185 @@ export default function IATroubleshooting() {
 
             <Section id="cenario" title="Cenário e problema">
               <p>
-                O <strong>NetChart</strong> é uma solução para gestão de redes móveis (2G a 5G) onde engenheiros
-                monitoram milhares de parâmetros técnicos vitais. Nesse cenário, qualquer alteração não mapeada
-                pode comprometer o sinal de regiões inteiras.
+              O <strong>NetChart</strong> é uma solução consolidada para gestão e monitoramento de redes móveis (2G a 5G). O desafio deste projeto foi <strong>evoluir a funcionalidade de comparação de parâmetros</strong>, onde engenheiros de performance monitoram milhares de dados e parâmetros técnicos vitais. Em um cenário de <strong>alta complexidade</strong>, qualquer desvio de configuração sem o devido contexto técnico pode <strong>comprometer o sinal de regiões inteiras</strong>, impactando diretamente em SLAs e na experiência de milhões de usuários.
               </p>
+
               <p>
-                Embora o sistema tivesse <strong>alta capacidade analítica</strong>, enfrentávamos o{' '}
-                <strong>"Paradoxo do Valor"</strong>: a plataforma entregava dados massivos, mas sem contexto
-                sobre o significado das mudanças.
+              Embora a funcionalidade oferecesse uma alta capacidade analítica, nós identificamos o <strong>"Paradoxo do Valor"</strong> durante o seu uso: a ferramenta entregava uma volumetria massiva de dados e alterações, mas carecia de <strong>contexto técnico</strong> sobre o significado daquelas mudanças e o seu <strong>impacto real</strong> na rede.
               </p>
+
               <p>
-                Essa falta de clareza gerava sobrecarga cognitiva e fadiga, forçando os usuários a atuar de
-                forma puramente <strong>reativa</strong> diante de problemas críticos de rede.
+              Essa lacuna gerava uma imensa <strong>sobrecarga cognitiva</strong> e fadiga nos engenheiros. Como eles precisavam interromper constantemente o fluxo no NetChart para buscar respostas em manuais externos, o processo de investigação tornava-se lento e exaustivo. Como consequência, a causa raiz dos problemas muitas vezes só era totalmente compreendida quando algum parâmetro já apresentava um <strong>sobrecarga cognitiva</strong> na qualidade da rede.
               </p>
             </Section>
 
             <Section id="descoberta" title="Descoberta">
               <p>
-                Para validar nosso problema, focamos em ouvir nossos <strong>usuários</strong>. Durante o{' '}
-                <em>discovery</em>, suas falas deixaram claro que a funcionalidade de comparação de parâmetros
-                precisava de uma camada de inteligência para mitigar a sobrecarga e a incerteza técnica:
+              Durante a etapa de <em>Discovery</em>, ouvimos especialistas seniores e profissionais em início de carreira para validar nossas hipóteses. As falas deixaram claro que o problema não era apenas a volumetria de dados, mas a <strong>interrupção de fluxo</strong>: a necessidade de pausar a análise para buscar respostas em manuais externos gerava <strong>fadiga e lentidão operacional.</strong>
               </p>
+              
               <QuoteGrid quotes={[
                 "Gasto muito tempo analisando mudanças de parâmetros sem contexto",
                 "Dependo de colegas ou de manuais extensos para achar a solução",
                 "Vejo muitas alterações, mas é difícil saber quais representam problemas reais",
                 "Sofro pressão constante para otimizar parâmetros críticos mais rápido",
               ]} />
-            </Section>
+      <p>
+      Com essa dor mapeada, definimos com o time de Ciência de Dados que a IA Generativa seria a tecnologia ideal para <strong>traduzir os desvios de parâmetros diretamente em causas raiz e instruções de resolução.</strong>
+              </p>
+              <p>A estratégia foi utilizar a arquitetura <strong>RAG (Retrieval-Augmented Generation)</strong> para alimentar o modelo com os <strong>manuais técnicos dos próprios clientes</strong>, garantindo precisão e segurança, sem as "alucinações" de modelos genéricos.</p>
 
-            <Section id="oportunidade" title="Oportunidade">
-              <p>
-                Em alinhamento com o time de Ciência de Dados, validamos que a{' '}
-                <strong>Inteligência Artificial Generativa</strong> era a ferramenta ideal para transformar dados
-                brutos em <strong>diagnósticos acionáveis</strong>. A equipe técnica definiu a utilização da{' '}
-                <strong>arquitetura RAG</strong> (<em>Retrieval-Augmented Generation</em>), alimentando o modelo
-                diretamente com os manuais técnicos exclusivos de cada cliente.
+      <p>
+      A partir desse cenário, definimos o desafio central e o objetivo da nossa <em>Design Sprint</em>:
               </p>
-              <p>
-                Para traduzir essa capacidade técnica em uma experiência para os nossos usuários, realizamos o{' '}
-                <strong>Problem Framing</strong> e o levantamento de hipóteses na Design Sprint. Com isso, definimos:
-              </p>
+              
               <GoalResultCard
-                goal={<>Eliminar a investigação manual de falhas através de diagnósticos contextualizados</>}
-                result={<>Redução no MTTR (<em>Mean Time to Resolution</em>) e <br />na carga cognitiva dos usuários</>}
+                goal={<>Reduzir o esforço de investigação técnica, mantendo o engenheiro focado no fluxo de análise?</>}
+                result={<>Implementar uma camada de inteligência que reduza o MTTR e a carga cognitiva dos usuários.</>}
               />
+
             </Section>
 
             <Section id="solucao" title="Solução">
+  <p>
+  A análise de desvio de parâmetros era apenas a primeira oportunidade para a IA gerar valor no NetChart. Para garantir a <strong>consistência, escalabilidade e não poluir a interface,</strong> tomamos a decisão estratégica de centralizar a experiência em uma <strong>interface lateral dividida</strong>, em vez de espalhar insights soltos pelas tabelas de dados.
+  </p>
 
-              <p>
-              A análise de desvio de parâmetros era apenas uma das primeiras possibilidades para a IA gerar valor no ecossistema do NetChart.
-              Diante da complexidade técnica, tomamos a decisão estratégica de <strong>não fragmentar a experiência</strong>. A solução foi desenhada
-              em torno de um ponto de contato unificado.
-              </p>
-              <Placeholder label="[ Imagem — User flow ]" />
+  <Placeholder label="[ Imagem — User flow ]" />
 
-<div className="flex flex-col gap-8 mt-2">
-  <div className="flex flex-col gap-2">
-    <h3 className="text-[clamp(1.125rem,2vw,1.5rem)] font-bold leading-[1.4] text-balance text-foreground">
-      Chat Global de IA
-    </h3>
-    <p>
-      Uma interface conversacional centralizada e acessível de qualquer ponto da plataforma. Funciona como um "parceiro sênior", pronto para responder dúvidas sobre toda a infraestrutura do projeto do cliente e sobre o próprio produto NetChart.
-    </p>
-    <Placeholder label="[ Imagem — Gif mostrando o Chat Global sendo ativado ]" />
-  </div>
+  <div className="flex flex-col gap-8 mt-2">
 
   <div className="flex flex-col gap-2">
-    <h3 className="text-[clamp(1.125rem,2vw,1.5rem)] font-bold leading-[1.4] text-balance text-foreground">
-      Gatilhos de Análise Contextual
-    </h3>
-    <p>
-      Em vez de construir múltiplas interfaces de IA, adicionamos <strong>gatilhos inteligentes</strong> nas ferramentas do sistema. Na funcionalidade de comparação de desvio de parâmetros, o usuário aciona a IA com um clique — o Chat Global se abre carregando o contexto daquela tela e analisa o impacto técnico respondendo "por que isso importa" e como resolver.
-    </p>
+      <h3 className="text-[clamp(1.125rem,2vw,1.5rem)] font-bold leading-[1.4] text-balance text-foreground">
+        Diagnóstico "Zero-Prompt”
+      </h3>
+      <p>
+      É o caminho de maior valor e o diferencial da solução. Ao ativar o gatilho na funcionalidade de comparação de parâmetros, o sistema utiliza a <strong>mesma interface lateral</strong> para realizar uma <em>auto-context injection</em>: ele envia automaticamente em <em>background</em> o contexto dos parâmetros, configurações e logs para a IA. O resultado é uma resposta com <em>insights</em> e referências diretas à fonte, sem que o usuário precise redigir uma linha sequer.
+      </p>
+      <Placeholder label="[ Imagem — interface do Chat Global ]" />
+    </div>
+
+    <div className="flex flex-col gap-2">
+      <h3 className="text-[clamp(1.125rem,2vw,1.5rem)] font-bold leading-[1.4] text-balance text-foreground">
+        Chat Global
+      </h3>
+      <p>
+      Fluxo em que a <strong>mesma interface de chat</strong> é acionada manualmente a qualquer momento. Funciona como um suporte técnico sob demanda, onde o engenheiro pode enviar prompts sobre equipamentos ou dúvidas gerais de documentação, recebendo respostas fundamentadas na <strong>base de dados (RAG).</strong>
+      </p>
+      <Placeholder label="[ Imagem — User flow ]" />
+    </div>
+    
   </div>
-</div>
 
-<Placeholder label="[ Imagem — interface do Chat Global ]" />
-            </Section>
+  
+</Section>
 
-            <Section id="decisoes" title="Decisões de design">
-              <BulletList items={[
-                <><strong>Evolução da Interface (Otimização do Workspace):</strong> Para garantir que a adição do
-                  chat não resultasse em perda de espaço útil, transformamos um painel fixo que exibia a{' '}
-                  <em>treeview</em> da rede em uma <em>sidebar</em> colapsável.</>,
-                <><strong>Explicabilidade com Referências:</strong> Cada insight gerado pela IA é acompanhado de
-                  referências técnicas aos manuais de origem, permitindo que o analista recupere a confiança técnica.</>,
-                <><strong>Controle Total:</strong> O usuário pode interromper o processamento da IA ou editar o
-                  último <em>prompt</em> enviado para refinar a análise.</>,
-                <><strong>Loop de Feedback (RLHF):</strong> Implementamos interações de thumbs up/down com tags
-                  de erro. Esse modelo garante que o feedback qualitativo seja transformado em dados estruturados,
-                  treinando e refinando o modelo continuamente.</>,
-              ]} />
-              <Placeholder label="[ Imagem — Antes e Depois do workspace ]" />
-              <Placeholder label="[ Imagem — detalhes de Trust & Safety ]" />
-            </Section>
+<Section id="decisoes" title="Decisões de design">
+  <div className="flex flex-col gap-4">
+    <p>
+      Para garantir que essa nova experiência fosse adotada com segurança em um ambiente crítico de configuração de redes de Telecom, fundamentamos nossas decisões de Design no <strong>People + AI Guidebook (PAIR)</strong> do Google. As diretrizes desse guia nos ajudaram a traduzir um sistema complexo em uma interface focada em autonomia, transparência e na redução de esforço operacional. As principais frentes de atuação foram:
+    </p>
+    
+    <div className="flex items-center gap-2 mb-6">
+      <SocialLink 
+        href="https://pair.withgoogle.com/guidebook/" 
+        platform="github" 
+        label="People + AI Guidebook"
+      />
+    </div>
+  </div>
+
+  <div className="flex flex-col gap-12">
+    {/* Tópico 1 */}
+    <div className="flex flex-col gap-4">
+      <h3 className="text-[clamp(1.125rem,2vw,1.5rem)] font-bold leading-[1.4] text-balance text-foreground">
+        Evolução da interface
+      </h3>
+      <p>
+      O guia do Google orienta a criar experiências que se integrem <strong>nativamente ao fluxo de trabalho</strong> do usuário, respeitando sua autonomia.
+      </p>
+      <p> Para que o chat não tomasse o espaço útil da plataforma, transformamos um painel fixo em uma <strong>sidebar colapsável que abre à direita</strong>, permitindo uma visualização dividida entre os dados da rede e o suporte da IA:</p>
+      <Placeholder label="[ Imagem — Antes: NetChart com o painel fixo]" />
+      <Placeholder label="[ Imagem — Depois: Sidebar colapsável e o chat abrindo]" />
+      <p>Além disso, desenhamos a opção de <strong>expandir o chat</strong>.Isso permite que o engenheiro utilize a interface da IA em uma janela independente ou em uma segunda tela, alinhando-se a um setup de trabalho multi-monitores, comum em cenários de troubleshooting:
+      </p>
+      <Placeholder label="[ Imagem — Chat expandindo]" />
+    </div>
+
+    {/* Tópico 2 */}
+    <div className="flex flex-col gap-4">
+      <h3 className="text-[clamp(1.125rem,2vw,1.5rem)] font-bold leading-[1.4] text-balance text-foreground">
+        Design de confiança
+      </h3>
+      <p>
+        Em sistemas críticos, a IA não pode ser uma "caixa-preta". O design foi focado em gerar confiança calibrada (<em>calibrated trust</em>), permitindo validação constante.
+        </p>
+        <p>Como a solução utiliza a arquitetura RAG para buscar respostas nos manuais da empresa, o design reflete essa confiabilidade elaborando explicações úteis. Cada insight gerado exibe links e referências diretas aos documentos originais de onde aquela informação foi retirada, permitindo que o engenheiro valide a informação na fonte e não confie cegamente na máquina:
+      </p>
+      <Placeholder label="[ Imagem — Detalhes de Trust & Safety e Explicabilidade ]" />
+    </div>
+
+   {/* Tópico 3 */}
+<div className="flex flex-col gap-4">
+  <h3 className="text-[clamp(1.125rem,2vw,1.5rem)] font-bold leading-[1.4] text-balance text-foreground">
+    Controle e aprendizado
+  </h3>
+  <p>
+    Interações humano-IA são vias de mão dupla. Aplicamos isso de duas formas:
+  </p>
+      <p>
+        <strong>Controle total:</strong> O usuário sempre tem o poder de ditar o ritmo da IA. Ele pode interromper o processamento a qualquer momento ou editar o último prompt enviado para refinar a análise.
+      </p>
+      <Placeholder label="[ Imagem — Exemplo de Controle: Interrupção e Edição de Prompt ]" />
+      <p>
+        <strong>Loop de feedback (RLHF):</strong> Na interseção entre Design e Ciência de Dados, implementamos interações de thumbs up/down com tags de erro. Esse modelo garante que o feedback qualitativo do usuário treine e adapte o modelo de linguagem continuamente ao contexto real de uso:
+      </p>
+      <Placeholder label="[ Imagem — Exemplo de RLHF: Interface de Feedback e Tags de Erro ]" />
+    </div>
+
+    {/* Tópico 4 */}
+    <div className="flex flex-col gap-4">
+      <h3 className="text-[clamp(1.125rem,2vw,1.5rem)] font-bold leading-[1.4] text-balance text-foreground">
+        Redução do custo de interação
+      </h3>
+      <p>Decidimos equilibrar estrategicamente o que a máquina automatiza e o que o humano controla.</p>
+      <p>Como já apresentado, ao acionar a IA na funcionalidade de comparação de parâmetros, o sistema puxa automaticamente "no background" todas as configurações que o usuário já havia selecionado, sem que ele precise digitar uma linha sequer. Isso evita perda de tempo com tecnicalidades:</p>
+      <Placeholder label="[ Imagem — Fluxo Contextual e Histórico de IA ]" />
+      <p>Esse contexto, de um chat ativado a partir de um gatilho, não pode ser alterado. O objetivo é que cada chat tenha um contexto único e blindado: se o usuário precisar revisitar uma análise no futuro para entender por que tomou determinada ação naquele dia, todos os parâmetros capturados pelo gatilho e o racional da IA estarão perfeitamente preservados, garantindo a rastreabilidade.</p>
+    </div>
+  </div>
+</Section>
               
-            <Section id="impacto" title="Impacto projetado">
-              <p>
-                O projeto visou transformar o analista júnior em um operador com suporte de nível sênior através
-                da base de conhecimento da IA.
-              </p>
-              <BulletList items={[
-                <><strong>Resultados Projetados:</strong> Redução de <strong>70% no tempo de troubleshoot</strong>{' '}
-                  ao eliminar a busca manual em documentações, e estimativa de{' '}
-                  <strong>30% de aumento em adoção proativa</strong> (problemas prevenidos antes de virarem crises).</>,
-                <><strong>KPIs de Sucesso:</strong> <em>Taxa de engajamento com o chat (DAU/MAU), volume de
-                  feedbacks via RLHF e redução percentual do MTTR medida via analytics da plataforma.</em></>,
-                <><strong>Roadmap:</strong> Persistência de contexto da IA por 5 minutos após o fechamento do chat
-                  e possibilidade de executar comandos diretos (ex: "Reiniciar Serviço") via interface.</>,
-              ]} />
+<Section id="impacto" title="Impacto projetado">
+  <p>
+    A solução foi desenhada para mitigar a extrema sobrecarga cognitiva dos engenheiros, entregando contexto técnico imediato e transformando a operação de rede de um processo puramente reativo para proativo.
+  </p>
+  
+  <BulletList items={[
+    <><strong>Resultados Projetados:</strong> Através dos testes de usabilidade validados com os usuários, estimamos uma redução de 70% no tempo de troubleshoot (ao eliminar a busca manual em documentações) e um aumento de 30% na adoção proativa (solucionando anomalias antes que virem crises na rede).</>,
+  ]} />
+
+  <p>
+    <strong>KPIs de Sucesso:</strong> Para garantir que a solução escale orientada a dados pós-lançamento, definimos três métricas principais de acompanhamento:
+  </p>
+
+  <BulletList items={[
+    <><strong>DAU/MAU (Daily Active Users / Monthly Active Users):</strong> Mede a taxa de adoção e o engajamento com o chat. Essa proporção nos mostra se a IA se tornou uma ferramenta essencial de uso diário na rotina dos engenheiros ou se é acessada apenas ocasionalmente.</>,
+    <><strong>Volume de Aprendizado via RLHF (Reinforcement Learning from Human Feedback):</strong> Acompanha a quantidade de avaliações feitas pelos usuários no chat (através de thumbs up/down e tags de erro). Essa métrica valida se o ciclo de co-aprendizado está funcionando e garantindo o refinamento contínuo do modelo de linguagem.</>,
+    <><strong>Redução do MTTR (Mean Time to Resolution):</strong> Significa o "Tempo Médio de Resolução" de uma falha na rede. Monitorada através do analytics da plataforma, é a nossa principal métrica de negócio para provar que a ferramenta reduziu o erro humano e acelerou o tempo de resposta.</>,
+  ]} />
+</Section>
+
+            <Section id="roadmap" title="Próximos passos">
+              <p>1. **Gestão de Base de Dados:** Permitir que os próprios usuários façam o *upload* e a gestão autônoma de seus manuais técnicos.
+2. **Evolução Baseada em Feedback:** Priorizar e implementar melhorias contínuas na interface e nas respostas da IA a partir das avaliações e necessidades reais relatadas pelos usuários.
+3. **Expansão do Ecossistema:** Integrar os gatilhos contextuais a outras *features* críticas da plataforma, usando o modelo de RLHF para melhorar a latência e a precisão contínua.</p>
             </Section>
 
           </div>
         </div>
+
+
       </FadeInView>
 
       <FadeInView delay={0.15}>

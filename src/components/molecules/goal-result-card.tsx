@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { TargetIcon, TrendUpIcon } from '@phosphor-icons/react';
+import { QuestionMarkIcon, TargetIcon, } from '@phosphor-icons/react';
 
 interface GoalResultCardProps {
   goal: React.ReactNode;
@@ -10,12 +10,12 @@ interface GoalResultCardProps {
 export default function GoalResultCard({ goal, result, delay = 0 }: GoalResultCardProps) {
   const items = [
     {
-      icon: TargetIcon,
-      label: 'Objetivo',
+      icon: QuestionMarkIcon,
+      label: 'Como poderíamos',
       text: goal,
     },
     {
-      icon: TrendUpIcon,
+      icon: TargetIcon,
       label: 'Resultado esperado',
       text: result,
     },
