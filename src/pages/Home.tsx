@@ -50,7 +50,7 @@ export default function Home() {
       reversed: false,
       tags: ['IA', 'B2B SaaS', 'Telecom'],
       productLogo: '/logos/netchart-logo.svg',
-      productName: 'Netchart',
+      productName: 'NetChart',
     },
   ];
 
