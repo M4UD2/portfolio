@@ -246,6 +246,12 @@ export default function IATroubleshooting() {
               ]} />
             </Section>
 
+            <Section id="roadmap" title="Próximos passos">
+              <p>
+                Com a experiência base consolidada, os próximos passos serão focados em transformar o suporte da IA em um ecossistema escalável e autônomo. O roadmap de evolução está estruturado em três pilares:
+              </p>
+            </Section>
+
           </div>
         </div>
       </FadeInView>

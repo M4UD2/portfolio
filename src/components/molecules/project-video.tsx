@@ -42,16 +42,17 @@ export default function ProjectVideo({ src, caption, poster }: ProjectVideoProps
   };
 
   const toggleFullscreen = () => {
-    // Se não estiver em tela cheia, entra em tela cheia na DIV container
-    if (!document.fullscreenElement) {
+    if (!document.fullscreenElement && !(document as any).webkitFullscreenElement) {
       if (containerRef.current?.requestFullscreen) {
         containerRef.current.requestFullscreen();
       } else if ((containerRef.current as any)?.webkitRequestFullscreen) {
-        /* Safari */
+        /* Safari desktop/android */
         (containerRef.current as any).webkitRequestFullscreen();
+      } else if ((videoRef.current as any)?.webkitEnterFullscreen) {
+        /* Fallback para iOS Safari (só permite fullscreen na tag video) */
+        (videoRef.current as any).webkitEnterFullscreen();
       }
     } else {
-      // Se já estiver, sai da tela cheia
       if (document.exitFullscreen) {
         document.exitFullscreen();
       } else if ((document as any).webkitExitFullscreen) {
@@ -62,12 +63,10 @@ export default function ProjectVideo({ src, caption, poster }: ProjectVideoProps
 
   return (
     <div className="flex flex-col gap-3 group">
-      {/* Container que vai para o Fullscreen junto com os controles */}
       <div 
         ref={containerRef} 
         className="relative flex flex-col items-center justify-center overflow-hidden rounded-sm bg-muted/30 border border-border"
       >
-        {/* Vídeo */}
         <video
           ref={videoRef}
           src={src}
@@ -81,10 +80,8 @@ export default function ProjectVideo({ src, caption, poster }: ProjectVideoProps
           className="w-full max-h-[100vh] object-contain cursor-pointer"
         />
         
-        {/* Barra de Controles Customizada */}
         <div className="absolute bottom-4 left-4 right-4 flex items-center gap-4 p-2 px-4 bg-background/80 text-foreground rounded-sm opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-sm border border-border z-10">
           
-          {/* Play / Pause */}
           <button 
             onClick={togglePlay} 
             className="flex-shrink-0 hover:text-muted-foreground transition-colors"
@@ -93,7 +90,6 @@ export default function ProjectVideo({ src, caption, poster }: ProjectVideoProps
             {isPlaying ? <Pause size={20} weight="fill" /> : <Play size={20} weight="fill" />}
           </button>
 
-          {/* Barra de Progresso */}
           <div 
             className="flex-grow h-1.5 bg-border rounded-full cursor-pointer overflow-hidden relative"
             onClick={handleSeek}
@@ -104,7 +100,6 @@ export default function ProjectVideo({ src, caption, poster }: ProjectVideoProps
             />
           </div>
 
-          {/* Fullscreen */}
           <button 
             onClick={toggleFullscreen} 
             className="flex-shrink-0 hover:text-muted-foreground transition-colors"
