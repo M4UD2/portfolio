@@ -11,7 +11,6 @@ export default function TechBadge({ tech, index = 0 }: TechBadgeProps) {
       className="
         px-5 py-2.5 border border-border rounded-sm
         text-[1rem] leading-[1.7]
-        hover:border-foreground transition-colors duration-500
         focus-ring
       "
       initial={{ opacity: 0, y: 20 }}

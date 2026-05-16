@@ -9,7 +9,7 @@ interface MetricCardProps {
 export default function MetricCard({ value, label, index = 0 }: MetricCardProps) {
   return (
     <motion.div
-      className="flex flex-col gap-4 p-8 border border-border rounded-sm hover:border-foreground transition-colors duration-500"
+      className="flex flex-col gap-4 p-8 border border-border rounded-sm"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}

@@ -140,7 +140,7 @@ export default function About() {
         <section className="mb-4">
           <FadeInView delay={0.2}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-4 max-w-[800px] mx-auto">
-              <div className="flex items-center gap-4 p-6 rounded-sm border border-border/30 hover:border-border hover:bg-muted/50 transition-all duration-300 min-h-[44px]">
+              <div className="flex items-center gap-4 p-6 rounded-sm border border-border/30 min-h-[44px]">
                 <div className="p-3 bg-background/90 backdrop-blur-sm rounded-sm text-foreground shadow-sm border border-border/30">
                   <BriefcaseIcon size={24} weight="bold" />
                 </div>
@@ -150,7 +150,7 @@ export default function About() {
                 </div>
               </div>
 
-              <div className="flex items-center gap-4 p-6 rounded-sm border border-border/30 hover:border-border hover:bg-muted/50 transition-all duration-300 min-h-[44px]">
+              <div className="flex items-center gap-4 p-6 rounded-sm border border-border/30 min-h-[44px]">
                 <div className="p-3 bg-background/90 backdrop-blur-sm rounded-sm text-foreground shadow-sm border border-border/30">
                   <GraduationCapIcon size={24} weight="bold" />
                 </div>
@@ -180,7 +180,7 @@ export default function About() {
                 {hobbies.map((hobby) => (
                   <div
                     key={hobby.id}
-                    className="group relative flex flex-col items-center justify-center p-6 rounded-sm border border-border/30 transition-all duration-300 md:hover:scale-105 cursor-default h-[180px] overflow-hidden hover:border-border hover:bg-muted/50"
+                    className="relative flex flex-col items-center justify-center p-6 rounded-sm border border-border/30 h-[180px] overflow-hidden"
                   >
                     {/* Base Content */}
                     <div className="relative z-10 flex flex-col items-center gap-3 w-full">

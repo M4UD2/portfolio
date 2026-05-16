@@ -7,6 +7,8 @@ import FadeInView from '../../../components/atoms/fade-in-view';
 import QuoteGrid from '../../../components/molecules/quote-grid';
 import GoalResultCard from '../../../components/molecules/goal-result-card';
 import SocialLink from '../../../components/atoms/social-link';
+import ProjectRoadmap from '../../../components/organisms/project-roadmap';
+import ProjectVideo from '../../../components/molecules/project-video';
 
 const sections = [
   { id: 'cenario', label: 'Cenário' },
@@ -24,14 +26,6 @@ function Section({ id, title, children }: { id: string; title: string; children:
       <div className="flex flex-col gap-4 text-[1rem] leading-[1.7] text-muted-foreground">
         {children}
       </div>
-    </div>
-  );
-}
-
-function Placeholder({ label }: { label: string }) {
-  return (
-    <div className="w-full h-[400px] rounded-sm bg-muted flex items-center justify-center text-muted-foreground text-[0.875rem]">
-      {label}
     </div>
   );
 }
@@ -124,7 +118,7 @@ export default function IATroubleshooting() {
                 A análise de desvio de parâmetros era apenas a primeira oportunidade para a IA gerar valor no NetChart. Para garantir a <strong>consistência, escalabilidade e não poluir a interface</strong>, tomamos a decisão estratégica de centralizar a experiência em uma <strong>interface lateral dividida</strong>, em vez de espalhar insights soltos pelas tabelas de dados.
               </p>
 
-              <Placeholder label="[ Imagem — User flow ]" />
+              <ProjectVideo src="https://www.w3schools.com/html/mov_bbb.mp4" caption="User flow" />
 
               <div className="flex flex-col gap-8 mt-2">
 
@@ -135,7 +129,7 @@ export default function IATroubleshooting() {
                   <p>
                     É o caminho de maior valor e o diferencial da solução. Ao ativar o gatilho na funcionalidade de comparação de parâmetros, o sistema utiliza a <strong>mesma interface lateral</strong> para realizar uma <em>auto-context injection</em>: ele envia automaticamente em <em>background</em> o contexto dos parâmetros, configurações e logs para a IA. O resultado é uma resposta com <em>insights</em> e referências diretas à fonte, sem que o usuário precise redigir uma linha sequer.
                   </p>
-                  <Placeholder label="[ Imagem — interface do Chat Global ]" />
+                  <ProjectVideo src="https://www.w3schools.com/html/mov_bbb.mp4" caption="Interface do Chat Global" />
                 </div>
 
                 <div className="flex flex-col gap-2">
@@ -145,7 +139,7 @@ export default function IATroubleshooting() {
                   <p>
                     Fluxo em que a <strong>mesma interface de chat</strong> é acionada manualmente a qualquer momento. Funciona como um suporte técnico sob demanda, onde o engenheiro pode enviar prompts sobre equipamentos ou dúvidas gerais de documentação, recebendo respostas fundamentadas na <strong>base de dados (RAG)</strong>.
                   </p>
-                  <Placeholder label="[ Imagem — User flow ]" />
+                  <ProjectVideo src="https://www.w3schools.com/html/mov_bbb.mp4" caption="User flow" />
                 </div>
                 
               </div>
@@ -179,12 +173,12 @@ export default function IATroubleshooting() {
                   <p>
                     Para que o chat não tomasse o espaço útil da plataforma, transformamos um painel fixo em uma <strong>sidebar colapsável que abre à direita</strong>, permitindo uma visualização dividida entre os dados da rede e o suporte da IA:
                   </p>
-                  <Placeholder label="[ Imagem — Antes: NetChart com o painel fixo]" />
-                  <Placeholder label="[ Imagem — Depois: Sidebar colapsável e o chat abrindo]" />
+                  <ProjectVideo src="https://www.w3schools.com/html/mov_bbb.mp4" caption="Antes: NetChart com o painel fixo" />
+                  <ProjectVideo src="https://www.w3schools.com/html/mov_bbb.mp4" caption="Depois: Sidebar colapsável e o chat abrindo" />
                   <p>
                     Além disso, desenhamos a opção de <strong>expandir o chat</strong>. Isso permite que o engenheiro utilize a interface da IA em uma janela independente ou em uma segunda tela, alinhando-se a um setup de trabalho multi-monitores, comum em cenários de <em>troubleshooting</em>:
                   </p>
-                  <Placeholder label="[ Imagem — Chat expandindo]" />
+                  <ProjectVideo src="https://www.w3schools.com/html/mov_bbb.mp4" caption="Chat expandindo" />
                 </div>
 
                 {/* Tópico 2 */}
@@ -198,7 +192,7 @@ export default function IATroubleshooting() {
                   <p>
                     Como a solução utiliza a arquitetura <strong>RAG</strong> para buscar respostas nos manuais da empresa, o design reflete essa confiabilidade elaborando explicações úteis. Cada insight gerado exibe links e referências diretas aos documentos originais de onde aquela informação foi retirada, permitindo que o engenheiro valide a informação na fonte e não confie cegamente na máquina:
                   </p>
-                  <Placeholder label="[ Imagem — Detalhes de Trust & Safety e Explicabilidade ]" />
+                  <ProjectVideo src="https://www.w3schools.com/html/mov_bbb.mp4" caption="Detalhes de Trust & Safety e Explicabilidade" />
                 </div>
 
                 {/* Tópico 3 */}
@@ -212,11 +206,11 @@ export default function IATroubleshooting() {
                   <p>
                     <strong>Controle total:</strong> O usuário sempre tem o poder de ditar o ritmo da IA. Ele pode interromper o processamento a qualquer momento ou editar o último prompt enviado para refinar a análise.
                   </p>
-                  <Placeholder label="[ Imagem — Exemplo de Controle: Interrupção e Edição de Prompt ]" />
+                  <ProjectVideo src="https://www.w3schools.com/html/mov_bbb.mp4" caption="Exemplo de Controle: Interrupção e Edição de Prompt" />
                   <p>
                     <strong>Loop de feedback (RLHF):</strong> Na interseção entre Design e Ciência de Dados, implementamos interações de <em>thumbs up/down</em> com tags de erro. Esse modelo garante que o feedback qualitativo do usuário treine e adapte o modelo de linguagem continuamente ao contexto real de uso:
                   </p>
-                  <Placeholder label="[ Imagem — Exemplo de RLHF: Interface de Feedback e Tags de Erro ]" />
+                  <ProjectVideo src="https://www.w3schools.com/html/mov_bbb.mp4" caption="Exemplo de RLHF: Interface de Feedback e Tags de Erro" />
                 </div>
 
                 {/* Tópico 4 */}
@@ -226,7 +220,7 @@ export default function IATroubleshooting() {
                   </h3>
                   <p>Decidimos equilibrar estrategicamente o que a máquina automatiza e o que o humano controla.</p>
                   <p>Como já apresentado, ao acionar a IA na funcionalidade de comparação de parâmetros, o sistema puxa automaticamente "no background" todas as configurações que o usuário já havia selecionado, sem que ele precise digitar uma linha sequer. Isso evita perda de tempo com tecnicalidades:</p>
-                  <Placeholder label="[ Imagem — Fluxo Contextual e Histórico de IA ]" />
+                  <ProjectVideo src="https://www.w3schools.com/html/mov_bbb.mp4" caption="Fluxo Contextual e Histórico de IA" />
                   <p>Esse contexto, de um chat ativado a partir de um gatilho, não pode ser alterado. O objetivo é que cada chat tenha um contexto único e blindado: se o usuário precisar revisitar uma análise no futuro para entender por que tomou determinada ação naquele dia, todos os parâmetros capturados pelo gatilho e o racional da IA estarão perfeitamente preservados, garantindo a rastreabilidade.</p>
                 </div>
               </div>
@@ -252,21 +246,36 @@ export default function IATroubleshooting() {
               ]} />
             </Section>
 
-            <Section id="roadmap" title="Próximos passos">
-              <p>1. <strong>Gestão de Base de Dados:</strong> Permitir que os próprios usuários façam o <em>upload</em> e a gestão autônoma de seus manuais técnicos.<br />
-              2. <strong>Evolução Baseada em Feedback:</strong> Priorizar e implementar melhorias contínuas na interface e nas respostas da IA a partir das avaliações e necessidades reais relatadas pelos usuários.<br />
-              3. <strong>Expansão do Ecossistema:</strong> Integrar os gatilhos contextuais a outras <em>features</em> críticas da plataforma, usando o modelo de <strong>RLHF</strong> para melhorar a latência e a precisão contínua.</p>
-            </Section>
-
           </div>
         </div>
-
       </FadeInView>
 
-      <FadeInView delay={0.15}>
-        <ProjectNavigation
-          nextProject={{ title: "Próximo projeto", url: "/" }}
+      <ProjectRoadmap 
+          items={[
+            {
+              title: "Gestão de Base de Dados",
+              description: "Permitir que os próprios usuários façam o upload e a gestão autônoma de seus manuais técnicos.",
+              status: "planned"
+            },
+            {
+              title: "Evolução Baseada em Feedback",
+              description: "Priorizar e implementar melhorias contínuas na interface e nas respostas da IA a partir das avaliações e necessidades reais relatadas pelos usuários.",
+              status: "planned"
+            },
+            {
+              title: "Expansão do Ecossistema",
+              description: "Integrar os gatilhos contextuais a outras features críticas da plataforma, usando o modelo de RLHF para melhorar a latência e a precisão contínua.",
+              status: "planned"
+            }
+          ]} 
         />
+
+      <FadeInView delay={0.15}>
+        <div className="md:[&_a:only-child]:col-start-2">
+          <ProjectNavigation
+            nextProject={{ title: "Próximo projeto", url: "/" }}
+          />
+        </div>
       </FadeInView>
     </ProjectLayout>
   );
