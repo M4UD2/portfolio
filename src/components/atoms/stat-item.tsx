@@ -10,7 +10,7 @@ export default function StatItem({ icon: Icon, value, label }: StatItemProps) {
   }
 
   return (
-    <div className="flex flex-col items-center gap-2 text-center">
+    <div role="figure" aria-label={`${value}: ${label}`} className="flex flex-col items-center gap-2 text-center">
       <span className="text-foreground" aria-hidden="true">
         {(() => {
           try {

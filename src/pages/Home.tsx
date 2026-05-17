@@ -45,7 +45,7 @@ export default function Home() {
       title: 'Integração de IA Generativa para troubleshooting de redes',
       description: 'Como colaborei em uma interface conversacional para extrair insights de volumes massivos de dados, reduzindo o tempo de resolução de troubleshooting em 70%',
       link: '/projects/netchart/ia-troubleshooting',
-      imageUrl: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+      imageUrl: '/ia-troubleshooting/thumbnail.png',
       imageAlt: 'IA Generativa para Troubleshooting de Redes',
       reversed: false,
       tags: ['IA', 'B2B SaaS', 'Telecom'],
@@ -57,7 +57,7 @@ export default function Home() {
   return (
     <main className="max-w-[1040px] mx-auto px-6 md:px-10 w-full">
       {/* Seção Hero */}
-      <section className="min-h-[85vh] w-full flex flex-col justify-center items-center text-center gap-10 md:gap-12 py-12 md:py-20">
+      <section className="min-h-[85vh] w-full flex flex-col justify-center items-center text-center gap-10 md:gap-12 py-12 md:py-20" aria-label="Apresentação">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -101,7 +101,7 @@ export default function Home() {
       <div className="w-full border-t border-border mb-12 md:mb-20" />
 
       {/* Seção de Projetos */}
-      <section ref={projectsSectionRef} id="projetos" className="flex flex-col gap-16 md:gap-20 pb-20 w-full">
+      <section ref={projectsSectionRef} id="projetos" aria-labelledby="projetos-title" className="flex flex-col gap-16 md:gap-20 pb-20 w-full">
         <FadeInView>
           <h2
             id="projetos-title"

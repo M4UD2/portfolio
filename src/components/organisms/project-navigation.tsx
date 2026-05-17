@@ -36,7 +36,7 @@ export default function ProjectNavigation({ previousProject, nextProject }: Proj
   const iconClassName = "text-muted-foreground group-hover:text-foreground transition-colors duration-500";
 
   return (
-    <section className="border-t border-border py-16">
+    <section className="border-t border-border py-16" aria-label="Navegação entre projetos">
       <div className="max-w-[1040px] mx-auto px-6 md:px-10">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
           {/* Previous Project */}

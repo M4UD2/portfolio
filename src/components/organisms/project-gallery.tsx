@@ -13,19 +13,22 @@ export default function ProjectGallery({ images, delay = 0 }: ProjectGalleryProp
   return (
     <motion.div
       id="galeria"
+      role="region"
+      aria-label="Galeria do projeto"
       className="flex flex-col gap-8 scroll-mt-32 md:scroll-mt-24"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay, ease: "easeOut" }}
     >
       <h3>Processo & Resultados Visuais</h3>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div role="list" className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {images.map((image, index) => {
           const safeImageSrc = image && typeof image === 'string' ? image : '/placeholder.jpg';
           
           return (
             <motion.div
               key={`gallery-${index}-${image}`}
+              role="listitem"
               className="w-full h-[300px] rounded-sm overflow-hidden"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

@@ -5,23 +5,25 @@ import Tooltip from './tooltip-simple';
 
 export default function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);
+  const [videoExpanded, setVideoExpanded] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsVisible(window.scrollY > 400);
-    };
+    const handleScroll = () => setIsVisible(window.scrollY > 400);
+    const handleVideoExpand = (e: Event) => setVideoExpanded((e as CustomEvent<boolean>).detail);
 
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('video-expanded', handleVideoExpand);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('video-expanded', handleVideoExpand);
+    };
   }, []);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   return (
     <AnimatePresence>
-      {isVisible && (
+      {isVisible && !videoExpanded && (
         <motion.div
           className="fixed bottom-8 right-8 z-50"
           initial={{ opacity: 0, scale: 0.8 }}

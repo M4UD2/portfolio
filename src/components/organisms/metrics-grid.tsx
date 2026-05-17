@@ -17,6 +17,8 @@ export default function MetricsGrid({ metrics, results, delay = 0 }: MetricsGrid
   return (
     <motion.div
       id="resultados"
+      role="region"
+      aria-label="Resultados do projeto"
       className="flex flex-col gap-8 scroll-mt-32 md:scroll-mt-24"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -40,10 +42,11 @@ export default function MetricsGrid({ metrics, results, delay = 0 }: MetricsGrid
 
       {/* Results List (fallback if no metrics) */}
       {(!metrics || metrics.length === 0) && results && results.length > 0 && (
-        <ul className="flex flex-col gap-4">
+        <ul role="list" className="flex flex-col gap-4">
           {results.map((result, index) => (
             <motion.li
               key={`result-${index}-${result.slice(0, 20)}`}
+              role="listitem"
               className="flex items-start gap-3 text-muted-foreground"
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}

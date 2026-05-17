@@ -1,4 +1,6 @@
 import { motion } from 'framer-motion';
+import Zoom from 'react-medium-image-zoom';
+import 'react-medium-image-zoom/dist/styles.css';
 
 interface ProjectImageProps {
   src: string;
@@ -15,15 +17,17 @@ export default function ProjectImage({ src, alt, delay = 0 }: ProjectImageProps)
       transition={{ duration: 0.6, delay, ease: "easeOut" }}
       data-project-image
     >
-      <div className="w-full h-[300px] md:h-[500px] rounded-sm overflow-hidden">
-        <img
-          src={src || '/placeholder.jpg'}
-          alt={alt}
-          className="w-full h-full object-cover"
-          onError={(e) => {
-            e.currentTarget.src = '/placeholder.jpg';
-          }}
-        />
+      <div className="rounded-sm overflow-hidden border border-border w-fit mx-auto [&_[data-rmiz-wrap]]:w-full [&_[data-rmiz-wrap]]:h-full">
+        <Zoom>
+          <img
+            src={src || '/placeholder.jpg'}
+            alt={alt}
+            className="block max-w-full h-auto object-contain"
+            onError={(e) => {
+              e.currentTarget.src = '/placeholder.jpg';
+            }}
+          />
+        </Zoom>
       </div>
     </motion.section>
   );

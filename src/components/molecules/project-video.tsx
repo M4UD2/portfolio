@@ -1,5 +1,5 @@
-import { useRef, useState } from 'react';
-import { CornersOut, Play, Pause } from '@phosphor-icons/react';
+import { useRef, useState, useEffect } from 'react';
+import { CornersOut, Play, Pause, CornersIn } from '@phosphor-icons/react';
 
 interface ProjectVideoProps {
   src: string;
@@ -7,11 +7,20 @@ interface ProjectVideoProps {
   poster?: string;
 }
 
+const formatTime = (timeInSeconds: number) => {
+  if (isNaN(timeInSeconds)) return "00:00";
+  const m = Math.floor(timeInSeconds / 60).toString().padStart(2, '0');
+  const s = Math.floor(timeInSeconds % 60).toString().padStart(2, '0');
+  return `${m}:${s}`;
+};
+
 export default function ProjectVideo({ src, caption, poster }: ProjectVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
   const [isPlaying, setIsPlaying] = useState(true);
   const [progress, setProgress] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [isFullscreen, setIsFullscreen] = useState(false);
 
   const togglePlay = () => {
     if (videoRef.current) {
@@ -27,8 +36,16 @@ export default function ProjectVideo({ src, caption, poster }: ProjectVideoProps
 
   const handleTimeUpdate = () => {
     if (videoRef.current) {
-      const currentProgress = (videoRef.current.currentTime / videoRef.current.duration) * 100;
-      setProgress(currentProgress);
+      const current = videoRef.current.currentTime;
+      const dur = videoRef.current.duration;
+      setCurrentTime(current);
+      setProgress((current / dur) * 100);
+    }
+  };
+
+  const handleLoadedMetadata = () => {
+    if (videoRef.current) {
+      setDuration(videoRef.current.duration);
     }
   };
 
@@ -42,31 +59,47 @@ export default function ProjectVideo({ src, caption, poster }: ProjectVideoProps
   };
 
   const toggleFullscreen = () => {
-    if (!document.fullscreenElement && !(document as any).webkitFullscreenElement) {
-      if (containerRef.current?.requestFullscreen) {
-        containerRef.current.requestFullscreen();
-      } else if ((containerRef.current as any)?.webkitRequestFullscreen) {
-        /* Safari desktop/android */
-        (containerRef.current as any).webkitRequestFullscreen();
-      } else if ((videoRef.current as any)?.webkitEnterFullscreen) {
-        /* Fallback para iOS Safari (só permite fullscreen na tag video) */
-        (videoRef.current as any).webkitEnterFullscreen();
-      }
-    } else {
-      if (document.exitFullscreen) {
-        document.exitFullscreen();
-      } else if ((document as any).webkitExitFullscreen) {
-        (document as any).webkitExitFullscreen();
-      }
+    const next = !isFullscreen;
+    setIsFullscreen(next);
+    window.dispatchEvent(new CustomEvent('video-expanded', { detail: next }));
+  };
+
+  const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (isFullscreen && e.target === e.currentTarget) {
+      toggleFullscreen();
     }
   };
 
+  useEffect(() => {
+    if (isFullscreen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isFullscreen) {
+        e.preventDefault();
+        setIsFullscreen(false);
+        window.dispatchEvent(new CustomEvent('video-expanded', { detail: false }));
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'unset';
+    };
+  }, [isFullscreen]);
+
   return (
-    <div className="flex flex-col gap-3 group">
-      <div 
-        ref={containerRef} 
-        className="relative flex flex-col items-center justify-center overflow-hidden rounded-sm bg-muted/30 border border-border"
-      >
+    <div 
+      className={isFullscreen ? "fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-black/90 backdrop-blur-sm p-4 sm:p-8 w-full" : "flex flex-col gap-3 w-full"}
+      onClick={handleBackdropClick}
+      role="region"
+      aria-label="Player de vídeo"
+    >
+      <div className="relative overflow-hidden rounded-sm border border-border w-fit mx-auto bg-transparent group">
         <video
           ref={videoRef}
           src={src}
@@ -77,12 +110,14 @@ export default function ProjectVideo({ src, caption, poster }: ProjectVideoProps
           playsInline
           onClick={togglePlay}
           onTimeUpdate={handleTimeUpdate}
-          className="w-full max-h-[100vh] object-contain cursor-pointer"
+          onLoadedMetadata={handleLoadedMetadata}
+          className={`block max-w-full h-auto cursor-pointer object-contain ${isFullscreen ? 'max-h-[85vh]' : 'max-h-[85vh]'}`}
         />
         
-        <div className="absolute bottom-4 left-4 right-4 flex items-center gap-4 p-2 px-4 bg-background/80 text-foreground rounded-sm opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-sm border border-border z-10">
+        <div role="group" aria-label="Controles do vídeo" className="absolute bottom-4 left-4 right-4 flex items-center gap-4 p-2 px-4 bg-background/80 text-foreground rounded-sm transition-opacity duration-300 backdrop-blur-sm border border-border z-10 md:opacity-0 md:group-hover:opacity-100">
           
           <button 
+            type="button"
             onClick={togglePlay} 
             className="flex-shrink-0 hover:text-muted-foreground transition-colors"
             aria-label={isPlaying ? "Pausar" : "Tocar"}
@@ -100,19 +135,24 @@ export default function ProjectVideo({ src, caption, poster }: ProjectVideoProps
             />
           </div>
 
+          <span className="text-xs font-medium tabular-nums flex-shrink-0">
+            {formatTime(currentTime)} / {formatTime(duration)}
+          </span>
+
           <button 
+            type="button"
             onClick={toggleFullscreen} 
             className="flex-shrink-0 hover:text-muted-foreground transition-colors"
-            aria-label="Tela cheia"
+            aria-label={isFullscreen ? "Sair do modo expandido" : "Modo expandido"}
           >
-            <CornersOut size={20} weight="bold" />
+            {isFullscreen ? <CornersIn size={20} weight="bold" /> : <CornersOut size={20} weight="bold" />}
           </button>
 
         </div>
       </div>
 
       {caption && (
-        <span className="text-center text-[0.875rem] text-muted-foreground text-pretty">
+        <span className={`text-center text-[0.875rem] text-pretty mt-3 ${isFullscreen ? 'text-white/80 max-w-2xl' : 'text-muted-foreground'}`}>
           {caption}
         </span>
       )}

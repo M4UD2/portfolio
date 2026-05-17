@@ -77,9 +77,7 @@ export default function About() {
       <div className="py-8 md:py-12">
         
         {/* HERO E STORYTELLING */}
-        <section className="mb-10">
-          <FadeInView>
-            <div className="flex flex-col items-center text-center">
+        <section className="mb-10" aria-label="História e apresentação">
               <div 
                 className="w-36 h-36 md:w-52 md:h-52 mb-8 relative group cursor-pointer focus-ring rounded-full"
                 onClick={handlePhotoInteraction}
@@ -137,7 +135,7 @@ export default function About() {
         </section>
 
         {/* STATUS ATUAL */}
-        <section className="mb-4">
+        <section className="mb-4" aria-label="Status atual">
           <FadeInView delay={0.2}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-4 max-w-[800px] mx-auto">
               <div className="flex items-center gap-4 p-6 rounded-sm border border-border/30 min-h-[44px]">
@@ -173,8 +171,7 @@ export default function About() {
         </FadeInView>
 
         {/* GRID DE INTERESSES PADRONIZADO */}
-        <section className="mb-10">
-          <FadeInView delay={0.4}>
+        <section className="mb-10" aria-label="Interesses e hobbies">
             <div className="max-w-[800px] mx-auto">
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-4">
                 {hobbies.map((hobby) => (
@@ -199,7 +196,7 @@ export default function About() {
         </section>
 
         {/* CTA */}
-        <section className="border-t border-border pt-10">
+        <section className="border-t border-border pt-10" aria-label="Contato e links">
           <FadeInView delay={0.5}>
             <div className="text-center space-y-8">
               <div className="space-y-3">

@@ -22,10 +22,11 @@ export default function GoalResultCard({ goal, result, delay = 0 }: GoalResultCa
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div role="list" className="grid grid-cols-1 md:grid-cols-2 gap-4">
       {items.map(({ icon: Icon, label, text }, i) => (
         <motion.div
-          key={label}
+          key={i}
+          role="listitem"
           className="border border-border rounded-sm p-6 flex flex-col gap-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

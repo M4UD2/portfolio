@@ -18,9 +18,9 @@ export default function TechStack({ technologies, delay = 0 }: TechStackProps) {
       transition={{ duration: 0.6, delay, ease: "easeOut" }}
     >
       <h3 className="text-[clamp(1.125rem,2vw,1.5rem)] font-bold leading-[1.4] max-w-[35ch] text-balance">Tecnologias utilizadas</h3>
-      <div className="flex flex-wrap gap-3">
+      <div role="list" className="flex flex-wrap gap-3">
         {technologies.map((tech, index) => (
-          <TechBadge key={tech} tech={tech} index={index} />
+          <TechBadge key={tech} tech={tech} index={index} role="listitem" />
         ))}
       </div>
     </motion.div>

@@ -3,11 +3,13 @@ import { motion } from 'framer-motion';
 interface TechBadgeProps {
   tech: string;
   index?: number;
+  role?: string;
 }
 
-export default function TechBadge({ tech, index = 0 }: TechBadgeProps) {
+export default function TechBadge({ tech, index = 0, role }: TechBadgeProps) {
   return (
     <motion.span
+      role={role}
       className="
         px-5 py-2.5 border border-border rounded-sm
         text-[1rem] leading-[1.7]

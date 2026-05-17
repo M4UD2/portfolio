@@ -4,7 +4,7 @@ import Tooltip from '../atoms/tooltip-simple';
 
 interface ProjectHeroProps {
   title: string;
-  subtitle: string;
+  subtitle: React.ReactNode;
   date: string;
   role: string;
   tools: string[];

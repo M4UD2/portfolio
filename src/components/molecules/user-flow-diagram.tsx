@@ -186,6 +186,8 @@ export default function UserFlowDiagram({ start, paths, convergence, delay = 0 }
   return (
     <motion.div
       className="w-full rounded-sm border border-border bg-muted/20 p-6"
+      role="region"
+      aria-label="Fluxo do usuário"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay, ease: 'easeOut' }}

@@ -34,7 +34,9 @@ export default function Tooltip({ content, children }: TooltipProps) {
     >
       {children}
       {show && (
-        <div className={`
+        <div
+          role="tooltip"
+          className={`
           absolute ${isTop ? 'bottom-full mb-1' : 'top-full mt-1'} left-1/2 transform -translate-x-1/2
           px-3 py-2 bg-foreground text-background rounded-sm
           whitespace-nowrap text-[0.875rem] leading-[1.2] font-normal

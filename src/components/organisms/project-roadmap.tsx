@@ -23,14 +23,15 @@ export default function ProjectRoadmap({
   delay = 0,
 }: ProjectRoadmapProps) {
   return (
-    <div className="max-w-[1040px] mx-auto px-6 md:px-10 pb-8 md:pb-12 w-full">
-    <div className="flex flex-col gap-3 w-full">
+    <section aria-label="Roadmap do projeto" className="max-w-[1040px] mx-auto px-6 md:px-10 pb-8 md:pb-12 w-full">
+    <div role="list" className="flex flex-col gap-3 w-full">
       {items.map((item, index) => {
         const { icon: Icon } = statusConfig[item.status];
 
         return (
           <motion.div
             key={index}
+            role="listitem"
             className="flex flex-row items-center gap-5 border border-border rounded-sm p-5"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -48,6 +49,6 @@ export default function ProjectRoadmap({
         );
       })}
     </div>
-    </div>
+    </section>
   );
 }

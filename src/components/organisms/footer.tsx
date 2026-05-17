@@ -26,7 +26,7 @@ export default function Footer() {
           {/* Coluna 2: Navegação - 4 colunas mobile, 3 desktop */}
           <div className="col-span-4 md:col-span-3 flex flex-col gap-2">
             <p className="text-[12px] leading-[1.7] uppercase tracking-widest text-muted-foreground">Navegação</p>
-            <nav className="flex flex-col gap-1">
+            <nav aria-label="Navegação do rodapé" className="flex flex-col gap-1">
               <NavLink to="/" label="Início" />
               <NavLink to="/sobre-mim" label="Sobre mim" />
             </nav>

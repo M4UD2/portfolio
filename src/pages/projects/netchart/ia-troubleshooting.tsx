@@ -17,6 +17,7 @@ const sections = [
   { id: 'decisoes', label: 'Decisões de design' },
   { id: 'impacto', label: 'Impacto' },
   { id: 'roadmap', label: 'Próximos passos' },
+  { id: 'conclusao', label: 'Conclusão' },
 ];
 
 function Section({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
@@ -49,7 +50,7 @@ export default function IATroubleshooting() {
   return (
     <ProjectLayout
       projectId="ia-troubleshooting"
-      prototypeLink={undefined}
+      prototypeLink="https://www.figma.com/proto/seu-link-aqui"
       customSections={sections}
     >
       <ProjectHero
@@ -63,7 +64,7 @@ export default function IATroubleshooting() {
       />
 
       <ProjectImage
-        src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
+        src="/ia-troubleshooting/thumbnail.png"
         alt="Integração de IA Generativa para Troubleshooting de Redes"
         delay={0.2}
       />
@@ -118,7 +119,7 @@ export default function IATroubleshooting() {
                 A análise de desvio de parâmetros era apenas a primeira oportunidade para a IA gerar valor no NetChart. Para garantir a <strong>consistência, escalabilidade e não poluir a interface</strong>, tomamos a decisão estratégica de centralizar a experiência em uma <strong>interface lateral dividida</strong>, em vez de espalhar insights soltos pelas tabelas de dados.
               </p>
 
-              <ProjectVideo src="https://www.w3schools.com/html/mov_bbb.mp4" caption="User flow" />
+              <ProjectImage src="/ia-troubleshooting/user-flow.png" alt="User flow" delay={0.1} />
 
               <div className="flex flex-col gap-8 mt-2">
 
@@ -129,7 +130,7 @@ export default function IATroubleshooting() {
                   <p>
                     É o caminho de maior valor e o diferencial da solução. Ao ativar o gatilho na funcionalidade de comparação de parâmetros, o sistema utiliza a <strong>mesma interface lateral</strong> para realizar uma <em>auto-context injection</em>: ele envia automaticamente em <em>background</em> o contexto dos parâmetros, configurações e logs para a IA. O resultado é uma resposta com <em>insights</em> e referências diretas à fonte, sem que o usuário precise redigir uma linha sequer.
                   </p>
-                  <ProjectVideo src="https://www.w3schools.com/html/mov_bbb.mp4" caption="Interface do Chat Global" />
+                  <ProjectVideo src="/ia-troubleshooting/zero-prompt.mp4" caption="Protótipo do diagnóstico Zero-Prompt" />
                 </div>
 
                 <div className="flex flex-col gap-2">
@@ -139,23 +140,21 @@ export default function IATroubleshooting() {
                   <p>
                     Fluxo em que a <strong>mesma interface de chat</strong> é acionada manualmente a qualquer momento. Funciona como um suporte técnico sob demanda, onde o engenheiro pode enviar prompts sobre equipamentos ou dúvidas gerais de documentação, recebendo respostas fundamentadas na <strong>base de dados (RAG)</strong>.
                   </p>
-                  <ProjectVideo src="https://www.w3schools.com/html/mov_bbb.mp4" caption="User flow" />
+                  <ProjectImage src="/placeholder-user-flow-2.jpg" alt="User flow do Chat Global" delay={0.1} />
                 </div>
                 
               </div>
-
             </Section>
 
             <Section id="decisoes" title="Decisões de design">
               <div className="flex flex-col gap-4">
                 <p>
-                  Para garantir que essa nova experiência fosse adotada com segurança em um ambiente crítico de configuração de redes de Telecom, fundamentamos nossas decisões de Design no <strong>People + AI Guidebook (PAIR)</strong> do Google. As diretrizes desse guia nos ajudaram a traduzir um sistema complexo em uma interface focada em autonomia, transparência e na redução de esforço operacional. As principais frentes de atuação foram:
+                  Para garantir que essa nova experiência fosse adotada com segurança em um ambiente crítico de configuração de redes de Telecom, fundamentamos nossas decisões de Design no <strong>People + AI Guidebook (PAIR)</strong> do Google. As diretrizes desse guia nos ajudaram a traduzir um sistema complexo em uma interface focada em autonomia, transparência e na redução de fluxo de trabalho. As principais frentes de atuação foram:
                 </p>
                 
                 <div className="flex items-center gap-2 mb-6">
                   <SocialLink 
                     href="https://pair.withgoogle.com/guidebook/" 
-                    platform="github" 
                     label="People + AI Guidebook"
                   />
                 </div>
@@ -176,7 +175,7 @@ export default function IATroubleshooting() {
                   <ProjectVideo src="https://www.w3schools.com/html/mov_bbb.mp4" caption="Antes: NetChart com o painel fixo" />
                   <ProjectVideo src="https://www.w3schools.com/html/mov_bbb.mp4" caption="Depois: Sidebar colapsável e o chat abrindo" />
                   <p>
-                    Além disso, desenhamos a opção de <strong>expandir o chat</strong>. Isso permite que o engenheiro utilize a interface da IA em uma janela independente ou em uma segunda tela, alinhando-se a um setup de trabalho multi-monitores, comum em cenários de <em>troubleshooting</em>:
+                    Além disso, desenhamos a opção de <strong>expandir o chat</strong>. Isso permite que o engenheiro utilize a interface da IA em uma janela independente ou em uma segunda tela:
                   </p>
                   <ProjectVideo src="https://www.w3schools.com/html/mov_bbb.mp4" caption="Chat expandindo" />
                 </div>
@@ -192,7 +191,7 @@ export default function IATroubleshooting() {
                   <p>
                     Como a solução utiliza a arquitetura <strong>RAG</strong> para buscar respostas nos manuais da empresa, o design reflete essa confiabilidade elaborando explicações úteis. Cada insight gerado exibe links e referências diretas aos documentos originais de onde aquela informação foi retirada, permitindo que o engenheiro valide a informação na fonte e não confie cegamente na máquina:
                   </p>
-                  <ProjectVideo src="https://www.w3schools.com/html/mov_bbb.mp4" caption="Detalhes de Trust & Safety e Explicabilidade" />
+                  <ProjectVideo src="/ia-troubleshooting/source.mp4" caption="Fontes (TEM QUE MELHORAR)" />
                 </div>
 
                 {/* Tópico 3 */}
@@ -220,8 +219,9 @@ export default function IATroubleshooting() {
                   </h3>
                   <p>Decidimos equilibrar estrategicamente o que a máquina automatiza e o que o humano controla.</p>
                   <p>Como já apresentado, ao acionar a IA na funcionalidade de comparação de parâmetros, o sistema puxa automaticamente "no background" todas as configurações que o usuário já havia selecionado, sem que ele precise digitar uma linha sequer. Isso evita perda de tempo com tecnicalidades:</p>
-                  <ProjectVideo src="https://www.w3schools.com/html/mov_bbb.mp4" caption="Fluxo Contextual e Histórico de IA" />
                   <p>Esse contexto, de um chat ativado a partir de um gatilho, não pode ser alterado. O objetivo é que cada chat tenha um contexto único e blindado: se o usuário precisar revisitar uma análise no futuro para entender por que tomou determinada ação naquele dia, todos os parâmetros capturados pelo gatilho e o racional da IA estarão perfeitamente preservados, garantindo a rastreabilidade.</p>
+                  <ProjectVideo src="/ia-troubleshooting/context.mp4" caption="Contexto do chat" />
+                  
                 </div>
               </div>
             </Section>
@@ -248,7 +248,7 @@ export default function IATroubleshooting() {
 
             <Section id="roadmap" title="Próximos passos">
               <p>
-                Com a experiência base consolidada, os próximos passos serão focados em transformar o suporte da IA em um ecossistema escalável e autônomo. O roadmap de evolução está estruturado em três pilares:
+                Com a experiência base consolidada, o foco agora é transformar o suporte da IA em um ecossistema maduro, escalável e autônomo. O roadmap de evolução está estruturado em três pilares estratégicos:
               </p>
             </Section>
 
@@ -275,6 +275,30 @@ export default function IATroubleshooting() {
             }
           ]} 
         />
+
+      <FadeInView delay={0.1}>
+        <div className="max-w-[1040px] mx-auto px-6 md:px-10 py-8 md:py-12">
+          <Section id="conclusao" title="Conclusão e aprendizados">
+            <p>
+              Projetar para IA Generativa em cenários de alta criticidade técnica exigiu muito mais do que desenhar interfaces: foi um exercício complexo de <strong>calibrar confiança e mitigar o custo de interação</strong>. Aplicar as diretrizes do PAIR Guidebook garantiu que o sistema complexo se transformasse em uma ferramenta fluida e perfeitamente integrada à rotina operacional do engenheiro.
+            </p>
+            <p>
+              O maior aprendizado deste projeto foi entender que o verdadeiro valor do design centrado em IA não está na complexidade das respostas ou na automação total, mas sim em entregar o <strong>contexto exato no momento certo</strong>, preservando a autonomia e a tomada de decisão humana no controle da rede.
+            </p>
+            
+            <div className="flex justify-center mt-6">
+              <a 
+                href="https://www.figma.com/proto/seu-link-aqui" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-6 py-3 font-medium text-sm transition-colors rounded-md bg-primary text-primary-foreground hover:bg-primary/90"
+              >
+                Acessar protótipo navegável completo ↗
+              </a>
+            </div>
+          </Section>
+        </div>
+      </FadeInView>
 
       <FadeInView delay={0.15}>
         <div className="md:[&_a:only-child]:col-start-2">

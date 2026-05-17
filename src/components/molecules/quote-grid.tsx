@@ -7,10 +7,11 @@ interface QuoteGridProps {
 
 export default function QuoteGrid({ quotes, delay = 0 }: QuoteGridProps) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div role="list" className="grid grid-cols-1 md:grid-cols-2 gap-4">
       {quotes.map((quote, i) => (
         <motion.div
           key={i}
+          role="listitem"
           className="border border-border rounded-sm p-6 flex flex-col gap-3"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
