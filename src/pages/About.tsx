@@ -78,6 +78,8 @@ export default function About() {
         
         {/* HERO E STORYTELLING */}
         <section className="mb-10" aria-label="História e apresentação">
+          <FadeInView delay={0.1}>
+            <div className="flex flex-col items-center">
               <div 
                 className="w-36 h-36 md:w-52 md:h-52 mb-8 relative group cursor-pointer focus-ring rounded-full"
                 onClick={handlePhotoInteraction}
@@ -120,14 +122,14 @@ export default function About() {
                 <h1 className="text-balance text-center mb-6">Oi, eu sou a Lívia!</h1>
                 
                 <div className="space-y-4 text-[1rem] leading-[1.7] text-muted-foreground text-left max-w-[65ch] mx-auto">
-                <p>
-  Eu sempre fui aquela pessoa que mistura nerdice, criatividade e uma curiosidade genuína de entender e comunicar com pessoas. Foi essa combinação que me levou a cursar <strong>Publicidade e Propaganda</strong>, onde aprendi que dá para ser criativo com estratégia e que entender o comportamento humano é o que faz com que as soluções sejam capazes de ter impacto.
-</p>
+                  <p>
+                    Eu sempre fui aquela pessoa que mistura nerdice, criatividade e uma curiosidade genuína de entender e comunicar com pessoas. Foi essa combinação que me levou a cursar <strong>Publicidade e Propaganda</strong>, onde aprendi que dá para ser criativo com estratégia e que entender o comportamento humano é o que faz com que as soluções sejam capazes de ter impacto.
+                  </p>
 
-<p>
-  Minha trajetória começou no design gráfico e no marketing, mas quando surgiu a chance de aplicar tudo isso através de interfaces, não tive dúvida: era aqui que eu queria estar. Ser <strong>Product Designer</strong> é usar criatividade e entendimento de pessoas e de tecnologias pra remover fricção, facilitar a vida de quem está do outro lado da tela e movimentar o negócio. Por isso vou além das telas: reviso processos, questiono fluxos e uso <strong>IA e dados</strong> pra tomar decisões mais certeiras, não só mais bonitas.
-</p>
-<p>Por isso hoje estou:</p>
+                  <p>
+                    Minha trajetória começou no design gráfico e no marketing, mas quando surgiu a chance de aplicar tudo isso através de interfaces, não tive dúvida: era aqui que eu queria estar. Ser <strong>Product Designer</strong> é usar criatividade e entendimento de pessoas e de tecnologias pra remover fricção, facilitar a vida de quem está do outro lado da tela e movimentar o negócio. Por isso vou além das telas: reviso processos, questiono fluxos e uso <strong>IA e dados</strong> pra tomar decisões mais certeiras, não só mais bonitas.
+                  </p>
+                  <p>Por isso hoje estou:</p>
                 </div>
               </div>
             </div>
@@ -172,6 +174,7 @@ export default function About() {
 
         {/* GRID DE INTERESSES PADRONIZADO */}
         <section className="mb-10" aria-label="Interesses e hobbies">
+          <FadeInView delay={0.4}>
             <div className="max-w-[800px] mx-auto">
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-4">
                 {hobbies.map((hobby) => (
@@ -222,7 +225,6 @@ export default function About() {
                   <SocialLink 
                     href="mailto:livia146miranda@gmail.com" 
                     label="Email"
-                    isExternal={false}
                   />
                 </div>
               </div>
