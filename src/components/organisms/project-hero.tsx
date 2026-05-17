@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { CalendarIcon, UserIcon, WrenchIcon } from '@phosphor-icons/react';
+import { CalendarIcon, UserIcon, WrenchIcon, TagIcon } from '@phosphor-icons/react';
 import Tooltip from '../atoms/tooltip-simple';
 
 interface ProjectHeroProps {
@@ -8,12 +8,13 @@ interface ProjectHeroProps {
   date: string;
   role: string;
   tools: string[];
+  tags?: string[];
   link?: string;
   productName?: string;
   productLogo?: string;
 }
 
-export default function ProjectHero({ title, subtitle, date, role, tools, productName, productLogo }: ProjectHeroProps) {
+export default function ProjectHero({ title, subtitle, date, role, tools, tags, productName, productLogo }: ProjectHeroProps) {
   return (
     <motion.section
       className="max-w-[1040px] mx-auto px-6 md:px-10 pt-0 pb-2 md:pb-4"
@@ -51,24 +52,33 @@ export default function ProjectHero({ title, subtitle, date, role, tools, produc
         <div className="flex flex-wrap items-center gap-6 text-[0.875rem] leading-[1.7] text-muted-foreground">
           <Tooltip content="Data do projeto">
             <div className="flex items-center gap-1.5 cursor-default">
-              <CalendarIcon size={14} weight="bold" className="text-foreground" />
+              <CalendarIcon size={14} weight="bold" className="text-muted-foreground" />
               <span>{date}</span>
             </div>
           </Tooltip>
           
           <Tooltip content="Meu papel no projeto">
             <div className="flex items-center gap-1.5 cursor-default">
-              <UserIcon size={14} weight="bold" className="text-foreground" />
+              <UserIcon size={14} weight="bold" className="text-muted-foreground" />
               <span>{role}</span>
             </div>
           </Tooltip>
           
           <Tooltip content="Ferramentas utilizadas">
             <div className="flex items-center gap-1.5 cursor-default">
-              <WrenchIcon size={14} weight="bold" className="text-foreground" />
+              <WrenchIcon size={14} weight="bold" className="text-muted-foreground" />
               <span>{tools.join(', ')}</span>
             </div>
           </Tooltip>
+
+          {tags && tags.length > 0 && (
+            <Tooltip content="Tags">
+              <div className="flex items-center gap-1.5 cursor-default">
+                <TagIcon size={14} weight="bold" className="text-muted-foreground" />
+                <span>{tags.join(', ')}</span>
+              </div>
+            </Tooltip>
+          )}
         </div>
       </div>
     </motion.section>

@@ -34,9 +34,9 @@ export default function ProjectCard({ title, description, link, imageUrl, imageA
           className="absolute inset-0 w-full h-full object-cover"
         />
       ) : (
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-          <div className="w-8 h-8 rounded-full border-2 border-dashed border-border" />
-          <span className="text-[11px] uppercase tracking-widest text-muted-foreground/50">Em breve</span>
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-muted/60">
+          <div className="w-8 h-8 rounded-full border-2 border-dashed border-border/80" />
+          <span className="text-[11px] uppercase tracking-widest text-border/80">Em breve</span>
         </div>
       )}
     </motion.div>

@@ -43,7 +43,7 @@ export default function Home() {
     {
       id: 'ia-troubleshooting',
       title: 'Integração de GenAI para troubleshooting de redes',
-      description: 'Como colaborei em uma interface conversacional para extrair insights de volumes massivos de dados, reduzindo o tempo de resolução de troubleshooting em 70%',
+      description: 'Como colaborei em uma interface conversacional para extrair insights de volumes massivos de dados, reduzindo o tempo de busca por documentações em 70%',
       link: '/projects/netchart/netchart-ai',
       imageUrl: '/netchart-ai/thumbnail.png',
       imageAlt: 'GenAI para Troubleshooting de Redes',

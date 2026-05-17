@@ -213,7 +213,7 @@ export default function About() {
                   href="https://drive.google.com/file/d/10QUVd-f9ORjKOVvJE-wWdbR3pSSobbyc/view?usp=drive_link"
                   isExternal={true}
                 >
-                  Ver meu currículo
+                  Ver currículo
                 </Button>
                 
                 <div className="flex items-center gap-4">
