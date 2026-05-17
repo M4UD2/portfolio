@@ -16,7 +16,7 @@ export default function GoalResultCard({ goal, result, delay = 0 }: GoalResultCa
     },
     {
       icon: TargetIcon,
-      label: 'Resultado esperado',
+      label: 'Objetivo',
       text: result,
     },
   ];

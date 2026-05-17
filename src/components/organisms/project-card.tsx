@@ -22,19 +22,23 @@ export default function ProjectCard({ title, description, link, imageUrl, imageA
   const ImageContent = () => (
     <motion.div
       className={`aspect-video w-full relative overflow-hidden rounded-sm bg-muted border border-border/50 ${
-        isComingSoon ? 'opacity-70' : ''
+        isComingSoon ? 'opacity-60' : ''
       }`}
       whileHover={{ scale: isComingSoon ? 1 : 1.01 }}
       transition={{ duration: 0.4 }}
     >
-      <img 
-        src={imageUrl || '/placeholder.jpg'} 
-        alt={imageAlt} 
-        className="absolute inset-0 w-full h-full object-cover"
-        onError={(e) => {
-          e.currentTarget.src = '/placeholder.jpg';
-        }}
-      />
+      {imageUrl ? (
+        <img
+          src={imageUrl}
+          alt={imageAlt}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      ) : (
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
+          <div className="w-8 h-8 rounded-full border-2 border-dashed border-border" />
+          <span className="text-[11px] uppercase tracking-widest text-muted-foreground/50">Em breve</span>
+        </div>
+      )}
     </motion.div>
   );
 

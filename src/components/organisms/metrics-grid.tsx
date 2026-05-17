@@ -3,7 +3,7 @@ import MetricCard from '../atoms/metric-card';
 
 interface Metric {
   value: string;
-  label: string;
+  label: React.ReactNode;
   icon?: 'trending' | 'users' | 'zap';
 }
 
@@ -11,12 +11,14 @@ interface MetricsGridProps {
   metrics?: Metric[];
   results?: string[];
   delay?: number;
+  id?: string;
+  title?: string;
 }
 
-export default function MetricsGrid({ metrics, results, delay = 0 }: MetricsGridProps) {
+export default function MetricsGrid({ metrics, results, delay = 0, id, title }: MetricsGridProps) {
   return (
     <motion.div
-      id="resultados"
+      {...(id ? { id } : {})}
       role="region"
       aria-label="Resultados do projeto"
       className="flex flex-col gap-8 scroll-mt-32 md:scroll-mt-24"
@@ -24,11 +26,11 @@ export default function MetricsGrid({ metrics, results, delay = 0 }: MetricsGrid
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay, ease: "easeOut" }}
     >
-      <h2>Resultados</h2>
+      {title && <h2>{title}</h2>}
       
       {/* Metrics Cards */}
       {metrics && metrics.length > 0 && (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className={`grid grid-cols-1 gap-6 md:grid-cols-${Math.min(metrics.length, 3)}`}>
           {metrics.map((metric, index) => (
             <MetricCard
               key={`metric-${metric.value}-${metric.label}`}

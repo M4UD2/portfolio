@@ -138,20 +138,8 @@ export default function ProjectStickyHeader({ prototypeLink, sections }: StickyH
         >
           {sections && sections.filter(({ id }) => availableSections.includes(id)).map(({ id, label }) => {
             const isActive = activeSection === id;
-            const isFirst = sections.findIndex(s => availableSections.includes(s.id)) === sections.findIndex(s => s.id === id);
 
-            return isFirst ? (
-              <button
-                key={id}
-                id={`nav-item-${id}`}
-                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                className={`text-[11px] uppercase tracking-[0.15em] transition-colors duration-300 focus-ring rounded-sm py-2 whitespace-nowrap flex-shrink-0 ${
-                  isActive ? 'text-foreground font-semibold' : 'text-muted-foreground hover:text-foreground'
-                } ${isMobile ? 'px-2' : 'px-3'}`}
-              >
-                {label}
-              </button>
-            ) : (
+            return (
               <a
                 key={id}
                 id={`nav-item-${id}`}

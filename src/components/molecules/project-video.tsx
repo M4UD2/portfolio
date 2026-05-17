@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, memo } from 'react';
 import { CornersOut, Play, Pause, CornersIn } from '@phosphor-icons/react';
 
 interface ProjectVideoProps {
@@ -14,47 +14,82 @@ const formatTime = (timeInSeconds: number) => {
   return `${m}:${s}`;
 };
 
-export default function ProjectVideo({ src, caption, poster }: ProjectVideoProps) {
+const ProjectVideo = memo(function ProjectVideo({ src, caption, poster }: ProjectVideoProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(true);
-  const [progress, setProgress] = useState(0);
-  const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(0);
+  const progressBarRef = useRef<HTMLDivElement>(null);
+  const timeTextRef = useRef<HTMLSpanElement>(null);
+  const animationRef = useRef<number>();
+
+  const [isPlaying, setIsPlaying] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [duration, setDuration] = useState(0);
+
+  const updateProgress = () => {
+    if (videoRef.current && progressBarRef.current && timeTextRef.current) {
+      const current = videoRef.current.currentTime;
+      const dur = videoRef.current.duration || 0;
+      
+      if (dur > 0) {
+        progressBarRef.current.style.transform = `scaleX(${current / dur})`;
+        timeTextRef.current.textContent = `${formatTime(current)} / ${formatTime(dur)}`;
+      }
+    }
+    animationRef.current = requestAnimationFrame(updateProgress);
+  };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (videoRef.current) {
+            if (entry.isIntersecting) {
+              videoRef.current.play().catch(() => {});
+            } else {
+              videoRef.current.pause();
+            }
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   const togglePlay = () => {
     if (videoRef.current) {
       if (videoRef.current.paused) {
         videoRef.current.play();
-        setIsPlaying(true);
       } else {
         videoRef.current.pause();
-        setIsPlaying(false);
       }
-    }
-  };
-
-  const handleTimeUpdate = () => {
-    if (videoRef.current) {
-      const current = videoRef.current.currentTime;
-      const dur = videoRef.current.duration;
-      setCurrentTime(current);
-      setProgress((current / dur) * 100);
     }
   };
 
   const handleLoadedMetadata = () => {
     if (videoRef.current) {
       setDuration(videoRef.current.duration);
+      if (timeTextRef.current) {
+        timeTextRef.current.textContent = `00:00 / ${formatTime(videoRef.current.duration)}`;
+      }
     }
   };
 
   const handleSeek = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (videoRef.current) {
+    if (videoRef.current && progressBarRef.current && timeTextRef.current) {
       const bounds = e.currentTarget.getBoundingClientRect();
-      const x = e.clientX - bounds.left;
-      const percent = x / bounds.width;
+      const percent = (e.clientX - bounds.left) / bounds.width;
       videoRef.current.currentTime = percent * videoRef.current.duration;
+      
+      progressBarRef.current.style.transform = `scaleX(${percent})`;
+      timeTextRef.current.textContent = `${formatTime(videoRef.current.currentTime)} / ${formatTime(videoRef.current.duration)}`;
     }
   };
 
@@ -71,11 +106,7 @@ export default function ProjectVideo({ src, caption, poster }: ProjectVideoProps
   };
 
   useEffect(() => {
-    if (isFullscreen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
+    document.body.style.overflow = isFullscreen ? 'hidden' : 'unset';
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape' && isFullscreen) {
@@ -92,29 +123,43 @@ export default function ProjectVideo({ src, caption, poster }: ProjectVideoProps
     };
   }, [isFullscreen]);
 
+  useEffect(() => {
+    return () => {
+      if (animationRef.current) cancelAnimationFrame(animationRef.current);
+    };
+  }, []);
+
   return (
     <div 
-      className={isFullscreen ? "fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-black/90 backdrop-blur-sm p-4 sm:p-8 w-full" : "flex flex-col gap-3 w-full"}
+      ref={containerRef}
+      className={isFullscreen ? "fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-black/95 p-4 sm:p-8 w-full" : "flex flex-col gap-2 w-full"}
       onClick={handleBackdropClick}
       role="region"
       aria-label="Player de vídeo"
     >
-      <div className="relative overflow-hidden rounded-sm border border-border w-fit mx-auto bg-transparent group">
+      <div className="relative overflow-hidden rounded-sm border border-border w-full bg-transparent group flex flex-col">
         <video
           ref={videoRef}
           src={src}
           poster={poster}
-          autoPlay
           loop
           muted
           playsInline
+          preload="metadata"
           onClick={togglePlay}
-          onTimeUpdate={handleTimeUpdate}
           onLoadedMetadata={handleLoadedMetadata}
+          onPlay={() => {
+            setIsPlaying(true);
+            animationRef.current = requestAnimationFrame(updateProgress);
+          }}
+          onPause={() => {
+            setIsPlaying(false);
+            if (animationRef.current) cancelAnimationFrame(animationRef.current);
+          }}
           className={`block max-w-full h-auto cursor-pointer object-contain ${isFullscreen ? 'max-h-[85vh]' : 'max-h-[85vh]'}`}
         />
         
-        <div role="group" aria-label="Controles do vídeo" className="absolute bottom-4 left-4 right-4 flex items-center gap-4 p-2 px-4 bg-background/80 text-foreground rounded-sm transition-opacity duration-300 backdrop-blur-sm border border-border z-10 md:opacity-0 md:group-hover:opacity-100">
+        <div role="group" aria-label="Controles do vídeo" className="flex items-center gap-4 p-3 px-4 w-full bg-background border-t border-border md:absolute md:bottom-4 md:left-4 md:right-4 md:w-auto md:border md:bg-background/95 md:rounded-sm md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 z-10 text-foreground">
           
           <button 
             type="button"
@@ -130,13 +175,14 @@ export default function ProjectVideo({ src, caption, poster }: ProjectVideoProps
             onClick={handleSeek}
           >
             <div 
-              className="absolute top-0 left-0 h-full bg-foreground transition-all duration-75 ease-linear pointer-events-none"
-              style={{ width: `${progress}%` }}
+              ref={progressBarRef}
+              className="absolute top-0 left-0 h-full w-full bg-foreground pointer-events-none origin-left will-change-transform"
+              style={{ transform: 'scaleX(0)' }}
             />
           </div>
 
-          <span className="text-xs font-medium tabular-nums flex-shrink-0">
-            {formatTime(currentTime)} / {formatTime(duration)}
+          <span ref={timeTextRef} className="text-xs font-medium tabular-nums flex-shrink-0">
+            00:00 / {formatTime(duration)}
           </span>
 
           <button 
@@ -152,10 +198,12 @@ export default function ProjectVideo({ src, caption, poster }: ProjectVideoProps
       </div>
 
       {caption && (
-        <span className={`text-center text-[0.875rem] text-pretty mt-3 ${isFullscreen ? 'text-white/80 max-w-2xl' : 'text-muted-foreground'}`}>
+        <span className={`text-center text-[0.875rem] text-pretty ${isFullscreen ? 'text-white/80 max-w-2xl' : 'text-muted-foreground'}`}>
           {caption}
         </span>
       )}
     </div>
   );
-}
+});
+
+export default ProjectVideo;

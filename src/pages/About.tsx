@@ -53,19 +53,19 @@ export default function About() {
     {
       id: "games",
       icon: GameControllerIcon,
-      label: "Jogando alguma coisa",
+      label: "Jogando até chegar no 100%",
       detail: "E só parando quando está 100%"
     },
     {
       id: "gata",
       icon: CatIcon,
-      label: "Sendo mãe da Abigail",
+      label: "Sendo humana de estimação da Abigail",
       detail: "A companhia oficial no home office"
     },
     {
       id: "spotify",
       icon: MusicNoteIcon,
-      label: "Escutando uma boa música",
+      label: "Organizando minha playlists",
       detail: currentSong.explicit
         ? "🤫 No fone agora... (Censurado pelo RH)"
         : `No fone agora: ${currentSong.name} - ${currentSong.artist}`
@@ -74,7 +74,7 @@ export default function About() {
 
   return (
     <main className="max-w-[1040px] mx-auto px-6 md:px-10 w-full">
-      <div className="py-8 md:py-12">
+      <div className="py-8 md:py-12 max-w-[808px] mx-auto">
         
         {/* HERO E STORYTELLING */}
         <section className="mb-10" aria-label="História e apresentação">
@@ -118,18 +118,18 @@ export default function About() {
                 </div>
               </div>
               
-              <div className="w-full max-w-[800px] mx-auto">
+              <div className="w-full">
                 <h1 className="text-balance text-center mb-6">Oi, eu sou a Lívia!</h1>
                 
-                <div className="space-y-4 text-[1rem] leading-[1.7] text-muted-foreground text-left max-w-[65ch] mx-auto">
+                <div className="space-y-4 text-[1rem] leading-[1.7] text-muted-foreground text-left">
                   <p>
-                    Eu sempre fui aquela pessoa que mistura nerdice, criatividade e uma curiosidade genuína de entender e comunicar com pessoas. Foi essa combinação que me levou a cursar <strong>Publicidade e Propaganda</strong>, onde aprendi que dá para ser criativo com estratégia e que entender o comportamento humano é o que faz com que as soluções sejam capazes de ter impacto.
+                  Sempre tive interesse por tecnologia, criatividade, e uma curiosidade genuína de entender e me comunicar com pessoas. Foi essa combinação que me levou a cursar <strong>Publicidade e Propaganda</strong>, onde aprendi que dá para ser criativo com estratégia e que entender o comportamento humano é o que faz com que as soluções sejam capazes de ter impacto.
                   </p>
 
                   <p>
                     Minha trajetória começou no design gráfico e no marketing, mas quando surgiu a chance de aplicar tudo isso através de interfaces, não tive dúvida: era aqui que eu queria estar. Ser <strong>Product Designer</strong> é usar criatividade e entendimento de pessoas e de tecnologias pra remover fricção, facilitar a vida de quem está do outro lado da tela e movimentar o negócio. Por isso vou além das telas: reviso processos, questiono fluxos e uso <strong>IA e dados</strong> pra tomar decisões mais certeiras, não só mais bonitas.
                   </p>
-                  <p>Por isso hoje estou:</p>
+                  <p>E é por causa disso que hoje estou:</p>
                 </div>
               </div>
             </div>
@@ -139,9 +139,9 @@ export default function About() {
         {/* STATUS ATUAL */}
         <section className="mb-4" aria-label="Status atual">
           <FadeInView delay={0.2}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-4 max-w-[800px] mx-auto">
-              <div className="flex items-center gap-4 p-6 rounded-sm border border-border/30 min-h-[44px]">
-                <div className="p-3 bg-background/90 backdrop-blur-sm rounded-sm text-foreground shadow-sm border border-border/30">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="flex items-center gap-4 p-6 rounded-sm border border-border min-h-[44px]">
+                <div className="p-3 bg-muted/30 rounded-sm text-foreground border border-border">
                   <BriefcaseIcon size={24} weight="bold" />
                 </div>
                 <div>
@@ -150,8 +150,8 @@ export default function About() {
                 </div>
               </div>
 
-              <div className="flex items-center gap-4 p-6 rounded-sm border border-border/30 min-h-[44px]">
-                <div className="p-3 bg-background/90 backdrop-blur-sm rounded-sm text-foreground shadow-sm border border-border/30">
+              <div className="flex items-center gap-4 p-6 rounded-sm border border-border min-h-[44px]">
+                <div className="p-3 bg-muted/30 rounded-sm text-foreground border border-border">
                   <GraduationCapIcon size={24} weight="bold" />
                 </div>
                 <div>
@@ -165,8 +165,8 @@ export default function About() {
 
         {/* CONECTOR VISUAL */}
         <FadeInView delay={0.3}>
-          <div className="w-full max-w-[800px] mx-auto mb-10 mt-10">
-            <p className="text-[1rem] leading-[1.7] text-muted-foreground text-left max-w-[65ch] mx-auto">
+          <div className="w-full mb-10 mt-10">
+            <p className="text-[1rem] leading-[1.7] text-muted-foreground text-left">
             Mas não só de pixels e processos eu sou resumida. Quando o trabalho pausa, fora das telas (nem sempre fora) você me encontra:
             </p>
           </div>
@@ -175,16 +175,15 @@ export default function About() {
         {/* GRID DE INTERESSES PADRONIZADO */}
         <section className="mb-10" aria-label="Interesses e hobbies">
           <FadeInView delay={0.4}>
-            <div className="max-w-[800px] mx-auto">
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-4">
+            <div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                 {hobbies.map((hobby) => (
                   <div
                     key={hobby.id}
-                    className="relative flex flex-col items-center justify-center p-6 rounded-sm border border-border/30 h-[180px] overflow-hidden"
+                    className="relative flex flex-col items-center justify-center p-6 rounded-sm border border-border h-[180px] overflow-hidden"
                   >
-                    {/* Base Content */}
                     <div className="relative z-10 flex flex-col items-center gap-3 w-full">
-                      <div className="p-3 bg-background/90 backdrop-blur-sm rounded-sm text-foreground shadow-sm border border-border/30">
+                      <div className="p-3 bg-muted/30 rounded-sm text-foreground border border-border">
                         <hobby.icon size={24} weight="bold" />
                       </div>
                       <span className="text-[14px] leading-[1.4] text-foreground font-medium text-center w-full">

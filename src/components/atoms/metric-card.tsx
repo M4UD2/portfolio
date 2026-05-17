@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 interface MetricCardProps {
   value: string;
-  label: string;
+  label: React.ReactNode;
   index?: number;
 }
 
@@ -15,7 +15,7 @@ export default function MetricCard({ value, label, index = 0 }: MetricCardProps)
       transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
     >
       <div className="flex flex-col gap-2">
-        <p className="text-[clamp(2rem,4vw,3rem)] font-bold leading-[1.1] -tracking-[0.03em]">{value}</p>
+        <p className="text-[clamp(2rem,4vw,3rem)] font-bold text-foreground leading-[1.1] -tracking-[0.03em]">{value}</p>
         <p className="text-[1rem] leading-[1.7] text-muted-foreground">{label}</p>
       </div>
     </motion.div>

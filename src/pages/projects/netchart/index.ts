@@ -1,1 +1,1 @@
-export { default as IATroubleshooting } from './ia-troubleshooting';
+export { default as NetChartAI } from './netchart-ai';

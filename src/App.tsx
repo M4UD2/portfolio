@@ -4,7 +4,8 @@ import Navbar from './components/organisms/navbar';
 import Footer from './components/organisms/footer';
 import Home from './pages/Home';
 import About from './pages/About';
-import { IATroubleshooting } from './pages/projects/netchart';
+import { NetChartAI } from './pages/projects/netchart';
+import { Governance } from './pages/projects/governance';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -24,7 +25,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Layout><Home /></Layout>} />
         <Route path="/sobre-mim" element={<Layout><About /></Layout>} />
-        <Route path="/projects/netchart/ia-troubleshooting" element={<IATroubleshooting />} />
+        <Route path="/projects/netchart/netchart-ai" element={<NetChartAI />} />
+        <Route path="/projects/governance" element={<Layout><Governance /></Layout>} />
       </Routes>
     </Router>
   );
