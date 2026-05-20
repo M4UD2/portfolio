@@ -36,7 +36,7 @@ export default function Navbar() {
   const socialLinks = {
     email: "mailto:livia146miranda@gmail.com",
     linkedin: "https://www.linkedin.com/in/liviamirandadeoliveira/",
-    cv: "https://drive.google.com/file/d/10QUVd-f9ORjKOVvJE-wWdbR3pSSobbyc/view?usp=drive_link"
+    cv: "https://drive.google.com/file/d/1HZnWmJj1f2kNpLmexcbxyCu2Za0uUr8j/view?usp=sharing"
   };
 
   return (

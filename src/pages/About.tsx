@@ -210,7 +210,7 @@ export default function About() {
               
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
                 <Button 
-                  href="https://drive.google.com/file/d/10QUVd-f9ORjKOVvJE-wWdbR3pSSobbyc/view?usp=drive_link"
+                  href="https://drive.google.com/file/d/1HZnWmJj1f2kNpLmexcbxyCu2Za0uUr8j/view?usp=sharing"
                   isExternal={true}
                 >
                   Ver currículo
