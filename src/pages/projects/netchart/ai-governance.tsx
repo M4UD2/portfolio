@@ -1,23 +1,22 @@
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import ProjectLayout from '../../../components/templates/project-layout';
 import ProjectHero from '../../../components/organisms/project-hero';
 import ProjectImage from '../../../components/molecules/project-image';
+import ProjectVideo from '../../../components/molecules/project-video';
 import ProjectNavigation from '../../../components/organisms/project-navigation';
 import FadeInView from '../../../components/atoms/fade-in-view';
 import GoalResultCard from '../../../components/molecules/goal-result-card';
-import ProjectRoadmap from '../../../components/organisms/project-roadmap';
 import MetricsGrid from '../../../components/organisms/metrics-grid';
 import KpiCard from '../../../components/atoms/kpi-card';
+import SocialLink from '../../../components/atoms/social-link';
 import { ShieldCheck, Clock } from '@phosphor-icons/react';
 
 const sections = [
-  { id: 'visao-geral', label: 'Visão geral' },
-  { id: 'estados-sync', label: 'Estados de sincronização' },
-  { id: 'metadados', label: 'Metadados e taxonomia' },
-  { id: 'automacao', label: 'Automação e controle' },
-  { id: 'gestao-lote', label: 'Gestão em lote' },
-  { id: 'resultados', label: 'Resultados e impacto' },
-  { id: 'roadmap', label: 'Roadmap' },
+  { id: 'cenario', label: 'Cenário' },
+  { id: 'solucao', label: 'Solução' },
+  { id: 'decisoes', label: 'Decisões de design' },
+  { id: 'resultados', label: 'Resultados projetados' },
   { id: 'conclusao', label: 'Conclusão' },
 ];
 
@@ -42,18 +41,18 @@ export default function GovernanceFlow() {
     >
       <ProjectHero
         title="O cérebro da IA: fluxo de governança de fontes"
-        subtitle={<>Como estruturei a interface de gerenciamento que alimenta o modelo de GenAI do <strong>NetChart</strong>, garantindo respostas <strong>seguras</strong>, <strong>rastreáveis</strong> e baseadas estritamente em fontes do usuário.</>}
+        subtitle={<>Como estruturei a <strong>interface de governança de fontes</strong> da GenAI do NetChart para dar ao usuário <strong>controle</strong> sobre as fontes que alimentam a IA, permitindo uma <strong>curadoria segura e rastreável</strong>.</>}
         date="2025"
-        role="Product Designer (End-to-end)"
+        role="Product Designer (End-to-End)"
         tools={["Figma"]}
-        tags={['Governança de Dados', 'RAG', 'B2B SaaS', 'Telecom']}
         productName="NetChart"
         productLogo="/logos/netchart-logo.svg"
+        productLogoDark="/logos/netchart-logo-dark.svg"
       />
 
       <ProjectImage
-        src="/governance/thumbnail.png"
-        alt="Interface de fluxo de governança de fontes"
+        src="https://placehold.co/1040x600/1a1a1a/555555?text=Thumbnail"
+        alt="Thumbnail — Fluxo de governança de fontes"
         delay={0.2}
         fullWidth
       />
@@ -62,160 +61,187 @@ export default function GovernanceFlow() {
         <div className="max-w-[1040px] mx-auto px-6 md:px-10 py-8 md:py-12">
           <div className="flex flex-col gap-16">
 
-            <Section id="visao-geral" title="1. Visão geral e o cenário">
+            <Section id="cenario" title="Cenário e problema">
               <p>
-                Uma IA conversacional corporativa é tão boa quanto os dados que a alimentam. Durante a Design Sprint da interface de troubleshooting do NetChart, um ponto crítico foi levantado repetidamente pelos usuários: a <strong>segurança e o sigilo das fontes</strong>.
+                O fluxo de governança de fontes é a infraestrutura de segurança por trás da <Link to="/projects/netchart-ia" className="text-primary underline underline-offset-4 hover:text-primary/80 transition-colors">interface de troubleshooting do NetChart</Link>. Para que uma IA conversacional diagnostique falhas complexas em redes móveis, o modelo precisa consultar uma base densa de conhecimento.
               </p>
               <p>
-                Operadoras de telecomunicações lidam com manuais técnicos e especificações de rede estritamente confidenciais, que definem parâmetros vitais de operação e jamais podem vazar ou ser expostos. Embora a governança desses arquivos não tenha sido o escopo central daquela sprint, a segurança das fontes tornou-se imediatamente a nossa <strong>prioridade número dois</strong> logo após a saída do workshop.
+                Durante a nossa <em>Design Sprint</em>, operadoras de telecomunicações levantaram uma barreira crítica: os manuais técnicos e especificações de rede necessários para alimentar o modelo são estritamente confidenciais. O receio de vazamento de dados e a falta de mecanismos de governança bloqueavam a adoção da tecnologia.
               </p>
               <p>
-                Como este era um módulo administrativo focado em controle rígido e alta densidade de dados, aproveitamos a oportunidade para explorar novos padrões visuais na plataforma. Testamos uma abordagem baseada em interfaces <strong>borderless</strong> (sem bordas excessivas) e componentes modulares para modernizar o ecossistema visual do produto, preparando-o para o futuro.
+                Como esses documentos são vitais para dar precisão às respostas da IA, projetei de ponta a ponta um painel restrito a usuários administradores. O objetivo foi transformar uma engenharia de dados complexa em uma interface visual que entrega controle e autonomia na curadoria do ecossistema de RAG.
               </p>
 
+              <p>A partir desse cenário, defini o desafio central e o objetivo da solução:</p>
+              
               <GoalResultCard
-                goal={<><strong>Como automatizar a extração de metadados</strong> de arquivos confidenciais, garantindo ao mesmo tempo que o administrador tenha total liberdade para editar e calibrar exatamente como a IA lê e interpreta aquela documentação?</>}
-                result={<>Garantir a conformidade (<strong>Compliance</strong>) de segurança das operadoras e a precisão técnica das respostas, mitigando drasticamente as <strong>alucinações do modelo</strong> antes que qualquer insight chegue ao usuário final.</>}
+                goal={<>Como equilibrar a automação da IA com o controle humano na curadoria de dados confidenciais?</>}
+                result={<>Criar uma interface transparente onde administradores gerenciem fontes para a IA consumir com segurança e flexibilidade.</>}
               />
             </Section>
 
-            <Section id="estados-sync" title="2. Estados de sincronização (Feedback de sistema)">
+            <Section id="solucao" title="Solução e fluxo da experiência">
               <p>
-                A ingestão de dados para IA não é instantânea. Para gerenciar a expectativa do usuário e evitar a ansiedade operacional de achar que o sistema travou, projetei indicadores visuais claros de status: <strong>Uploading</strong> (Enviando arquivo), <strong>Unverified</strong> (Aguardando revisão), <strong>Verified</strong> (Pronto/Válido) e <strong>Failed</strong> (Erro no processamento).
+                Alimentar uma arquitetura RAG (Retrieval-Augmented Generation) exige processamento complexo: envolve quebra de texto, vetorização e indexação. Para garantir que a interface traduzisse essa complexidade sem sobrecarregar o usuário, centralizei a governança em um fluxo focado em autonomia e clareza.
               </p>
-              <blockquote>
-                <strong>O Pulo do Gato (Syncing...):</strong> Indica visualmente quando a IA está processando e absorvendo os vetores de dados em background.
-              </blockquote>
               <p>
-                No ambiente real de telecom, documentos podem corromper, ter encoding incompatível ou falhar na leitura. Tratar o <strong>"caminho infeliz"</strong> com elegância foi crucial para a segurança do administrador. Ao mapear o status de <em>Failed</em>, a interface não exibe apenas um erro genérico. Ela aponta com precisão cirúrgica a causa raiz técnica (ex: <em>"Encoding incompatível"</em> ou <em>"Arquivo corrompido"</em>), oferecendo uma ação contextual de re-upload imediato exatamente no mesmo ponto da linha da tabela.
+                Mapeei a jornada conectando as ações do administrador no backoffice ao impacto direto na experiência do chat, evidenciando os caminhos infelizes e os momentos críticos de validação humana:
               </p>
-            </Section>
 
-            <Section id="metadados" title="3. Metadados e taxonomia automática">
-              <p>
-                Alimentar uma arquitetura RAG (Retrieval-Augmented Generation) exige engenharia de dados complexa (quebra de texto, vetorização e indexação). Aplicamos heurísticas clássicas e princípios do <strong>Google PAIR Guidebook</strong> para traduzir essa complexidade em controle humano.
-              </p>
+              <ProjectImage 
+                src="https://placehold.co/1040x600/1a1a1a/555555?text=User+Flow"
+                alt="User Flow conectando o upload de arquivos à experiência de busca no chat" 
+                caption="Mapeamento da ingestão de dados, tratamento de erros e seleção de modo de busca."
+              />
               
-              <div className="flex flex-col gap-4 pl-4 border-l-2 border-border">
-                <h3 className="text-foreground font-bold">A. Visibilidade do Status do Sistema (Heurística #1) & Confiança Calibrada</h3>
-                <p>
-                  A ingestão de dados para IA não é instantânea. Para mitigar a ansiedade operacional e evitar que o usuário assuma que o sistema travou, estruturamos indicadores visuais claros de estado:
-                </p>
-                <ul className="list-disc pl-5 flex flex-col gap-2">
-                  <li><strong>Uploading:</strong> Arquivo sendo enviado.</li>
-                  <li><strong>Unverified:</strong> Documento na base, mas aguardando auditoria humana.</li>
-                  <li><strong>Verified:</strong> Pronto e aprovado para responder no chat.</li>
-                  <li><strong>Syncing:</strong> Indica visualmente que o motor da IA está quebrando e absorvendo os vetores de dados em background. O usuário sabe exatamente em que estágio o "conhecimento" se encontra.</li>
-                </ul>
+              <div className="flex flex-col gap-8 mt-2">
+                
+                <div className="flex flex-col gap-2">
+                  <h3 className="text-[clamp(1.125rem,2vw,1.5rem)] font-bold leading-[1.4] text-balance text-foreground">
+                    1. Ingestão e Automação de Metadados
+                  </h3>
+                  <p>
+                    Para acelerar a curadoria, o sistema varre o arquivo logo no upload para extrair metadados essenciais de forma automática, diminuindo drásticamente o trabalho manual inicial do usuário ao categorizar a documentação.
+                  </p>
+                </div>
 
-                <h3 className="text-foreground font-bold mt-4">B. Design de Erros e Recuperação (Heurística #9)</h3>
-                <p>
-                  No ambiente real de telecom, documentos podem corromper ou ter encoding incompatível. Em vez de mensagens genéricas, projetamos um Caminho Infeliz contextual: o status <em>Failed</em> aponta a causa raiz cirúrgica e oferece um gatilho de re-upload na própria linha da tabela, reduzindo o custo de interação.
-                </p>
+                <div className="flex flex-col gap-2">
+                  <h3 className="text-[clamp(1.125rem,2vw,1.5rem)] font-bold leading-[1.4] text-balance text-foreground">
+                    2. Validação Humana e Gestão em Lote
+                  </h3>
+                  <p>
+                    Apesar da assistência da máquina, a gestão exige validação humana. O administrador mantém total liberdade para aceitar ou editar campos. Para evitar cliques repetitivos em bases densas, criei a <strong>Regra de Predominância</strong>: se múltiplos arquivos forem selecionados e a maioria estiver ativa, a ação em massa desativa todos, priorizando o comportamento de segurança.
+                  </p>
+                  <ProjectImage 
+                    src="https://placehold.co/1040x600/1a1a1a/555555?text=Gestao+em+Lote"
+                    alt="Gestão em Lote e Filtros Rápidos" 
+                    caption="Seleção múltipla acionando a barra de comandos rápidos."
+                  />
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <h3 className="text-[clamp(1.125rem,2vw,1.5rem)] font-bold leading-[1.4] text-balance text-foreground">
+                    3. Extensão da Governança para o Chat
+                  </h3>
+                  <p>
+                    A governança construída no painel administrativo reflete diretamente na ponta. Desenhei um seletor de modo de busca embutido na interface do chat para que o consumidor da IA também tenha controle sobre o escopo das respostas geradas pelo modelo.
+                  </p>
+                </div>
+
               </div>
             </Section>
 
-            <Section id="automacao" title="4. Automação assistida e controle de tags (Homem-IA)">
-              <p>
-                Um dos pilares do Google PAIR é definir o equilíbrio entre automação e controle. O sistema varre o arquivo no upload para extrair metadados automáticos (versão, data, autor), mas a gestão de tags exigeu um refinamento visual específico para manter o <strong>Modelo Mental</strong> do usuário alinhado:
-              </p>
-              <ul className="list-disc pl-5 flex flex-col gap-2">
-                <li>
-                  <strong className="text-foreground">Tags Sugeridas pela IA (AI-Generated):</strong> Exibidas com um estilo visual sutil (fundo tracejado/itálico) e um indicador de que foram geradas pela máquina (ex: <em>✨ Huawei</em>). Elas servem para acelerar o processo, mas exigem validação.
-                </li>
-                <li>
-                  <strong className="text-foreground">Controle Total e Liberdade (Heurística #3):</strong> O administrador pode excluir qualquer sugestão falha da IA com um clique ou adicionar suas próprias tags personalizadas.
-                </li>
-                <li>
-                  <strong className="text-foreground">Aprovação de Leitura:</strong> A IA só passa a interpretar o documento com base nessas tags após a confirmação do usuário, garantindo inteligência híbrida (a máquina propõe, o humano chancela).
-                </li>
-              </ul>
+            <Section id="decisoes" title="Decisões de design">
+              <div className="flex flex-col gap-4">
+                <p>
+                  Para gerar confiança em um ambiente corporativo de alto sigilo, fundamentei a interface nos princípios do <strong>People + AI Guidebook (PAIR)</strong> do Google, focando em dar visibilidade e controle sobre as regras de funcionamento da IA.
+                </p>
+                
+                <div className="flex items-center gap-2 mb-6">
+                  <SocialLink 
+                    href="https://pair.withgoogle.com/guidebook/" 
+                    label="People + AI Guidebook"
+                  />
+                </div>
+              </div>
 
-              <ProjectImage 
-                src="/governance/modal-upload-revisao.png" 
-                alt="Modal de Upload e Revisão de Metadados" 
-                caption="Tela 02 — Fluxo drag-and-drop de arquivos com a clara distinção visual entre taxonomias recomendadas pela IA e campos editáveis pelo humano."
-              />
+              <div className="flex flex-col gap-12">
+                
+                <div className="flex flex-col gap-4">
+                  <h3 className="text-[clamp(1.125rem,2vw,1.5rem)] font-bold leading-[1.4] text-balance text-foreground">
+                    1. Gerenciamento de Expectativas e Status
+                  </h3>
+                  <p>
+                    A ingestão de dados para IA não é instantânea. Para gerenciar a expectativa do usuário e mitigar a ansiedade operacional, projetei indicadores claros de status ao longo de todo o processamento na tabela de fontes (Uploading, Unverified, Syncing e Verified). 
+                  </p>
+                </div>
+
+                <div className="flex flex-col gap-4">
+                  <h3 className="text-[clamp(1.125rem,2vw,1.5rem)] font-bold leading-[1.4] text-balance text-foreground">
+                    2. Design de Recuperação Contextual
+                  </h3>
+                  <p>
+                    Para o caminho infeliz (Failed), evitei mensagens de erro genéricas. A interface aponta a <strong>causa raiz técnica</strong> (ex: "Encoding inválido") e oferece ações contextuais imediatas na própria linha ("Tentar novamente" ou "Substituir arquivo"), reduzindo o custo de interação e o tempo de frustração.
+                  </p>
+                </div>
+
+                <div className="flex flex-col gap-4">
+                  <h3 className="text-[clamp(1.125rem,2vw,1.5rem)] font-bold leading-[1.4] text-balance text-foreground">
+                    3. Explicabilidade da Máquina
+                  </h3>
+                  <p>
+                    Para evitar a sensação de "caixa-preta", as tags sugeridas pela máquina recebem um tratamento visual sutil (ícone ✨) e contam com <strong>tooltips de explicabilidade</strong> (ex: <em>"Tag sugerida porque o termo foi detectado 42 vezes"</em>). Isso garante que o administrador compreenda o raciocínio por trás da recomendação antes de validá-la.
+                  </p>
+                  <ProjectImage 
+                    src="https://placehold.co/1040x600/1a1a1a/555555?text=Modal+de+Upload"
+                    alt="Modal de Upload e Revisão de Metadados" 
+                    caption="Fluxo com distinção visual entre taxonomias recomendadas pela IA e campos editáveis."
+                  />
+                </div>
+
+                <div className="flex flex-col gap-4">
+                  <h3 className="text-[clamp(1.125rem,2vw,1.5rem)] font-bold leading-[1.4] text-balance text-foreground">
+                    4. Confiança Calibrada e Rigidez de Busca
+                  </h3>
+                  <p>
+                    Seguindo o princípio de <em>Calibrated Trust</em>, garantimos que o usuário possa limitar a IA apenas ao que ele confia. Desenhamos duas configurações de rigidez no chat:
+                  </p>
+                  <ul className="list-disc pl-5 flex flex-col gap-2 text-muted-foreground">
+                    <li><strong className="text-foreground">Strict Mode:</strong> A IA restringe 100% de suas respostas aos documentos enviados pelo usuário. Ideal para troubleshooting focado em manuais confidenciais.</li>
+                    <li><strong className="text-foreground">Standard Mode:</strong> Permite que o modelo cruze as informações da base RAG com seu conhecimento geral de engenharia, útil para dúvidas teóricas mais amplas.</li>
+                  </ul>
+                  <ProjectVideo 
+                    src=""
+                    poster="https://placehold.co/1040x600/1a1a1a/555555?text=Video+Placeholder"
+                    caption="Protótipo do seletor de modos de busca no chat" 
+                  />
+                </div>
+
+              </div>
             </Section>
 
-            <Section id="gestao-lote" title="5. Lógica de gestão em lote (Bulk Actions)">
+            <Section id="resultados" title="Resultados projetados">
               <p>
-                A eficiência de sistemas complexos está em gerir grandes volumes (<strong>Heurística #7 - Flexibilidade e Eficiência</strong>). Para evitar erros operacionais e cliques repetitivos em bases com centenas de itens, criamos uma regra de negócio inteligente para Status Mistos na ativação/desativação de fontes:
-              </p>
-              <blockquote>
-                <strong>Regra de Predominância:</strong> Ao selecionar múltiplos arquivos com status diferentes:<br />
-                • Se mais da metade estiver ativa ➔ A ação em massa desativa todos (foco em segurança).<br />
-                • Se menos da metade estiver ativa ➔ O sistema ativa todos de forma unificada.
-              </blockquote>
-              <p>
-                <strong>Impacto:</strong> Redução drástica de atrito e prevenção de segurança para evitar que documentos obsoletos fiquem ativos por acidente.
-              </p>
-
-              <ProjectImage 
-                src="/governance/gestao-lote-filtros.png" 
-                alt="Gestão em Lote e Filtros Rápidos" 
-                caption="Tela 03 — Seleção múltipla de arquivos acionando a barra de comandos rápidos e filtros preditivos."
-              />
-            </Section>
-
-            <Section id="resultados" title="6. Resultados e impacto de negócio">
-              <p>
-                O refinamento visual atrativo aliado à robustez lógica transformou este painel administrativo em um grande argumento comercial. O protótipo de alta fidelidade foi peça-chave em demonstrações estratégicas de novos produtos para contas globais de alta exigência, como a <strong>Nokia Global</strong>.
+                O protótipo de alta fidelidade tornou-se peça-chave em demonstrações estratégicas de novos produtos para contas globais de alta exigência. Como o projeto encontra-se em fase de validação pré-implementação, estimo as seguintes projeções de impacto com base nos testes de usabilidade:
               </p>
 
               <MetricsGrid
                 metrics={[
                   { 
-                    value: '98%', 
-                    label: <>de <strong>assertividade técnica</strong>. O índice de acerto das respostas no chat principal subiu devido à curadoria fina dos dados de entrada.</> 
+                    value: '~90%', 
+                    label: <>de redução projetada no risco de <strong>alucinação e vazamento</strong>. A curadoria fina e o <em>Strict Mode</em> garantem blindagem de contexto baseada apenas em fatos documentados.</> 
                   },
                   { 
-                    value: '1 clique', 
-                    label: <>para a <strong>revogação de acesso</strong> instantânea, limpando o escopo de respostas da IA em tempo real.</> 
+                    value: '~60%', 
+                    label: <>de eficiência estimada no <strong>tempo de curadoria de arquivos</strong>. A extração automática de metadados transforma o trabalho manual em apenas revisão e aprovação.</> 
                   },
                 ]}
               />
 
-              <h3 className="text-foreground">KPIs de sucesso monitorados</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <KpiCard index={0} icon={ShieldCheck} metric="Compliance Rate" label="Rastreabilidade" description="Porcentagem de respostas geradas que mantêm rastreabilidade de ponta a ponta com fontes ativas e validadas (Meta: 100%)." />
-                <KpiCard index={1} icon={Clock} metric="Time to Verify" label="Tempo de Curadoria" description="Redução do tempo que o administrador leva entre fazer o upload e aprovar o arquivo, validando a eficácia do auto-tagging." />
+              <h3 className="text-foreground mt-8">KPIs para Acompanhamento</h3>
+              <p>Métricas de produto mapeadas para validar o sucesso da governança pós-lançamento:</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-2">
+                <KpiCard index={0} icon={ShieldCheck} metric="Compliance Rate" label="Rastreabilidade" description="% de respostas da IA que mantêm rastreabilidade de ponta a ponta com fontes ativas e validadas." />
+                <KpiCard index={1} icon={Clock} metric="Time to Verify" label="Eficiência de Curadoria" description="Tempo médio que o administrador leva para revisar e aprovar um arquivo após o auto-tagging." />
               </div>
             </Section>
 
-            <Section id="roadmap" title="7. Roadmap de evolução">
+            <Section id="conclusao" title="Conclusão e aprendizados">
               <p>
-                Para direcionar a evolução do produto de forma estratégica a longo prazo, definimos os seguintes marcos de engenharia de design:
+                Projetar o backstage da IA do NetChart provou que interfaces administrativas precisam de tanto apuro visual e refinamento de UX quanto o produto final. Confiança em IA não se cria automatizando tudo, mas sim dando <strong>visibilidade e controle sobre as regras do jogo</strong>. 
               </p>
-              <ProjectRoadmap
-                items={[
-                  { title: "V1 — MVP (Foco Atual)", description: "Ingestão manual de arquivos, taxonomia assistida por IA com revisão humana e controle de status unificado.", status: "done" },
-                  { title: "V2 — Conectores Automáticos", description: "Sincronização agendada (Scheduled Sync) automática com repositórios externos e nuvens privadas (AWS S3, Google Drive, SharePoint corporativo).", status: "in-progress" },
-                  { title: "V3 — Auditoria e Desempenho", description: "Painel analítico mostrando quais documentos são mais citados pela IA e quais estão obsoletos ou gerando contradições no modelo.", status: "planned" },
-                ]}
-              />
+              <p>
+                Ao equilibrar a automação da máquina com a autonomia do administrador — e refletir essa governança na ponta através dos modos de busca —, consegui desenhar uma infraestrutura de dados robusta, pronta para as mais rigorosas exigências do mercado de telecomunicações.
+              </p>
             </Section>
 
           </div>
         </div>
       </FadeInView>
 
-      <FadeInView delay={0.1}>
-        <div className="max-w-[1040px] mx-auto px-6 md:px-10 py-8 md:py-12">
-          <Section id="conclusao" title="Conclusão e aprendizados">
-            <p>
-              Projetar o "backstage" da IA do NetChart provou que interfaces administrativas de segurança técnica precisam de tanto apuro visual e refinamento de UX quanto o produto final do usuário.
-            </p>
-            <p>
-              O maior aprendizado foi entender que confiança em IA não se cria automatizando tudo, mas sim dando <strong>visibilidade e controle sobre as regras do jogo</strong>. Ao equilibrar o auto-tagging com a autonomia de edição do administrador, entregamos um produto robusto, seguro contra vazamentos e altamente estratégico para o mercado de Telecom.
-            </p>
-          </Section>
-        </div>
-      </FadeInView>
-
       <FadeInView delay={0.15}>
         <ProjectNavigation
-          nextProject={{ title: "Voltar ao Portfólio", url: "/projects", comingSoon: false }}
+          nextProject={{ title: "Integração de GenAI para troubleshooting de redes", url: "/projects/netchart/genai-troubleshooting" }}
         />
       </FadeInView>
     </ProjectLayout>

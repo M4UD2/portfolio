@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRightIcon, TagIcon } from '@phosphor-icons/react';
+import { ArrowRightIcon } from '@phosphor-icons/react';
 import Button from '../atoms/button';
 
 interface ProjectCardProps {
@@ -10,12 +10,12 @@ interface ProjectCardProps {
   imageUrl: string;
   imageAlt: string;
   reversed?: boolean;
-  tags?: string[];
   productLogo?: string;
+  productLogoDark?: string;
   productName?: string;
 }
 
-export default function ProjectCard({ title, description, link, imageUrl, imageAlt, reversed = false, tags, productLogo, productName }: ProjectCardProps) {
+export default function ProjectCard({ title, description, link, imageUrl, imageAlt, reversed = false, productLogo, productLogoDark, productName }: ProjectCardProps) {
   const isExternal = link.startsWith('http');
   const isComingSoon = link === '#';
 
@@ -36,7 +36,7 @@ export default function ProjectCard({ title, description, link, imageUrl, imageA
       ) : (
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-muted/60">
           <div className="w-8 h-8 rounded-full border-2 border-dashed border-border/80" />
-          <span className="text-[11px] uppercase tracking-widest text-border/80">Em breve</span>
+          <span className="text-[11px] uppercase tracking-widest text-border/80">Em breve...</span>
         </div>
       )}
     </motion.div>
@@ -57,22 +57,25 @@ export default function ProjectCard({ title, description, link, imageUrl, imageA
 
         <div className={`w-full flex flex-col gap-3 items-start ${reversed ? 'lg:order-1' : 'lg:order-2'}`}>
           {productLogo && (
-            <img src={productLogo} alt={productName ?? ''} className="h-6 w-auto opacity-80" />
+            <>
+              <img
+                src={productLogo}
+                alt={productName ?? ''}
+                className="h-7 w-auto dark:hidden"
+              />
+              {productLogoDark && (
+                <img
+                  src={productLogoDark}
+                  alt={productName ?? ''}
+                  className="hidden h-7 w-auto dark:block"
+                />
+              )}
+            </>
           )}
           <h3 className={`hyphens-none leading-tight text-balance ${
             isComingSoon ? 'text-muted-foreground' : 'text-foreground'
           }`}>{title}</h3>
           <p className="text-[1rem] leading-[1.7] text-muted-foreground w-full">{description}</p>
-          {tags && tags.length > 0 && (
-            <div className="flex flex-wrap gap-3">
-              {tags.map((tag) => (
-                <span key={tag} className="flex items-center gap-1.5 font-mono text-[13px] text-muted-foreground">
-                  <TagIcon size={11} weight="bold" />
-                  {tag}
-                </span>
-              ))}
-            </div>
-          )}
           {isComingSoon ? (
             <div className="inline-flex items-center gap-3 border border-border px-5 py-2.5 mt-2 rounded-sm text-[14px] leading-[1.7] text-muted-foreground cursor-not-allowed">
               Em breve

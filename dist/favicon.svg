@@ -1,14 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <style>
-    .favicon-text { 
-      fill: #0f172a; 
-      font-family: Inter, system-ui, sans-serif; 
-      font-weight: 700; 
-      font-size: 20px; 
-    }
-    @media (prefers-color-scheme: dark) {
-      .favicon-text { fill: #f8fafc; }
-    }
-  </style>
-  <text x="16" y="23" text-anchor="middle" class="favicon-text">LM</text>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 32 32">
+  <!-- Generator: Adobe Illustrator 30.1.0, SVG Export Plug-In . SVG Version: 2.1.1 Build 136)  -->
+  <defs>
+    <style>
+      .st0 {
+        isolation: isolate;
+      }
+
+      .st1 {
+        fill: #f8f9fa;
+      }
+
+      .st2 {
+        fill: #333;
+      }
+    </style>
+  </defs>
+  <rect class="st2" x=".5" y=".5" width="30.98" height="30.98" rx="2.13" ry="2.13"/>
+  <g class="st0">
+    <path class="st1" d="M3.02,22.92v-13.82h2.83v11.47h5.97v2.34H3.02Z"/>
+    <path class="st1" d="M13.76,22.92v-13.82h4.34l2.25,6.35c.09.29.2.67.32,1.15s.24.98.37,1.52.24,1.07.34,1.59.2.95.26,1.34h-.54c.07-.37.16-.81.26-1.32s.22-1.03.34-1.59.25-1.06.37-1.53.22-.86.32-1.16l2.21-6.35h4.37v13.82h-2.84v-6.51c0-.3,0-.67.01-1.14s.03-.94.04-1.46.03-1.05.04-1.57.03-1.03.03-1.49h.17c-.12.52-.25,1.05-.38,1.59s-.29,1.07-.44,1.59-.28.98-.41,1.42-.24.78-.33,1.07l-2.29,6.51h-2.38l-2.33-6.51c-.09-.29-.2-.63-.33-1.06s-.26-.89-.41-1.4-.29-1.05-.44-1.59-.29-1.08-.42-1.61h.21c0,.45.01.93.03,1.46s.03,1.06.04,1.59.03,1.02.04,1.47.01.83.01,1.15v6.51h-2.83Z"/>
+  </g>
 </svg>

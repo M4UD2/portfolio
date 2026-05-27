@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { ArrowDownIcon } from '@phosphor-icons/react';
 import ProjectCard from '../components/organisms/project-card';
 import FadeInView from '../components/atoms/fade-in-view';
+import ThemeSwitch from '../components/atoms/theme-switch';
 
 // Constantes para valores de layout
 const NAVBAR_HEIGHT = 64;
@@ -44,24 +45,24 @@ export default function Home() {
       id: 'ia-troubleshooting',
       title: 'Integração de GenAI para troubleshooting de redes',
       description: 'Como colaborei em uma interface conversacional para extrair insights de volumes massivos de dados, reduzindo o tempo de busca por documentações em 70%',
-      link: '/projects/netchart/netchart-ai',
+      link: '/projects/netchart/genai-troubleshooting',
       imageUrl: '/netchart-ai/thumbnail.png',
       imageAlt: 'GenAI para Troubleshooting de Redes',
       reversed: false,
-      tags: ['IA', 'B2B SaaS', 'Telecom'],
       productLogo: '/logos/netchart-logo.svg',
+      productLogoDark: '/logos/netchart-logo-dark.svg',
       productName: 'NetChart',
     },
     {
-      id: 'governance',
+      id: 'ai-governance',
       title: 'O cérebro da IA: fluxo de governança de fontes',
       description: 'Como estruturei a interface de gerenciamento que alimenta um modelo de IA, garantindo respostas seguras e baseadas em fontes do usuário.',
       link: '#',
       imageUrl: '',
       imageAlt: 'Fluxo de Governança de Fontes',
       reversed: true,
-      tags: ['GenAI', 'RAG', 'B2B SaaS', 'Telecom'],
       productLogo: '/logos/netchart-logo.svg',
+      productLogoDark: '/logos/netchart-logo-dark.svg',
       productName: 'NetChart',
     },
   ];
@@ -70,6 +71,8 @@ export default function Home() {
     <main className="max-w-[1040px] mx-auto px-6 md:px-10 w-full">
       {/* Seção Hero */}
       <section className="min-h-[85vh] w-full flex flex-col justify-center items-center text-center gap-10 md:gap-12 py-12 md:py-20" aria-label="Apresentação">
+        <ThemeSwitch className="fixed bottom-6 right-6 z-50 md:bottom-8 md:right-8" />
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -86,7 +89,7 @@ export default function Home() {
             <span className="block sm:hidden">unindo criatividade, dados e visão de usuário</span>
             <span className="block sm:hidden">para construir produtos que fazem sentido</span>
             <span className="hidden sm:block">Sou Product Designer em Belo Horizonte, unindo criatividade,</span>
-            <span className="hidden sm:block">dados e visão de usuário pra construir produtos que fazem sentido.</span>
+            <span className="hidden sm:block">dados e visão de usuário para construir produtos que fazem sentido</span>
           </p>
         </motion.div>
 

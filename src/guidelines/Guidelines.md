@@ -30,17 +30,25 @@ Modo claro (classe raiz :root):
 - --background: `210 17% 98%`
 - --foreground: `210 11% 15%`
 - --muted: `210 5% 92%`
-- --muted-foreground: `210 10% 42%`
+- --muted-foreground: `210 9% 26%`
 - --border: `210 11% 15% / 0.24` (contraste não-texto ≥ 3:1)
 - --primary: `210 11% 15%` (igual a foreground)
 - --primary-foreground: `210 17% 98%` (igual a background)
 
 Modo escuro (classe .dark no html/body):
-- --background: `210 11% 15%`
-- --foreground: `210 17% 98%`
-- --muted: `210 10% 25%`
-- --muted-foreground: `210 10% 70%`
-- --border: `210 17% 98% / 0.24`
+- --background: `60 2% 10%`
+- --foreground: `0 0% 90%`
+- --muted: `60 2% 16%`
+- --muted-foreground: `0 0% 80%`
+- --border: `0 0% 90% / 0.38`
+- --primary: `0 0% 90%` (igual a foreground)
+- --primary-foreground: `60 2% 10%` (igual a background)
+
+Direção visual do modo escuro:
+- Fundo carvão neutro, próximo de `#1a1a19`, para preservar a sensação do mesmo site em baixa luminosidade
+- Texto em cinza claro neutro, evitando branco puro e evitando variações quentes como marfim
+- `muted` ligeiramente acima do background para separar superfícies sem criar blocos muito contrastados
+- Borda derivada do foreground com opacidade suficiente para contraste não-texto AA no modo escuro
 
 Tailwind (tailwind.config.js -> theme.extend.colors):
 - background: `hsl(var(--background))`
@@ -63,9 +71,10 @@ Utilização típica:
 - Foco visível: anel de foco com contraste ≥ 3:1 em relação ao plano de fundo
 
 Verificações com a paleta atual:
-- `text-foreground` sobre `bg-background`: ≫ 7:1 (AA/AAA)
-- `text-muted-foreground` sobre `bg-background`: ~5.7:1 (AA para 12–14px)
-- `border-border` (24% opacidade): ≥ 3:1 sobre os respectivos backgrounds em claro/escuro
+- `text-foreground` sobre `bg-background`: ~14.52:1 no claro e ~13.89:1 no escuro
+- `text-muted-foreground` sobre `bg-background`: ~9.68:1 no claro e ~10.84:1 no escuro
+- `border-border` no modo escuro: ~3.09:1 sobre `bg-background`
+- `border-border` no modo claro mantém o token existente (`0.24`) para uma borda visualmente sutil; não deve ser usado como único indicador de estado crítico
 
 ## Foco Visível (padrão obrigatório)
 - Utilitário custom `.focus-ring` (definido em globals.css) aplicado a todos os elementos focáveis interativos:
@@ -257,3 +266,70 @@ Utilizar sistema de Grid com espaçamento (`gap`) de **24px** (`gap-6`) para con
 4.  **Grid de Métricas (MetricsGrid):**
     - *Divisão em Terços:* Padrão de 3 colunas no Desktop (`md:grid-cols-3`).
     - *Responsividade:* Em mobile, empilha em 1 coluna.
+
+---
+
+# Componentes — Padrões
+
+## Cards (MetricCard, QuoteGrid, TechBadge)
+- `border border-border rounded-sm`
+- `hover:border-foreground transition-colors duration-500`
+- Animação de entrada: fade + slide com stagger
+- Elementos internos que mudam no hover usam `group` + `group-hover:` no elemento filho
+
+## QuoteGrid
+- Grid 2 colunas em `md`, 1 coluna em mobile
+- Aspa (`"`) muda de `text-muted-foreground/40` para `text-foreground` no hover via `group-hover:`
+- Prop `delay` para encadear com outras animações da página
+
+## Páginas de Projeto
+- Container: `max-w-[1040px] mx-auto px-6 md:px-10`
+- Seções com `gap-16` entre elas
+- `scroll-mt-32 md:scroll-mt-24` em cada seção para compensar a sticky header
+
+---
+
+# Navegação entre Projetos (`ProjectNavigation`)
+
+## Regra geral
+Cada página de projeto define explicitamente `previousProject` e `nextProject` com links fixos — sem depender de `window.history.back()`, que quebraria em acesso direto via URL.
+
+## Props
+- `previousProject` — projeto anterior ou atalho de volta ao início
+- `nextProject` — próximo projeto; aceita `comingSoon: true` para desabilitar o link
+
+## Quando usar `comingSoon`
+Somente enquanto a página de destino não existir. Assim que a página for criada, remover o flag.
+
+## Padrão de "Voltar"
+- Se há um projeto anterior na sequência → usar `previousProject` com o título e URL desse projeto
+- Se é o primeiro projeto da lista (ou não há anterior) → omitir `previousProject`; o componente exibe automaticamente um link para `/?from=home` com label "Voltar / Início"
+
+## Sequência atual dos projetos
+```
+Início (/) → netchart/genai-troubleshooting → netchart/genai-governance → ...
+```
+Ao adicionar um novo projeto, atualizar o `nextProject` do projeto anterior e o `previousProject` do novo.
+
+---
+
+# URLs de Projetos
+
+## Padrão
+```
+/projects/{produto}/{slug}
+```
+- `produto` — nome do produto em kebab-case (ex: `netchart`, `yrden`)
+- `slug` — palavras-chave do título do projeto, em inglês, kebab-case
+
+## Projetos atuais
+| Projeto | URL |
+|---|---|
+| Integração de GenAI para troubleshooting de redes | `/projects/netchart/genai-troubleshooting` |
+| O cérebro da IA: fluxo de governança de fontes | `/projects/netchart/genai-governance` |
+
+## Onde atualizar ao mudar uma URL
+1. `src/App.tsx` — rota
+2. `src/pages/Home.tsx` — array `projects`
+3. Página do projeto anterior — `nextProject.url`
+4. Página do próximo projeto — `previousProject.url`

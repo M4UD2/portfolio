@@ -32,7 +32,7 @@ export default function ScrollToTop() {
           transition={{ duration: 0.3 }}
           style={{ zIndex: 9999 }}
         >
-          <Tooltip content="Voltar ao topo">
+          <Tooltip content="Voltar ao topo" align="end">
             <motion.button
               onClick={scrollToTop}
               className="inline-flex items-center border border-border p-3 rounded-sm hover:bg-foreground hover:text-background transition-all duration-300 focus-ring bg-background text-foreground"

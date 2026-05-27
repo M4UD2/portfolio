@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { CalendarIcon, UserIcon, WrenchIcon, TagIcon } from '@phosphor-icons/react';
+import { CalendarIcon, UserIcon, WrenchIcon } from '@phosphor-icons/react';
 import Tooltip from '../atoms/tooltip-simple';
 
 interface ProjectHeroProps {
@@ -8,13 +8,13 @@ interface ProjectHeroProps {
   date: string;
   role: string;
   tools: string[];
-  tags?: string[];
   link?: string;
   productName?: string;
   productLogo?: string;
+  productLogoDark?: string;
 }
 
-export default function ProjectHero({ title, subtitle, date, role, tools, tags, productName, productLogo }: ProjectHeroProps) {
+export default function ProjectHero({ title, subtitle, date, role, tools, productName, productLogo, productLogoDark }: ProjectHeroProps) {
   return (
     <motion.section
       className="max-w-[1040px] mx-auto px-6 md:px-10 pt-0 pb-2 md:pb-4"
@@ -24,15 +24,24 @@ export default function ProjectHero({ title, subtitle, date, role, tools, tags, 
     >
       <div className="flex flex-col gap-6">
         {/* Product Logo + Title */}
-        <div className="flex flex-col gap-2">
+        <div className="flex max-w-[860px] flex-col gap-2">
           {(productName || productLogo) && (
             <div className="flex items-center gap-3">
               {productLogo ? (
-                <img 
-                  src={productLogo} 
-                  alt={`${productName} logo`}
-                  className="h-8 w-auto object-contain"
-                />
+                <>
+                  <img 
+                    src={productLogo} 
+                    alt={`${productName} logo`}
+                    className="h-8 w-auto object-contain dark:hidden"
+                  />
+                  {productLogoDark && (
+                    <img 
+                      src={productLogoDark} 
+                      alt={`${productName} logo`}
+                      className="hidden h-8 w-auto object-contain dark:block"
+                    />
+                  )}
+                </>
               ) : (
                 <div className="text-[12px] leading-[1.7] uppercase tracking-widest font-bold text-muted-foreground">
                   {productName}
@@ -40,11 +49,13 @@ export default function ProjectHero({ title, subtitle, date, role, tools, tags, 
               )}
             </div>
           )}
-          <h1>{title}</h1>
+          <h1 className="text-balance">
+            {title}
+          </h1>
         </div>
         
         {/* Subtitle */}
-        <p className="text-[1rem] leading-[1.7] text-muted-foreground">
+        <p className="max-w-[72ch] text-[1rem] leading-[1.7] text-muted-foreground">
           {subtitle}
         </p>
 
@@ -70,15 +81,6 @@ export default function ProjectHero({ title, subtitle, date, role, tools, tags, 
               <span>{tools.join(', ')}</span>
             </div>
           </Tooltip>
-
-          {tags && tags.length > 0 && (
-            <Tooltip content="Tags">
-              <div className="flex items-center gap-1.5 cursor-default">
-                <TagIcon size={14} weight="bold" className="text-muted-foreground" />
-                <span>{tags.join(', ')}</span>
-              </div>
-            </Tooltip>
-          )}
         </div>
       </div>
     </motion.section>

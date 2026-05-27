@@ -26,6 +26,7 @@ interface ProjectDetailProps {
   imageUrl: string;
   productName?: string;
   productLogo?: string;
+  productLogoDark?: string;
   
   // Conteúdo
   description: string;
@@ -89,7 +90,8 @@ export default function ProjectDetail({
   hideTableOfContents = false,
   projectId,
   productName,
-  productLogo
+  productLogo,
+  productLogoDark
 }: ProjectDetailProps) {
   
   const defaultSections = [
@@ -208,6 +210,7 @@ export default function ProjectDetail({
           link={link}
           productName={productName}
           productLogo={productLogo}
+          productLogoDark={productLogoDark}
         />
       )}
 

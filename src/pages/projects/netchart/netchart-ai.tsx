@@ -18,7 +18,7 @@ const sections = [
   { id: 'descoberta', label: 'Descoberta' },
   { id: 'solucao', label: 'Solução' },
   { id: 'decisoes', label: 'Decisões de design' },
-  { id: 'resultado', label: 'Resultado' },
+  { id: 'resultados', label: 'Resultados' },
   { id: 'roadmap', label: 'Roadmap' },
   { id: 'conclusao', label: 'Conclusão' },
 ];
@@ -48,9 +48,9 @@ export default function IATroubleshooting() {
         date="2025"
         role="Product Designer (End-to-end)"
         tools={["Adobe XD", "Conceptboard"]}
-        tags={['GenAI', 'B2B SaaS', 'Telecom']}
-        productName="Netchart"
+        productName="NetChart"
         productLogo="/logos/netchart-logo.svg"
+        productLogoDark="/logos/netchart-logo-dark.svg"
       />
 
       <ProjectImage
@@ -236,7 +236,7 @@ export default function IATroubleshooting() {
               </div>
             </Section>
                           
-            <Section id="resultado" title="Resultados projetados">
+            <Section id="resultados" title="Resultados projetados">
               <p>
                 A solução foi desenhada para mitigar a <strong>sobrecarga cognitiva</strong> dos engenheiros, transformando a operação de rede de um modelo <strong>reativo para proativo</strong> por meio de contexto técnico imediato. Com isso, projetamos:
               </p>
@@ -292,7 +292,7 @@ export default function IATroubleshooting() {
 
       <FadeInView delay={0.15}>
         <ProjectNavigation
-          nextProject={{ title: "O cérebro da IA: fluxo de governança de fontes", url: "/projects/governance", comingSoon: true }}
+          nextProject={{ title: "O cérebro da IA: fluxo de governança de fontes", url: "/projects/netchart/genai-governance", comingSoon: true }}
         />
       </FadeInView>
     </ProjectLayout>
